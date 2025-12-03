@@ -416,12 +416,12 @@ export default function Home() {
           {/* Project Grid - 3 columns x 2 rows */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {[
-              { name: "DriveSmart Academy", type: "Driving School", result: "+180% bookings", url: "https://driving-school-website-mocha.vercel.app/", image: "/images/work-cover/DrivingSchool-Cover.webp" },
-              { name: "HeadCount", type: "HR & Staffing", result: "+95 new clients", url: "https://headcount.team/", image: "/images/work-cover/HeadCount-Cover.webp" },
-              { name: "Chubby Bánh Mì", type: "Restaurant", result: "3x more orders", url: "https://chubby-banhmi.vercel.app/", image: "/images/work-cover/ChubbyBanh-Cover.webp" },
-              { name: "Grizzly Cafe", type: "Cafe & Bakery", result: "+220% traffic", url: "https://grizzly-cafe.vercel.app/", image: "/images/work-cover/Grizzly-cover.webp" },
-              { name: "Pawsome Grooming", type: "Pet Services", result: "Fully booked", url: "https://pet-grooming-website-psi.vercel.app/", image: "/images/work-cover/petgroom-cover.webp" },
-              { name: "ClutchFill", type: "Auto Services", result: "+$40k revenue", url: "https://clutchfill.com/", image: "/images/work-cover/ClutchFill-Cover.webp" },
+              { name: "DriveSmart Academy", type: "Driving School", url: "https://driving-school-website-mocha.vercel.app/", image: "/images/work-cover/DrivingSchool-Cover.webp" },
+              { name: "HeadCount", type: "HR & Staffing", url: "https://headcount.team/", image: "/images/work-cover/HeadCount-Cover.webp" },
+              { name: "Chubby Bánh Mì", type: "Restaurant", url: "https://chubby-banhmi.vercel.app/", image: "/images/work-cover/ChubbyBanh-Cover.webp" },
+              { name: "Grizzly Cafe", type: "Cafe & Bakery", url: "https://grizzly-cafe.vercel.app/", image: "/images/work-cover/Grizzly-cover.webp" },
+              { name: "Pawsome Grooming", type: "Pet Services", url: "https://pet-grooming-website-psi.vercel.app/", image: "/images/work-cover/ClutchFill-Cover.webp" },
+              { name: "ClutchFill", type: "Auto Services", url: "https://clutchfill.com/", image: "/images/work-cover/petgroom-cover.webp" },
             ].map((project, index) => (
               <a
                 key={index}
@@ -466,17 +466,11 @@ export default function Home() {
                       {project.type}
                     </span>
                     <h3
-                      className="text-[22px] md:text-[26px] font-medium text-white mb-1"
+                      className="text-[22px] md:text-[26px] font-medium text-white"
                       style={{ fontFamily: "'Figtree', sans-serif" }}
                     >
                       {project.name}
                     </h3>
-                    <p
-                      className="text-[13px] font-medium"
-                      style={{ fontFamily: "'Figtree', sans-serif", color: accentYellow }}
-                    >
-                      {project.result}
-                    </p>
                   </div>
                 </div>
               </a>
