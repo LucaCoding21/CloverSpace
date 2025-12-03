@@ -28,6 +28,28 @@ export default function Home() {
     setTextOn(true);
   }, []);
 
+  // Scroll animation using Intersection Observer
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll(".scroll-animate");
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
@@ -54,26 +76,22 @@ export default function Home() {
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-16">
           <div className="flex items-center justify-between h-20">
-            {/* Logo with animated dot */}
+            {/* Logo */}
             <button
               onClick={() => scrollToSection("home")}
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-2 group cursor-pointer"
             >
-              <div className={`w-2 h-2 rounded-full group-hover:scale-125 transition-all duration-500 ${
-                textOn ? "shadow-[0_0_8px_rgba(226,160,75,0.6)]" : "bg-white"
-              }`} style={{ backgroundColor: textOn ? accentYellow : 'white' }} />
-              <span
-                className="text-white text-[18px] font-medium tracking-tight"
-                style={{ fontFamily: "'Figtree', sans-serif" }}
-              >
-                Clover Space
-              </span>
+              <img
+                src="/images/cloverspace-logo-white.svg"
+                alt="CloverSpace"
+                className="h-8 group-hover:scale-105 transition-transform duration-300"
+              />
             </button>
 
             {/* Menu trigger */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3 group cursor-pointer"
             >
               <span
                 className="text-[14px] text-white/60 group-hover:text-white transition-colors hidden sm:block"
@@ -102,9 +120,13 @@ export default function Home() {
           {/* Compact logo */}
           <button
             onClick={() => scrollToSection("home")}
-            className="w-8 h-8 rounded-full bg-black flex items-center justify-center hover:scale-105 transition-transform"
+            className="w-8 h-8 rounded-full bg-black flex items-center justify-center hover:scale-105 transition-transform cursor-pointer overflow-hidden group"
           >
-            <span className="text-white text-[12px] font-semibold">CS</span>
+            <img
+              src="/images/logospace.svg"
+              alt="CloverSpace"
+              className="w-7 h-7 transition-transform duration-300 group-hover:rotate-90"
+            />
           </button>
 
           {/* Nav items */}
@@ -117,7 +139,7 @@ export default function Home() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="px-4 py-2 text-[13px] text-black/60 hover:text-black transition-colors rounded-full hover:bg-black/5"
+                className="px-4 py-2 text-[13px] text-black/60 hover:text-black transition-colors rounded-full hover:bg-black/5 cursor-pointer"
                 style={{ fontFamily: "'Figtree', sans-serif" }}
               >
                 {item.label}
@@ -128,7 +150,7 @@ export default function Home() {
           {/* CTA */}
           <button
             onClick={() => scrollToSection("contact")}
-            className="px-4 py-2 text-[13px] text-white bg-black rounded-full hover:bg-black/80 transition-colors ml-1"
+            className="px-4 py-2 text-[13px] text-white bg-black rounded-full hover:bg-[#E2A04B] transition-colors ml-1 cursor-pointer"
             style={{ fontFamily: "'Figtree', sans-serif" }}
           >
             Let's Talk
@@ -158,7 +180,7 @@ export default function Home() {
             <div className="flex items-center justify-between h-20">
               <button
                 onClick={() => scrollToSection("home")}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 cursor-pointer"
               >
                 <div className="w-2 h-2 rounded-full bg-black" />
                 <span
@@ -171,7 +193,7 @@ export default function Home() {
 
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-3 group cursor-pointer"
               >
                 <span
                   className="text-[14px] text-black/60 group-hover:text-black transition-colors"
@@ -199,7 +221,7 @@ export default function Home() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`group flex items-center gap-6 w-full text-left transition-all duration-500 ${
+                  className={`group flex items-center gap-6 w-full text-left transition-all duration-500 cursor-pointer ${
                     mobileMenuOpen
                       ? "opacity-100 translate-x-0"
                       : "opacity-0 -translate-x-8"
@@ -243,11 +265,11 @@ export default function Home() {
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-black/10 pt-8">
               <a
-                href="mailto:hello@cloverspace.co"
+                href="mailto:cloverspaceinfo@gmail.com"
                 className="text-[15px] text-black/60 hover:text-black transition-colors"
                 style={{ fontFamily: "'Figtree', sans-serif" }}
               >
-                hello@cloverspace.co
+                cloverspaceinfo@gmail.com
               </a>
               <div className="flex items-center gap-6">
                 {["Twitter", "LinkedIn", "Instagram"].map((social) => (
@@ -268,23 +290,30 @@ export default function Home() {
 
       {/* ============ HERO SECTION ============ */}
       <section id="home" className="relative h-screen overflow-hidden">
-        {/* Video Background */}
+        {/* Video Background - Desktop */}
         <video
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover hidden md:block"
         >
           <source src="/HeroVideo.mp4" type="video/mp4" />
         </video>
+
+        {/* Image Background - Mobile */}
+        <img
+          src="/images/work-cover/heroMobile3.png"
+          alt="CloverSpace Hero"
+          className="absolute inset-0 w-full h-full object-cover md:hidden"
+        />
 
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/10" />
 
         {/* Hero Content - Right aligned */}
-        <div className="relative h-full flex items-center">
+        <div className="relative h-full flex items-start pt-32 md:pt-0 md:items-center">
           <div className="max-w-[1440px] mx-auto w-full px-6 md:px-16">
             <div className="max-w-[700px] ml-auto">
               {/* Main headline */}
@@ -317,21 +346,21 @@ export default function Home() {
                 </span>
               </h1>
 
-              {/* Description */}
+              {/* Description - keyword rich */}
               <p
                 className="text-[16px] md:text-[18px] text-white/80 max-w-[480px] leading-[1.7] mb-10"
                 style={{
                   fontFamily: "'Figtree', sans-serif",
                 }}
               >
-                We're a duo based in Vancouver, BC helping local businesses turn their online presence into real revenue.
+                We're a web design agency in Surrey, BC helping local businesses turn their online presence into real revenue. Fast turnaround. Real results.
               </p>
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap items-center gap-5">
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="group flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
+                  className="group flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 cursor-pointer"
                   style={{ backgroundColor: accentYellow }}
                 >
                   <span
@@ -344,7 +373,7 @@ export default function Home() {
 
                 <button
                   onClick={() => scrollToSection("work")}
-                  className="group flex items-center gap-3 px-8 py-4 border border-white/50 rounded-full hover:border-white hover:bg-white/10 transition-all duration-300"
+                  className="group flex items-center gap-3 px-8 py-4 border border-white/50 rounded-full hover:border-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
                 >
                   <span
                     className="text-[16px] text-white"
@@ -363,74 +392,82 @@ export default function Home() {
       <section id="work" className="relative py-16 md:py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-16">
           {/* Section Header */}
-          <div className="mb-12 md:mb-16">
+          <div className="mb-12 md:mb-16 scroll-animate">
             <div className="flex items-center gap-4 mb-6">
               <span
-                className="text-[11px] md:text-[12px] tracking-[0.2em] text-gray-400 uppercase"
-                style={{ fontFamily: "'Figtree', sans-serif" }}
+                className="text-[11px] md:text-[12px] tracking-[0.2em] uppercase"
+                style={{ fontFamily: "'Figtree', sans-serif", color: accentYellow }}
               >
                 Our Work
               </span>
-              <div className="h-[1px] w-12 bg-gray-300" />
+              <div className="h-[1px] w-12" style={{ backgroundColor: accentYellow }} />
             </div>
 
             <h2
               className="text-[32px] md:text-[44px] lg:text-[52px] font-medium leading-[1.05] tracking-tight"
               style={{ fontFamily: "'EB Garamond', serif" }}
             >
-              Meaningful,
+              Website Design Portfolio:
               <br />
-              Measurable Design
+              Real Results for Local Businesses
             </h2>
           </div>
 
           {/* Project Grid - 3 columns x 2 rows */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {[
-              { name: "Coastal Cafe", type: "Restaurant", result: "+180% bookings" },
-              { name: "Urban Fitness", type: "Gym & Wellness", result: "+95 new members" },
-              { name: "Green Thumb", type: "Landscaping", result: "3x more leads" },
-              { name: "Peak Dental", type: "Healthcare", result: "+220% traffic" },
-              { name: "Swift Auto", type: "Auto Services", result: "+$40k revenue" },
-              { name: "Luxe Salon", type: "Beauty & Spa", result: "Fully booked" },
+              { name: "DriveSmart Academy", type: "Driving School", result: "+180% bookings", url: "https://driving-school-website-mocha.vercel.app/", image: "/images/work-cover/DrivingSchool-Cover.webp" },
+              { name: "HeadCount", type: "HR & Staffing", result: "+95 new clients", url: "https://headcount.team/", image: "/images/work-cover/HeadCount-Cover.webp" },
+              { name: "Chubby Bánh Mì", type: "Restaurant", result: "3x more orders", url: "https://chubby-banhmi.vercel.app/", image: "/images/work-cover/ChubbyBanh-Cover.webp" },
+              { name: "Grizzly Cafe", type: "Cafe & Bakery", result: "+220% traffic", url: "https://grizzly-cafe.vercel.app/", image: "/images/work-cover/Grizzly-cover.webp" },
+              { name: "Pawsome Grooming", type: "Pet Services", result: "Fully booked", url: "https://pet-grooming-website-psi.vercel.app/", image: "/images/work-cover/petgroom-cover.webp" },
+              { name: "ClutchFill", type: "Auto Services", result: "+$40k revenue", url: "https://clutchfill.com/", image: "/images/work-cover/ClutchFill-Cover.webp" },
             ].map((project, index) => (
-              <div
+              <a
                 key={index}
-                className="relative aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden group cursor-pointer border border-gray-200 hover:border-gray-300 transition-all duration-300"
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`relative aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden group cursor-pointer border border-gray-200 hover:border-gray-300 transition-all duration-300 block scroll-animate scroll-animate-delay-${index + 1}`}
               >
-                {/* Placeholder pattern */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100" />
-                <div
-                  className="absolute inset-0 opacity-[0.03]"
-                  style={{
-                    backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
-                    backgroundSize: '24px 24px'
-                  }}
+                {/* Cover image */}
+                <img
+                  src={project.image}
+                  alt={`${project.name} - ${project.type} website by CloverSpace`}
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
                 />
 
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/20" />
+
+                {/* Gradient overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+                {/* Pop up icon - top right */}
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center opacity-70 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300">
+                  <svg
+                    className="w-4 h-4 text-black"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+
                 {/* Content overlay */}
-                <div className="absolute inset-0 p-5 flex flex-col justify-between">
-                  <div className="flex items-start justify-between">
+                <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                  <div>
                     <span
-                      className="text-[11px] tracking-[0.15em] uppercase text-gray-400"
+                      className="text-[11px] tracking-[0.15em] uppercase text-white/90 mb-2 block"
                       style={{ fontFamily: "'Figtree', sans-serif" }}
                     >
                       {project.type}
                     </span>
-                    <svg
-                      className="w-5 h-5 text-gray-300 group-hover:text-gray-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </div>
-
-                  <div>
                     <h3
-                      className="text-[22px] md:text-[26px] font-medium text-gray-900 mb-1"
-                      style={{ fontFamily: "'EB Garamond', serif" }}
+                      className="text-[22px] md:text-[26px] font-medium text-white mb-1"
+                      style={{ fontFamily: "'Figtree', sans-serif" }}
                     >
                       {project.name}
                     </h3>
@@ -442,10 +479,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-
-                {/* Hover effect */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/[0.02] transition-all duration-300" />
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -474,10 +508,10 @@ export default function Home() {
 
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 relative">
           {/* Section Header */}
-          <div className="text-center mb-20 md:mb-28">
+          <div className="text-center mb-20 md:mb-28 scroll-animate">
             <span
-              className="inline-block text-[11px] md:text-[12px] tracking-[0.25em] text-gray-500 uppercase mb-6"
-              style={{ fontFamily: "'Figtree', sans-serif" }}
+              className="inline-block text-[11px] md:text-[12px] tracking-[0.25em] uppercase mb-6"
+              style={{ fontFamily: "'Figtree', sans-serif", color: accentYellow }}
             >
               How We Work
             </span>
@@ -485,15 +519,15 @@ export default function Home() {
               className="text-[36px] md:text-[52px] lg:text-[64px] font-medium leading-[1.05] tracking-tight text-white mb-6"
               style={{ fontFamily: "'EB Garamond', serif" }}
             >
-              Simple process,
+              Your Website Ready
               <br />
-              <span className="italic" style={{ color: accentYellow }}>exceptional</span> results
+              in <span className="italic" style={{ color: accentYellow }}>5-7 Days</span>
             </h2>
             <p
               className="text-[16px] md:text-[18px] text-gray-400 max-w-[500px] mx-auto leading-relaxed"
               style={{ fontFamily: "'Figtree', sans-serif" }}
             >
-              No corporate nonsense. No endless meetings. Just a straightforward path from idea to launch.
+              No corporate nonsense. No endless meetings. Just a straightforward path from idea to a website that brings you customers.
             </p>
           </div>
 
@@ -505,7 +539,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6">
 
               {/* Step 1 - Discovery */}
-              <div className="group relative">
+              <div className="group relative scroll-animate scroll-animate-delay-1">
                 <div className="relative bg-[#1a1a1a] rounded-3xl p-8 md:p-10 border border-gray-700/50 hover:border-gray-600 transition-all duration-500 h-full">
                   {/* Large number */}
                   <div className="mb-8">
@@ -554,7 +588,7 @@ export default function Home() {
               </div>
 
               {/* Step 2 - Design & Build */}
-              <div className="group relative">
+              <div className="group relative scroll-animate scroll-animate-delay-2">
                 <div className="relative bg-[#1a1a1a] rounded-3xl p-8 md:p-10 border border-gray-700/50 hover:border-gray-600 transition-all duration-500 h-full">
                   {/* Large number */}
                   <div className="mb-8">
@@ -603,7 +637,7 @@ export default function Home() {
               </div>
 
               {/* Step 3 - Launch & Support */}
-              <div className="group relative">
+              <div className="group relative scroll-animate scroll-animate-delay-3">
                 <div className="relative bg-[#1a1a1a] rounded-3xl p-8 md:p-10 border border-gray-700/50 hover:border-gray-600 transition-all duration-500 h-full overflow-hidden">
                   {/* Special glow for final step */}
                   <div
@@ -656,14 +690,14 @@ export default function Home() {
           {/* Bottom CTA */}
           <div className="text-center mt-20 md:mt-28">
             <p
-              className="text-[15px] text-gray-500 mb-6"
+              className="text-[15px] text-white mb-6"
               style={{ fontFamily: "'Figtree', sans-serif" }}
             >
               Ready to start?
             </p>
             <button
               onClick={() => scrollToSection("contact")}
-              className="group inline-flex items-center gap-4 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
+              className="group inline-flex items-center gap-4 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 cursor-pointer"
               style={{ backgroundColor: accentYellow }}
             >
               <span
@@ -690,15 +724,15 @@ export default function Home() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             {/* Left - Text Content */}
-            <div>
+            <div className="scroll-animate-left scroll-animate">
               <div className="flex items-center gap-4 mb-6">
                 <span
-                  className="text-[11px] md:text-[12px] tracking-[0.2em] text-gray-400 uppercase"
-                  style={{ fontFamily: "'Figtree', sans-serif" }}
+                  className="text-[11px] md:text-[12px] tracking-[0.2em] uppercase"
+                  style={{ fontFamily: "'Figtree', sans-serif", color: accentYellow }}
                 >
                   About Us
                 </span>
-                <div className="h-[1px] w-12 bg-gray-300" />
+                <div className="h-[1px] w-12" style={{ backgroundColor: accentYellow }} />
               </div>
 
               <h2
@@ -714,43 +748,17 @@ export default function Home() {
                 className="text-[14px] md:text-[15px] text-gray-500 leading-[1.8] max-w-[440px]"
                 style={{ fontFamily: "'Figtree', sans-serif" }}
               >
-                Lorem Ipsum Dolor Sit Amet Consectetur. Quam Tincidunt Posuere Augue Dui Est Dui. Volutpat Fermentum Diam Interdum Aenean Imperdiet Feugiat.
+                We're a small team of web designers based in Surrey, BC. We specialize in building affordable, high-converting websites for restaurants, salons, contractors, and local service businesses across the Lower Mainland.
               </p>
             </div>
 
-            {/* Right - Visual placeholder */}
-            <div className="relative aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border border-gray-200">
-              {/* Dot pattern */}
-              <div
-                className="absolute inset-0 opacity-[0.04]"
-                style={{
-                  backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
-                  backgroundSize: '20px 20px'
-                }}
+            {/* Right - About Us Image */}
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 scroll-animate-right scroll-animate">
+              <img
+                src="/images/aboutus.jpg"
+                alt="CloverSpace Team"
+                className="w-full h-full object-cover"
               />
-
-              {/* Decorative elements */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div
-                    className="w-20 h-20 mx-auto mb-4 rounded-full border-2 flex items-center justify-center"
-                    style={{ borderColor: accentYellow }}
-                  >
-                    <span
-                      className="text-[28px] font-medium"
-                      style={{ fontFamily: "'EB Garamond', serif", color: accentYellow }}
-                    >
-                      2
-                    </span>
-                  </div>
-                  <p
-                    className="text-[13px] text-gray-400 tracking-wide"
-                    style={{ fontFamily: "'Figtree', sans-serif" }}
-                  >
-                    Person Team
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -761,10 +769,10 @@ export default function Home() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
             {/* Left - Heading */}
-            <div>
+            <div className="scroll-animate">
               <p
-                className="text-[11px] md:text-[12px] tracking-[0.2em] text-gray-500 uppercase mb-6"
-                style={{ fontFamily: "'Figtree', sans-serif" }}
+                className="text-[11px] md:text-[12px] tracking-[0.2em] uppercase mb-6"
+                style={{ fontFamily: "'Figtree', sans-serif", color: accentYellow }}
               >
                 Let's Talk
               </p>
@@ -772,23 +780,23 @@ export default function Home() {
                 className="text-[32px] md:text-[44px] lg:text-[52px] font-medium leading-[1.1] mb-8"
                 style={{ fontFamily: "'EB Garamond', serif" }}
               >
-                Got a business?
+                Get a Free Website
                 <br />
-                Let's chat.
+                Consultation Today
               </h2>
               <p
                 className="text-[14px] md:text-[15px] text-gray-400 leading-[1.8] mb-8 max-w-[380px]"
                 style={{ fontFamily: "'Figtree', sans-serif" }}
               >
-                No sales pitch, no pressure. Just a quick call to see if we're a good fit. Worst case, you walk away with some free advice.
+                Ready to get a professional website for your Surrey or Vancouver business? Book a free 15-minute discovery call. No sales pitch, no pressure — just honest advice.
               </p>
               <div className="space-y-2">
                 <a
-                  href="mailto:hello@cloverspace.co"
+                  href="mailto:cloverspaceinfo@gmail.com"
                   className="block text-[16px] md:text-[18px] hover:text-gray-400 transition-colors"
                   style={{ fontFamily: "'Figtree', sans-serif", color: accentYellow }}
                 >
-                  hello@cloverspace.co
+                  cloverspaceinfo@gmail.com
                 </a>
                 <p className="text-[14px] text-gray-500" style={{ fontFamily: "'Figtree', sans-serif" }}>
                   Vancouver, BC
@@ -797,7 +805,7 @@ export default function Home() {
             </div>
 
             {/* Right - Form */}
-            <div>
+            <div className="scroll-animate scroll-animate-delay-2">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label
@@ -859,7 +867,7 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={formStatus === "sending"}
-                  className="group flex items-center gap-4 mt-6"
+                  className="group flex items-center gap-4 mt-6 cursor-pointer"
                 >
                   <span className="text-[15px] text-white" style={{ fontFamily: "'Figtree', sans-serif" }}>
                     {formStatus === "sending" ? "Sending..." : formStatus === "sent" ? "Message sent!" : "Send message"}
@@ -882,24 +890,71 @@ export default function Home() {
       </section>
 
       {/* ============ FOOTER ============ */}
-      <footer className="px-6 md:px-16 py-8 bg-[#1a1a1a] border-t border-gray-800">
-        <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[13px] text-gray-600" style={{ fontFamily: "'Figtree', sans-serif" }}>
-            © {new Date().getFullYear()} CloverSpace
-          </p>
-          <div className="flex items-center gap-8">
-            {["Twitter", "LinkedIn", "Instagram"].map((social) => (
-              <a
-                key={social}
-                href={`https://${social.toLowerCase()}.com`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[13px] text-gray-600 hover:text-white transition-colors"
-                style={{ fontFamily: "'Figtree', sans-serif" }}
-              >
-                {social}
-              </a>
-            ))}
+      <footer className="px-6 md:px-16 py-12 bg-[#1a1a1a] border-t border-gray-800">
+        <div className="max-w-[1440px] mx-auto">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Brand */}
+            <div>
+              <h3 className="text-white text-[18px] font-medium mb-3" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                CloverSpace
+              </h3>
+              <p className="text-gray-500 text-[14px] leading-relaxed" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                Professional web design for local businesses in Surrey, Vancouver, and the Lower Mainland, BC.
+              </p>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h4 className="text-gray-400 text-[12px] uppercase tracking-wider mb-3" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                Services
+              </h4>
+              <ul className="space-y-2 text-[14px] text-gray-500" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                <li>Website Design</li>
+                <li>Web Development</li>
+                <li>SEO Optimization</li>
+                <li>Website Maintenance</li>
+              </ul>
+            </div>
+
+            {/* Areas Served */}
+            <div>
+              <h4 className="text-gray-400 text-[12px] uppercase tracking-wider mb-3" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                Areas We Serve
+              </h4>
+              <ul className="space-y-2 text-[14px] text-gray-500" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                <li>Surrey, BC</li>
+                <li>Vancouver, BC</li>
+                <li>Burnaby, BC</li>
+                <li>Lower Mainland</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-gray-800">
+            <p className="text-[13px]" style={{ fontFamily: "'Figtree', sans-serif", color: "#E2A04B" }}>
+              © {new Date().getFullYear()} CloverSpace — Web Design Surrey BC
+            </p>
+            <div className="flex items-center gap-8">
+              {[
+                { name: "Twitter", url: "https://twitter.com/cloverspace" },
+                { name: "LinkedIn", url: "https://linkedin.com/company/cloverspace" },
+                { name: "Instagram", url: "https://instagram.com/cloverspace" }
+              ].map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Follow CloverSpace on ${social.name}`}
+                  className="text-[13px] hover:opacity-70 transition-colors"
+                  style={{ fontFamily: "'Figtree', sans-serif", color: "#E2A04B" }}
+                >
+                  {social.name}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </footer>
