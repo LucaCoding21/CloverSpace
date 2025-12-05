@@ -5,7 +5,13 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, message, website } = await request.json();
+
+    // Honeypot check - if filled, it's a bot
+    if (website) {
+      // Silently return success to not alert the bot
+      return NextResponse.json({ success: true });
+    }
 
     // Validate required fields
     if (!name || !email || !message) {

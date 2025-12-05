@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "", website: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [scrolled, setScrolled] = useState(false);
   const [textOn, setTextOn] = useState(false);
@@ -64,7 +64,7 @@ export default function Home() {
       if (!response.ok) throw new Error('Failed to send');
 
       setFormStatus("sent");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "", website: "" });
       setTimeout(() => setFormStatus("idle"), 3000);
     } catch (error) {
       console.error('Form submission error:', error);
@@ -831,6 +831,16 @@ export default function Home() {
                     className="w-full bg-transparent border-b border-gray-700 py-3 text-[15px] text-white placeholder-gray-600 focus:border-white outline-none transition-colors"
                     style={{ fontFamily: "'Figtree', sans-serif" }}
                     placeholder="John Smith"
+                  />
+                  {/* Honeypot field - hidden from users, catches bots */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                    className="absolute -left-[9999px]"
+                    tabIndex={-1}
+                    autoComplete="off"
                   />
                 </div>
                 <div>
