@@ -50,14 +50,27 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Failed to send');
+
       setFormStatus("sent");
       setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setFormStatus("idle"), 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setFormStatus("idle");
+      alert('Failed to send message. Please try again.');
+    }
   };
 
   const scrollToSection = (id: string) => {
