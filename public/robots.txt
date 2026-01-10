@@ -1,18 +1,18 @@
-# robots.txt for CloverSpace
-# https://cloverspace.co
+# robots.txt for CloverSpace - AI SEO & GEO Agency Vancouver
+# https://cloverspace.studio
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://cloverspace.co/sitemap.xml
+Sitemap: https://cloverspace.studio/sitemap.xml
 
-# Disallow admin/private areas (if any)
+# Disallow admin/private areas
 Disallow: /api/
 Disallow: /_next/
 Disallow: /private/
 
-# Allow all major crawlers
+# Allow all major search engine crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -23,4 +23,29 @@ User-agent: Slurp
 Allow: /
 
 User-agent: DuckDuckBot
+Allow: /
+
+# Allow AI crawlers (important for GEO/AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
 Allow: /

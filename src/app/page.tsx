@@ -7,6 +7,9 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "", website: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [auditForm, setAuditForm] = useState({ firstName: "", lastName: "", email: "", phone: "", companyName: "", websiteUrl: "" });
+  const [auditStep, setAuditStep] = useState(1);
+  const [auditFormStatus, setAuditFormStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [scrolled, setScrolled] = useState(false);
   const [activeDemo, setActiveDemo] = useState(0);
   const [demoPhase, setDemoPhase] = useState<"typing" | "thinking" | "response">("typing");
@@ -140,6 +143,39 @@ export default function Home() {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
+  };
+
+  const handleAuditStep1 = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (auditForm.websiteUrl.trim()) {
+      setAuditStep(2);
+    }
+  };
+
+  const handleAuditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuditFormStatus("sending");
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${auditForm.firstName} ${auditForm.lastName}`.trim() || "Audit Request",
+          email: auditForm.email,
+          message: `Website URL: ${auditForm.websiteUrl}\nCompany: ${auditForm.companyName}\nPhone: ${auditForm.phone}\n\nRequesting free AI SEO audit.`,
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to send');
+      setAuditFormStatus("sent");
+      setAuditForm({ firstName: "", lastName: "", email: "", phone: "", companyName: "", websiteUrl: "" });
+      setTimeout(() => {
+        setAuditFormStatus("idle");
+        setAuditStep(1);
+      }, 3000);
+    } catch {
+      setAuditFormStatus("idle");
+      alert('Failed to send request. Please try again.');
+    }
   };
 
   const industries = [
@@ -302,7 +338,7 @@ export default function Home() {
               >
                 <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: sage }} />
                 <span className="text-[13px]" style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}>
-                  Generative Engine Optimization
+                  AI SEO & GEO Agency Vancouver
                 </span>
               </div>
 
@@ -325,8 +361,8 @@ export default function Home() {
                 className="text-[17px] leading-[1.8] mb-10 max-w-[440px]"
                 style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
               >
-                Your customers are asking ChatGPT and Perplexity for recommendations.
-                We make sure you're the business they discover.
+                Your customers in Vancouver and across Canada are asking ChatGPT and Perplexity for recommendations.
+                We're the AI SEO and GEO agency that makes sure you're the business they discover.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -415,6 +451,177 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ FREE AUDIT CTA MODULE ============ */}
+      <div className="relative">
+        {/* Split background - top cream, bottom charcoal */}
+        <div className="absolute inset-0">
+          <div className="h-1/2" style={{ backgroundColor: cream }} />
+          <div className="h-1/2" style={{ backgroundColor: charcoal }} />
+        </div>
+
+        <div className="relative max-w-[1200px] mx-auto px-6 md:px-12 py-8">
+          <div className="relative rounded-2xl overflow-hidden py-8 px-6 md:px-10 shadow-lg">
+            {/* Background image with overlay */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: "url('/images/geo-pic.jpg')" }}
+            />
+            <div className="absolute inset-0" style={{ backgroundColor: `${sage}e6` }} />
+
+            <div className="relative">
+              {auditStep === 1 ? (
+                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                  <h2
+                    className="text-[20px] md:text-[24px] font-normal leading-[1.2] whitespace-nowrap flex-shrink-0"
+                    style={{ fontFamily: "'EB Garamond', serif", color: 'white' }}
+                  >
+                    Get a Free AI SEO Audit
+                  </h2>
+
+                  <form onSubmit={handleAuditStep1} className="flex-1 flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="text"
+                      required
+                      placeholder="Your website (e.g. yourbusiness.com)"
+                      value={auditForm.websiteUrl}
+                      onChange={(e) => setAuditForm({ ...auditForm, websiteUrl: e.target.value })}
+                      className="flex-1 min-w-0 px-6 py-4 rounded-full text-[15px] outline-none transition-all focus:ring-2 shadow-sm"
+                      style={{
+                        fontFamily: "'Figtree', sans-serif",
+                        backgroundColor: 'white',
+                        border: `1px solid ${charcoal}15`,
+                        color: charcoal,
+                      }}
+                    />
+                    <button
+                      type="submit"
+                      className="px-8 py-4 rounded-full text-[15px] font-medium transition-all hover:opacity-90 cursor-pointer whitespace-nowrap shadow-sm"
+                      style={{
+                        fontFamily: "'Figtree', sans-serif",
+                        backgroundColor: charcoal,
+                        color: 'white',
+                      }}
+                    >
+                      Get Audit
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                <div className="max-w-[500px] mx-auto py-4">
+                  <div className="text-center mb-6">
+                    <button
+                      type="button"
+                      onClick={() => setAuditStep(1)}
+                      className="text-[13px] cursor-pointer mb-3 opacity-80 hover:opacity-100 transition-opacity"
+                      style={{ fontFamily: "'Figtree', sans-serif", color: 'white' }}
+                    >
+                      ← Back
+                    </button>
+                    <h2
+                      className="text-[24px] md:text-[28px] font-normal leading-[1.2] mb-2"
+                      style={{ fontFamily: "'EB Garamond', serif", color: 'white' }}
+                    >
+                      Where can we contact you?
+                    </h2>
+                    <p
+                      className="text-[14px] opacity-90"
+                      style={{ fontFamily: "'Figtree', sans-serif", color: 'white' }}
+                    >
+                      We'll send your free audit to this email
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleAuditSubmit} className="flex flex-col gap-4">
+                    <div className="grid grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        required
+                        placeholder="First name"
+                        value={auditForm.firstName}
+                        onChange={(e) => setAuditForm({ ...auditForm, firstName: e.target.value })}
+                        className="px-5 py-4 rounded-xl text-[15px] outline-none transition-all focus:ring-2 shadow-sm"
+                        style={{
+                          fontFamily: "'Figtree', sans-serif",
+                          backgroundColor: 'white',
+                          border: `1px solid ${charcoal}15`,
+                          color: charcoal,
+                        }}
+                      />
+                      <input
+                        type="text"
+                        required
+                        placeholder="Last name"
+                        value={auditForm.lastName}
+                        onChange={(e) => setAuditForm({ ...auditForm, lastName: e.target.value })}
+                        className="px-5 py-4 rounded-xl text-[15px] outline-none transition-all focus:ring-2 shadow-sm"
+                        style={{
+                          fontFamily: "'Figtree', sans-serif",
+                          backgroundColor: 'white',
+                          border: `1px solid ${charcoal}15`,
+                          color: charcoal,
+                        }}
+                      />
+                    </div>
+                    <input
+                      type="email"
+                      required
+                      placeholder="Email address"
+                      value={auditForm.email}
+                      onChange={(e) => setAuditForm({ ...auditForm, email: e.target.value })}
+                      className="px-5 py-4 rounded-xl text-[15px] outline-none transition-all focus:ring-2 shadow-sm"
+                      style={{
+                        fontFamily: "'Figtree', sans-serif",
+                        backgroundColor: 'white',
+                        border: `1px solid ${charcoal}15`,
+                        color: charcoal,
+                      }}
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Phone number (optional)"
+                      value={auditForm.phone}
+                      onChange={(e) => setAuditForm({ ...auditForm, phone: e.target.value })}
+                      className="px-5 py-4 rounded-xl text-[15px] outline-none transition-all focus:ring-2 shadow-sm"
+                      style={{
+                        fontFamily: "'Figtree', sans-serif",
+                        backgroundColor: 'white',
+                        border: `1px solid ${charcoal}15`,
+                        color: charcoal,
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Company name (optional)"
+                      value={auditForm.companyName}
+                      onChange={(e) => setAuditForm({ ...auditForm, companyName: e.target.value })}
+                      className="px-5 py-4 rounded-xl text-[15px] outline-none transition-all focus:ring-2 shadow-sm"
+                      style={{
+                        fontFamily: "'Figtree', sans-serif",
+                        backgroundColor: 'white',
+                        border: `1px solid ${charcoal}15`,
+                        color: charcoal,
+                      }}
+                    />
+                    <button
+                      type="submit"
+                      disabled={auditFormStatus === "sending"}
+                      className="w-full mt-2 px-8 py-4 rounded-xl text-[15px] font-medium transition-all hover:opacity-90 cursor-pointer disabled:opacity-50 shadow-sm"
+                      style={{
+                        fontFamily: "'Figtree', sans-serif",
+                        backgroundColor: charcoal,
+                        color: 'white',
+                      }}
+                    >
+                      {auditFormStatus === "sending" ? "Sending..." : auditFormStatus === "sent" ? "Sent! We'll be in touch." : "Get My Free Audit"}
+                    </button>
+                  </form>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ============ THE PROBLEM SECTION ============ */}
       <section className="py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: charcoal }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -428,7 +635,7 @@ export default function Home() {
           <div className="text-center scroll-animate">
             <p
               className="text-[13px] tracking-[0.2em] uppercase mb-6"
-              style={{ fontFamily: "'Figtree', sans-serif", color: dustyRose }}
+              style={{ fontFamily: "'Figtree', sans-serif", color: sage }}
             >
               The shift is happening now
             </p>
@@ -437,7 +644,7 @@ export default function Home() {
               style={{ fontFamily: "'EB Garamond', serif", color: cream }}
             >
               AI is becoming the new search engine<br />
-              <span style={{ color: dustyRose }}>Is your business ready?</span>
+              <span style={{ color: sage }}>Is your business ready?</span>
             </h2>
             <p
               className="text-[18px] leading-[1.8] max-w-[600px] mx-auto mb-12"
@@ -487,21 +694,22 @@ export default function Home() {
                 className="text-[13px] tracking-[0.2em] uppercase mb-4"
                 style={{ fontFamily: "'Figtree', sans-serif", color: sage }}
               >
-                What we do
+                AI SEO & GEO Services
               </p>
               <h2
                 className="text-[36px] md:text-[44px] font-normal leading-[1.2] mb-6"
                 style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
               >
-                We make AI recommend you
+                Vancouver's AI SEO & GEO Experts
               </h2>
               <p
                 className="text-[17px] leading-[1.8] mb-8"
                 style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
               >
-                GEO (Generative Engine Optimization) is about making your business
-                the obvious answer when AI searches for recommendations. We optimize the
-                signals that AI trusts.
+                GEO (Generative Engine Optimization) and AEO (Answer Engine Optimization)
+                make your business the obvious answer when AI searches for recommendations.
+                As Vancouver's leading AI SEO agency, we optimize the signals that ChatGPT,
+                Perplexity, and Google AI trust.
               </p>
 
               <div className="space-y-4">
@@ -639,19 +847,19 @@ export default function Home() {
               style={{ fontFamily: "'Figtree', sans-serif", color: sage, backgroundColor: `${sage}15`, border: `1px solid ${sage}30` }}
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: sage }} />
-              Industries We Serve
+              Industries We Serve in Canada
             </span>
             <h2
               className="text-[36px] md:text-[48px] font-normal mb-5"
               style={{ fontFamily: "'EB Garamond', serif", color: cream }}
             >
-              GEO for every local business
+              AI SEO & GEO for Canadian Businesses
             </h2>
             <p
               className="text-[17px] max-w-[500px] mx-auto leading-relaxed"
               style={{ fontFamily: "'Figtree', sans-serif", color: `${cream}70` }}
             >
-              We specialize in helping service-based businesses get discovered by AI.
+              We specialize in helping Vancouver and Canadian businesses get discovered by AI through our expert GEO and AEO services.
             </p>
           </div>
 
@@ -1032,20 +1240,24 @@ export default function Home() {
           <div className="space-y-4 scroll-animate">
             {[
               {
+                q: "What is AI SEO, GEO, and AEO?",
+                a: "AI SEO optimizes your business for AI-powered search. GEO (Generative Engine Optimization) focuses on getting recommended by generative AI like ChatGPT. AEO (Answer Engine Optimization) ensures AI assistants cite your business as the answer. We're Vancouver's experts in all three."
+              },
+              {
                 q: "Do you guarantee AI rankings?",
                 a: "No — and be wary of anyone who does. AI models evolve constantly. What we guarantee is the work: concrete deliverables, monthly tracking, and proven strategies. We show you progress, not promises."
               },
               {
-                q: "How is this different from SEO?",
-                a: "SEO optimizes for Google's algorithm. GEO optimizes for how AI pulls and cites information — your reviews, directory consistency, website structure, and web mentions. Different sources, different signals."
+                q: "How is GEO different from traditional SEO?",
+                a: "Traditional SEO optimizes for Google's algorithm. GEO and AEO optimize for how AI pulls and cites information — your reviews, directory consistency, website structure, and web mentions. Different sources, different signals."
               },
               {
                 q: "How long until I see results?",
                 a: "Some signals move fast — profile fixes and website changes can impact within weeks. Authority building takes longer. You'll see progress reports every month showing exactly where you stand."
               },
               {
-                q: "What industries do you work with?",
-                a: "We work with local service businesses: real estate, legal, healthcare, restaurants, home services, and wedding vendors. If customers search for your service + location, GEO can help."
+                q: "Do you work with businesses outside Vancouver?",
+                a: "Yes! While we're based in Vancouver, BC, we work with businesses across Canada and the US. Our AI SEO and GEO strategies work for any local service business — real estate, legal, healthcare, restaurants, home services, and wedding vendors."
               },
             ].map((item, i) => (
               <div
@@ -1236,7 +1448,7 @@ export default function Home() {
                 CloverSpace
               </span>
               <span className="text-[14px]" style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}>
-                Generative Engine Optimization
+                AI SEO & GEO Agency Vancouver, Canada
               </span>
             </div>
 
