@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +12,7 @@ export default function Home() {
   const [displayedQuery, setDisplayedQuery] = useState("");
   const [showResponse, setShowResponse] = useState(false);
 
-  // Professional color palette
+  // Soft, romantic color palette
   const sage = "#9CAF88";
   const cream = "#FFFDF7";
   const dustyRose = "#D4A5A5";
@@ -34,20 +33,24 @@ export default function Home() {
     setShowResponse(false);
     setDemoPhase("typing");
 
+    // Phase 1: Type out the query
     const typeInterval = setInterval(() => {
       if (charIndex < query.length) {
         setDisplayedQuery(query.slice(0, charIndex + 1));
         charIndex++;
       } else {
         clearInterval(typeInterval);
+        // Phase 2: Show thinking dots
         setDemoPhase("thinking");
 
+        // Phase 3: Show response after thinking
         setTimeout(() => {
           setDemoPhase("response");
           setShowResponse(true);
 
+          // Move to next demo after showing response
           setTimeout(() => {
-            setActiveDemo((prev) => (prev + 1) % demoQueries.length);
+            setActiveDemo((prev) => (prev + 1) % 4);
           }, 3500);
         }, 1000);
       }
@@ -97,19 +100,10 @@ export default function Home() {
   };
 
   const demoQueries = [
-    { query: "Best real estate agent in Miami", answer: "Prestige Realty Group", type: "ChatGPT" },
-    { query: "Top personal injury lawyer Los Angeles", answer: "Carter & Associates Law", type: "Perplexity" },
-    { query: "Recommended Italian restaurant Seattle", answer: "Bella Vita Trattoria", type: "Claude" },
-    { query: "Best dentist near me Chicago", answer: "Lakeside Dental Care", type: "Google AI" },
-  ];
-
-  const industries = [
-    { name: "Real Estate", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" },
-    { name: "Legal Services", icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" },
-    { name: "Healthcare", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" },
-    { name: "Restaurants", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
-    { name: "Home Services", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" },
-    { name: "Wedding Vendors", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", link: "/wedding" },
+    { query: "Best wedding photographer in Austin", answer: "Sarah Mills Photography", type: "ChatGPT" },
+    { query: "Romantic vineyard wedding venues Napa", answer: "Vineyard Grove Estate", type: "Perplexity" },
+    { query: "Top wedding florists in Denver", answer: "Petals & Stems Studio", type: "Claude" },
+    { query: "Wedding planner recommendations Chicago", answer: "Elegant Affairs Co", type: "Google AI" },
   ];
 
   return (
@@ -133,7 +127,7 @@ export default function Home() {
             </button>
 
             <div className="hidden md:flex items-center gap-8">
-              {["Services", "Industries", "Process", "Contact"].map((item) => (
+              {["Services", "Process", "About", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -172,7 +166,7 @@ export default function Home() {
           </button>
 
           <div className="hidden md:flex items-center">
-            {["Services", "Industries", "Process"].map((item) => (
+            {["Services", "Process", "About"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -219,7 +213,7 @@ export default function Home() {
 
           <div className="flex-1 flex flex-col justify-center px-6">
             <nav className="space-y-6">
-              {["Services", "Industries", "Process", "Contact"].map((item, i) => (
+              {["Services", "Process", "About", "Contact"].map((item, i) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -242,6 +236,7 @@ export default function Home() {
 
       {/* ============ HERO SECTION ============ */}
       <section id="home" className="relative min-h-screen flex items-center pt-20">
+        {/* Soft organic shapes */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
             className="absolute top-20 right-0 w-[600px] h-[600px] rounded-full blur-[100px] opacity-30"
@@ -263,7 +258,7 @@ export default function Home() {
               >
                 <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: sage }} />
                 <span className="text-[13px]" style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}>
-                  Generative Engine Optimization
+                  GEO for Wedding Professionals
                 </span>
               </div>
 
@@ -272,7 +267,7 @@ export default function Home() {
                   className="block text-[42px] md:text-[56px] lg:text-[64px] font-normal leading-[1.1] tracking-[-0.02em]"
                   style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
                 >
-                  When customers ask AI,
+                  When couples ask AI,
                 </span>
                 <span
                   className="block text-[42px] md:text-[56px] lg:text-[64px] italic leading-[1.1] tracking-[-0.02em]"
@@ -286,8 +281,8 @@ export default function Home() {
                 className="text-[17px] leading-[1.8] mb-10 max-w-[440px]"
                 style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
               >
-                Your customers are asking ChatGPT and Perplexity for recommendations.
-                We make sure you're the business they discover.
+                Engaged couples are using ChatGPT and Perplexity to find their perfect vendors.
+                We make sure you're the one they discover.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -312,6 +307,7 @@ export default function Home() {
             {/* Right - ChatGPT-style Demo */}
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ backgroundColor: '#212121' }}>
+                {/* ChatGPT Header */}
                 <div className="flex items-center justify-between px-5 py-3" style={{ backgroundColor: '#212121', borderBottom: '1px solid #2F2F2F' }}>
                   <div className="flex items-center gap-1">
                     <span className="text-[14px] text-white font-medium" style={{ fontFamily: "'Figtree', sans-serif" }}>
@@ -323,7 +319,9 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Chat Content */}
                 <div className="px-5 py-8 min-h-[280px]" style={{ backgroundColor: '#212121' }}>
+                  {/* User Message - Right aligned */}
                   <div className="flex justify-end mb-8">
                     <p className="text-[15px] text-white leading-relaxed text-right" style={{ fontFamily: "'Figtree', sans-serif" }}>
                       {displayedQuery}
@@ -333,8 +331,10 @@ export default function Home() {
                     </p>
                   </div>
 
+                  {/* AI Response - Left aligned */}
                   {(demoPhase === "thinking" || demoPhase === "response") && (
                     <div className="text-left">
+                      {/* Thinking dots */}
                       {demoPhase === "thinking" && (
                         <div className="flex gap-1 py-2">
                           <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '0ms', animationDuration: '600ms' }} />
@@ -343,10 +343,11 @@ export default function Home() {
                         </div>
                       )}
 
+                      {/* Actual response */}
                       {showResponse && (
                         <div className="animate-fadeIn">
                           <p className="text-[15px] text-gray-300 leading-[1.7]" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                            Based on reviews and reputation, I'd highly recommend <span className="text-white">{demoQueries[activeDemo].answer}</span>. They have excellent ratings and are known for their professional service.
+                            Here's a curated list of the best options for <span className="text-white">{demoQueries[activeDemo].answer}</span>, grouped by style so you can quickly find what fits your vision.
                           </p>
                         </div>
                       )}
@@ -354,6 +355,7 @@ export default function Home() {
                   )}
                 </div>
 
+                {/* Input Area */}
                 <div className="px-4 py-3" style={{ backgroundColor: '#212121' }}>
                   <div className="rounded-full px-4 py-3 flex items-center gap-3" style={{ backgroundColor: '#303030' }}>
                     <span className="text-[14px] text-gray-500 flex-1" style={{ fontFamily: "'Figtree', sans-serif" }}>
@@ -363,6 +365,7 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Decorative elements */}
               <div
                 className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full -z-10"
                 style={{ backgroundColor: `${dustyRose}20` }}
@@ -371,6 +374,338 @@ export default function Home() {
                 className="absolute -top-4 -left-4 w-16 h-16 rounded-full -z-10"
                 style={{ backgroundColor: `${sage}20` }}
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ AI GROWTH GRAPH ============ */}
+      <section className="py-16 md:py-24" style={{ backgroundColor: 'white' }}>
+        <div className="max-w-[1600px] mx-auto px-4 md:px-8">
+          <div className="text-center mb-12 md:mb-16 scroll-animate">
+            <h2
+              className="text-[32px] md:text-[42px] lg:text-[48px] font-normal leading-[1.2] mb-4"
+              style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
+            >
+              Couples Are Discovering Vendors Differently
+            </h2>
+            <p
+              className="text-[16px] md:text-[18px]"
+              style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
+            >
+              AI tools are shaping shortlists before couples ever click Google
+            </p>
+          </div>
+          <div className="scroll-animate">
+            <img
+              src="/graph.png"
+              alt="Growth of Wedding Vendor Recommendations Driven by AI"
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ============ GET DISCOVERED SECTION ============ */}
+      {/* White background with floating card */}
+      <div className="relative" style={{ backgroundColor: 'white' }}>
+        <div className="pb-32 md:pb-40">
+          {/* This is just spacing for the cream area */}
+        </div>
+
+        {/* Floating Card - overlaps both sections */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 w-full max-w-[900px] px-6 md:px-12 z-10">
+          <div
+            className="rounded-3xl p-8 md:p-12 shadow-lg scroll-animate"
+            style={{ backgroundColor: cream, border: '1px solid #e5e5e5' }}
+          >
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              {/* Left Content */}
+              <div className="flex-1">
+                <h3
+                  className="text-[24px] md:text-[32px] font-normal leading-[1.2] mb-4"
+                  style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
+                >
+                  Lorem Ipsum Dolor Sit
+                </h3>
+                <p
+                  className="text-[14px] md:text-[15px] leading-[1.7] mb-6"
+                  style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
+                >
+                  Lorem ipsum dolor sit amet consectetur. Quam dignissim amet sed tristique porttitor. Nibh id etiam eu elementum nullam molestie. Amet posuere auctor donec integer at ut.
+                </p>
+                <button
+                  onClick={() => scrollToSection("about")}
+                  className="px-6 py-3 rounded-full text-white text-[14px] transition-all hover:opacity-90 cursor-pointer"
+                  style={{ backgroundColor: sage, fontFamily: "'Figtree', sans-serif" }}
+                >
+                  Get To Know Us
+                </button>
+              </div>
+
+              {/* Right - Placeholder for Illustration */}
+              <div className="flex-shrink-0">
+                <div
+                  className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-2xl flex items-center justify-center border-2 border-dashed"
+                  style={{ borderColor: warmGray, backgroundColor: `${warmGray}10` }}
+                >
+                  <p
+                    className="text-[13px] text-center px-4"
+                    style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
+                  >
+                    Illustration: Person sitting with coffee
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Olive section with rounded top */}
+      <section
+        className="pt-40 md:pt-48 pb-16 md:pb-24"
+        style={{
+          backgroundColor: '#6B7B5E',
+          borderTopLeftRadius: '48px',
+          borderTopRightRadius: '48px',
+        }}
+      >
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          {/* AI Discovery Demo */}
+          <div className="text-center scroll-animate">
+            <h3
+              className="text-[28px] md:text-[36px] font-normal leading-[1.2] mb-4"
+              style={{ fontFamily: "'EB Garamond', serif", color: cream }}
+            >
+              Let us help you get discovered through AI
+            </h3>
+            <p
+              className="text-[15px] leading-[1.7] mb-10 max-w-[500px] mx-auto"
+              style={{ fontFamily: "'Figtree', sans-serif", color: `${cream}90` }}
+            >
+              Lorem ipsum dolor sit amet consectetur. Quam dignissim amet sed tristique porttitor. Nibh id etiam eu elementum nullam molestie. Amet posuere
+            </p>
+
+            {/* Google AI Overview Demo */}
+            <div className="max-w-[800px] mx-auto">
+              {/* Browser Window */}
+              <div className="rounded-xl overflow-hidden shadow-2xl" style={{ backgroundColor: '#202124' }}>
+                {/* Browser Chrome */}
+                <div className="flex items-center gap-3 px-4 py-2.5" style={{ backgroundColor: '#35363a' }}>
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-[#ed6a5e]" />
+                    <div className="w-3 h-3 rounded-full bg-[#f4bf4f]" />
+                    <div className="w-3 h-3 rounded-full bg-[#61c554]" />
+                  </div>
+                  <div
+                    className="flex-1 flex items-center gap-2 px-3 py-1.5 rounded-md text-[11px]"
+                    style={{ backgroundColor: '#202124', color: '#9aa0a6' }}
+                  >
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    google.com/search?q=best+wedding+photographer+vancouver
+                  </div>
+                </div>
+
+                {/* Google Page Content */}
+                <div className="p-4" style={{ backgroundColor: '#202124' }}>
+                  {/* Google Logo + Search Bar */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="text-[24px] font-medium" style={{ fontFamily: 'Arial' }}>
+                      <span style={{ color: '#4285f4' }}>G</span>
+                      <span style={{ color: '#ea4335' }}>o</span>
+                      <span style={{ color: '#fbbc05' }}>o</span>
+                      <span style={{ color: '#4285f4' }}>g</span>
+                      <span style={{ color: '#34a853' }}>l</span>
+                      <span style={{ color: '#ea4335' }}>e</span>
+                    </span>
+                    <div
+                      className="flex-1 flex items-center gap-2 px-4 py-2.5 rounded-full"
+                      style={{ backgroundColor: '#303134', border: '1px solid #5f6368' }}
+                    >
+                      <span className="text-[14px]" style={{ color: '#e8eaed', fontFamily: "'Figtree', sans-serif" }}>
+                        best wedding photographer vancouver bc
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Tabs */}
+                  <div className="flex gap-4 mb-4 text-[12px] border-b border-[#3c4043] pb-2">
+                    <span style={{ color: '#8ab4f8', borderBottom: '2px solid #8ab4f8', paddingBottom: '6px' }}>All</span>
+                    <span style={{ color: '#9aa0a6' }}>Images</span>
+                    <span style={{ color: '#9aa0a6' }}>Videos</span>
+                    <span style={{ color: '#9aa0a6' }}>Shopping</span>
+                    <span style={{ color: '#9aa0a6' }}>News</span>
+                  </div>
+
+                  {/* AI Overview Card */}
+                  <div
+                    className="rounded-xl p-5 text-left"
+                    style={{ backgroundColor: '#303134' }}
+                  >
+                    {/* Header */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L9 9H2L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9H15L12 2Z" fill="url(#sparkle2)" />
+                        <defs>
+                          <linearGradient id="sparkle2" x1="2" y1="2" x2="22" y2="21">
+                            <stop stopColor="#4285f4" />
+                            <stop offset="0.5" stopColor="#9b72cb" />
+                            <stop offset="1" stopColor="#d96570" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      <span className="text-[13px]" style={{ color: '#bdc1c6', fontFamily: "'Figtree', sans-serif" }}>
+                        AI Overview
+                      </span>
+                    </div>
+
+                    {/* Main Layout */}
+                    <div className="flex gap-5">
+                      {/* Left - Text Content */}
+                      <div className="flex-1">
+                        {/* Paragraph */}
+                        <p
+                          className="text-[13px] leading-[1.8] mb-4"
+                          style={{ color: '#bdc1c6', fontFamily: "'Figtree', sans-serif" }}
+                        >
+                          Blush & Bloom Photography is{' '}
+                          <strong style={{ backgroundColor: '#3b5567', borderRadius: '2px', padding: '0 2px', fontWeight: 600 }}>a highly sought-after Vancouver wedding photographer known for</strong>{' '}
+                          <strong style={{ backgroundColor: '#3b5567', borderRadius: '2px', padding: '0 2px', fontWeight: 600 }}>romantic, fine-art imagery that captures the Pacific Northwest's natural beauty</strong>{' '}
+                          <strong style={{ backgroundColor: '#3b5567', borderRadius: '2px', padding: '0 2px', fontWeight: 600 }}>and intimate moments</strong>. They specialize in outdoor ceremonies at Stanley Park, vineyard weddings in the Okanagan, and elegant ballroom receptions across Greater Vancouver.
+                        </p>
+
+                        {/* Key Characteristics Section */}
+                        <p
+                          className="text-[14px] font-bold mb-2"
+                          style={{ color: '#e8eaed', fontFamily: "'Figtree', sans-serif" }}
+                        >
+                          Key Characteristics:
+                        </p>
+                        <ul className="space-y-1.5 mb-4">
+                          <li className="flex items-start gap-1">
+                            <span className="text-[13px]" style={{ color: '#bdc1c6' }}>•</span>
+                            <span className="text-[13px]" style={{ color: '#bdc1c6', fontFamily: "'Figtree', sans-serif" }}>
+                              <strong style={{ color: '#e8eaed' }}>Fine-art style:</strong> Soft, romantic imagery with a focus on natural light and candid emotion.
+                            </span>
+                          </li>
+                          <li className="flex items-start gap-1">
+                            <span className="text-[13px]" style={{ color: '#bdc1c6' }}>•</span>
+                            <span className="text-[13px]" style={{ color: '#bdc1c6', fontFamily: "'Figtree', sans-serif" }}>
+                              <strong style={{ color: '#e8eaed' }}>Local expertise:</strong> Familiar with top Vancouver venues including Fairmont Pacific Rim and Brock House.
+                            </span>
+                          </li>
+                          <li className="flex items-start gap-1">
+                            <span className="text-[13px]" style={{ color: '#bdc1c6' }}>•</span>
+                            <span className="text-[13px]" style={{ color: '#bdc1c6', fontFamily: "'Figtree', sans-serif" }}>
+                              <strong style={{ color: '#e8eaed' }}>Highly rated:</strong> 5-star reviews on Google and WeddingWire with 200+ weddings photographed.
+                            </span>
+                          </li>
+                        </ul>
+
+                        {/* Show More */}
+                        <button
+                          className="flex items-center gap-1 text-[12px] px-4 py-2 rounded-full"
+                          style={{ backgroundColor: '#3c4043', color: '#8ab4f8', fontFamily: "'Figtree', sans-serif" }}
+                        >
+                          Show more
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Right Column - Sources */}
+                      <div className="w-[180px] space-y-3">
+                        {/* Source Card 1 */}
+                        <div className="flex items-start gap-2">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[11px] leading-snug mb-0.5" style={{ color: '#8ab4f8', fontFamily: "'Figtree', sans-serif" }}>
+                              Best Vancouver Wedding Photographers 2025
+                            </p>
+                            <p className="text-[10px] leading-snug mb-1" style={{ color: '#9aa0a6', fontFamily: "'Figtree', sans-serif" }}>
+                              Find top-rated wedding photographers in Vancouver, BC...
+                            </p>
+                            <div className="flex items-center gap-1">
+                              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#ea4335' }} />
+                              <span className="text-[9px]" style={{ color: '#9aa0a6' }}>weddingwire.ca</span>
+                            </div>
+                          </div>
+                          <div
+                            className="w-[55px] h-[55px] rounded-lg flex-shrink-0 flex items-center justify-center text-[7px]"
+                            style={{ backgroundColor: '#3c4043', color: '#9aa0a6' }}
+                          >
+                            IMG
+                          </div>
+                        </div>
+
+                        {/* Source Card 2 */}
+                        <div className="flex items-start gap-2">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[11px] leading-snug mb-0.5" style={{ color: '#8ab4f8', fontFamily: "'Figtree', sans-serif" }}>
+                              Top Wedding Photographers | Vancouver
+                            </p>
+                            <p className="text-[10px] leading-snug mb-1" style={{ color: '#9aa0a6', fontFamily: "'Figtree', sans-serif" }}>
+                              Browse portfolios and reviews from local vendors...
+                            </p>
+                            <div className="flex items-center gap-1">
+                              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#34a853' }} />
+                              <span className="text-[9px]" style={{ color: '#9aa0a6' }}>junebugweddings.com</span>
+                            </div>
+                          </div>
+                          <div
+                            className="w-[55px] h-[55px] rounded-lg flex-shrink-0 flex items-center justify-center text-[7px]"
+                            style={{ backgroundColor: '#3c4043', color: '#9aa0a6' }}
+                          >
+                            IMG
+                          </div>
+                        </div>
+
+                        {/* Source Card 3 */}
+                        <div className="flex items-start gap-2">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[11px] leading-snug mb-0.5" style={{ color: '#8ab4f8', fontFamily: "'Figtree', sans-serif" }}>
+                              Vancouver Wedding Photography Guide
+                            </p>
+                            <p className="text-[10px] leading-snug mb-1" style={{ color: '#9aa0a6', fontFamily: "'Figtree', sans-serif" }}>
+                              Expert tips for finding your perfect photographer...
+                            </p>
+                            <div className="flex items-center gap-1">
+                              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#fbbc05' }} />
+                              <span className="text-[9px]" style={{ color: '#9aa0a6' }}>vancouverbride.com</span>
+                            </div>
+                          </div>
+                          <div
+                            className="w-[55px] h-[55px] rounded-lg flex-shrink-0 flex items-center justify-center text-[7px]"
+                            style={{ backgroundColor: '#3c4043', color: '#9aa0a6' }}
+                          >
+                            IMG
+                          </div>
+                        </div>
+
+                        {/* Show All Button */}
+                        <button
+                          className="w-full py-2 rounded-full text-[11px]"
+                          style={{ backgroundColor: '#3c4043', color: '#8ab4f8', fontFamily: "'Figtree', sans-serif" }}
+                        >
+                          Show all
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="mt-10 px-8 py-4 rounded-full text-[15px] font-medium transition-all hover:opacity-90 hover:scale-105 cursor-pointer shadow-lg"
+                style={{ backgroundColor: cream, color: charcoal, fontFamily: "'Figtree', sans-serif" }}
+              >
+                Get Your Free Audit
+              </button>
             </div>
           </div>
         </div>
@@ -391,29 +726,30 @@ export default function Home() {
               className="text-[13px] tracking-[0.2em] uppercase mb-6"
               style={{ fontFamily: "'Figtree', sans-serif", color: dustyRose }}
             >
-              The shift is happening now
+              The uncomfortable truth
             </p>
             <h2
               className="text-[32px] md:text-[48px] font-normal leading-[1.2] mb-8"
               style={{ fontFamily: "'EB Garamond', serif", color: cream }}
             >
-              AI is becoming the new search engine<br />
-              <span style={{ color: dustyRose }}>Is your business ready?</span>
+              Right now, AI is recommending<br />
+              <span style={{ color: dustyRose }}>your competitors instead of you</span>
             </h2>
             <p
               className="text-[18px] leading-[1.8] max-w-[600px] mx-auto mb-12"
               style={{ fontFamily: "'Figtree', sans-serif", color: `${cream}80` }}
             >
-              When people ask ChatGPT, Perplexity, or Google AI for recommendations,
-              these systems don't show ads. They recommend whoever has the clearest,
-              most trustworthy presence online.
+              When couples ask ChatGPT or Perplexity for vendor recommendations,
+              AI doesn't show ads or featured listings. It recommends whoever has
+              the clearest, most consistent presence online.
             </p>
 
+            {/* Pain Points */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[900px] mx-auto">
               {[
-                { stat: "40%", label: "Of Gen Z prefers AI over traditional search" },
-                { stat: "2B+", label: "ChatGPT conversations happen monthly" },
-                { stat: "0", label: "Ads shown in AI recommendations" },
+                { stat: "0/20", label: "Most vendors appear in zero AI prompts" },
+                { stat: "73%", label: "Of couples now use AI for vendor research" },
+                { stat: "$0", label: "You're paying for ads AI doesn't read" },
               ].map((item, i) => (
                 <div
                   key={i}
@@ -439,29 +775,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ WHAT WE DO SECTION ============ */}
+      {/* ============ WHAT WE FIX SECTION ============ */}
       <section id="services" className="py-24 md:py-32" style={{ backgroundColor: cream }}>
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left - Text */}
             <div className="scroll-animate">
               <p
                 className="text-[13px] tracking-[0.2em] uppercase mb-4"
                 style={{ fontFamily: "'Figtree', sans-serif", color: sage }}
               >
-                What we do
+                What we fix
               </p>
               <h2
                 className="text-[36px] md:text-[44px] font-normal leading-[1.2] mb-6"
                 style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
               >
-                We make AI recommend you
+                We make AI choose you
               </h2>
               <p
                 className="text-[17px] leading-[1.8] mb-8"
                 style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
               >
                 GEO (Generative Engine Optimization) is about making your business
-                the obvious answer when AI searches for recommendations. We optimize the
+                the obvious answer when AI searches for recommendations. We fix the
                 signals that AI trusts.
               </p>
 
@@ -470,7 +807,7 @@ export default function Home() {
                   { title: "Your Google Business Profile", desc: "Complete, accurate, optimized for AI extraction" },
                   { title: "Your website structure", desc: "Schema markup, FAQs, and content AI can cite" },
                   { title: "Your review presence", desc: "Consistent reviews across platforms AI trusts" },
-                  { title: "Your online mentions", desc: "Featured in directories and content AI pulls from" },
+                  { title: "Your mentions", desc: "Featured in listicles and directories AI pulls from" },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -497,25 +834,29 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Right - Visual Comparison */}
             <div className="scroll-animate">
               <div className="rounded-2xl overflow-hidden shadow-xl" style={{ backgroundColor: '#212121' }}>
+                {/* Header */}
                 <div className="px-5 py-3 flex items-center gap-2" style={{ backgroundColor: '#2a2a2a' }}>
                   <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#10a37f' }} />
                   <span className="text-[13px] text-gray-400" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                    AI Response
+                    ChatGPT Response
                   </span>
                 </div>
 
+                {/* Content */}
                 <div className="p-6">
                   <p className="text-gray-400 text-[14px] mb-4" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                    "Best [your service] in [your city]?"
+                    "Best wedding photographers in Vancouver?"
                   </p>
 
                   <div className="space-y-3">
+                    {/* Your competitor */}
                     <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#2a2a2a' }}>
                       <span className="text-[14px]" style={{ color: sage }}>1.</span>
                       <span className="text-white text-[14px]" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                        Your Competitor
+                        Your Competitor's Studio
                       </span>
                     </div>
                     <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#2a2a2a' }}>
@@ -531,6 +872,7 @@ export default function Home() {
                       </span>
                     </div>
 
+                    {/* Divider */}
                     <div className="py-4">
                       <div className="h-px" style={{ backgroundColor: '#3a3a3a' }} />
                       <p className="text-center text-[12px] py-3" style={{ color: dustyRose, fontFamily: "'Figtree', sans-serif" }}>
@@ -539,11 +881,12 @@ export default function Home() {
                       <div className="h-px" style={{ backgroundColor: '#3a3a3a' }} />
                     </div>
 
+                    {/* Your business - highlighted */}
                     <div
                       className="flex items-center gap-3 p-3 rounded-lg border-2"
                       style={{ backgroundColor: `${sage}15`, borderColor: sage }}
                     >
-                      <span className="text-[14px]" style={{ color: sage }}>1.</span>
+                      <span className="text-[14px]" style={{ color: sage }}>→</span>
                       <span className="text-white text-[14px] font-medium" style={{ fontFamily: "'Figtree', sans-serif" }}>
                         Your Business (after GEO)
                       </span>
@@ -556,80 +899,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ INDUSTRIES SECTION ============ */}
-      <section id="industries" className="py-24 md:py-32" style={{ backgroundColor: 'white' }}>
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <div className="text-center mb-16 scroll-animate">
-            <span
-              className="text-[12px] tracking-[0.2em] uppercase mb-4 block"
-              style={{ fontFamily: "'Figtree', sans-serif", color: sage }}
-            >
-              Industries We Serve
-            </span>
-            <h2
-              className="text-[36px] md:text-[44px] font-normal mb-4"
-              style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
-            >
-              GEO for every local business
-            </h2>
-            <p
-              className="text-[17px] max-w-[550px] mx-auto"
-              style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
-            >
-              We specialize in helping service-based businesses get discovered by AI.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 scroll-animate">
-            {industries.map((industry, i) => (
-              industry.link ? (
-                <Link
-                  key={i}
-                  href={industry.link}
-                  className="group p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:shadow-lg border-2"
-                  style={{ backgroundColor: `${sage}05`, borderColor: sage }}
-                >
-                  <div
-                    className="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform group-hover:scale-110"
-                    style={{ backgroundColor: `${sage}15` }}
-                  >
-                    <svg className="w-6 h-6" style={{ color: sage }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={industry.icon} />
-                    </svg>
-                  </div>
-                  <p className="text-[15px] font-medium" style={{ fontFamily: "'Figtree', sans-serif", color: charcoal }}>
-                    {industry.name}
-                  </p>
-                  <p className="text-[12px] mt-1" style={{ fontFamily: "'Figtree', sans-serif", color: sage }}>
-                    View dedicated page
-                  </p>
-                </Link>
-              ) : (
-                <div
-                  key={i}
-                  className="group p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:shadow-md"
-                  style={{ backgroundColor: cream }}
-                >
-                  <div
-                    className="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform group-hover:scale-110"
-                    style={{ backgroundColor: `${sage}15` }}
-                  >
-                    <svg className="w-6 h-6" style={{ color: sage }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={industry.icon} />
-                    </svg>
-                  </div>
-                  <p className="text-[15px] font-medium" style={{ fontFamily: "'Figtree', sans-serif", color: charcoal }}>
-                    {industry.name}
-                  </p>
-                </div>
-              )
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ HOW IT WORKS ============ */}
-      <section id="process" className="py-24 md:py-32" style={{ backgroundColor: cream }}>
+      {/* ============ HOW IT WORKS (3 STEPS) ============ */}
+      <section id="process" className="py-24 md:py-32" style={{ backgroundColor: 'white' }}>
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16 scroll-animate">
             <span
@@ -652,7 +923,9 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Timeline-style steps */}
           <div className="relative scroll-animate">
+            {/* Connecting line - desktop only */}
             <div className="hidden md:block absolute top-[60px] left-[16.66%] right-[16.66%] h-[2px]" style={{ backgroundColor: `${sage}20` }} />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -672,11 +945,12 @@ export default function Home() {
                 {
                   num: "03",
                   title: "Grow",
-                  desc: "We get you mentioned in directories, local features, and industry content. The signals AI trusts compound over time.",
+                  desc: "We get you mentioned in listicles, local features, and industry content. The signals AI trusts compound over time.",
                   highlight: "Lasting visibility"
                 },
               ].map((step, i) => (
                 <div key={i} className="relative text-center">
+                  {/* Step number bubble */}
                   <div
                     className="w-[120px] h-[120px] rounded-full mx-auto flex items-center justify-center mb-6 relative z-10"
                     style={{ backgroundColor: cream, border: `3px solid ${sage}` }}
@@ -712,6 +986,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* CTA */}
           <div className="text-center mt-16 scroll-animate">
             <button
               onClick={() => scrollToSection("contact")}
@@ -720,6 +995,123 @@ export default function Home() {
             >
               Start with a Free Audit
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ RESULTS SECTION ============ */}
+      <section id="about" className="py-24 md:py-32" style={{ backgroundColor: cream }}>
+        <div className="max-w-[1000px] mx-auto px-6 md:px-12">
+          <div className="text-center mb-16 scroll-animate">
+            <span
+              className="text-[12px] tracking-[0.2em] uppercase mb-4 block"
+              style={{ fontFamily: "'Figtree', sans-serif", color: sage }}
+            >
+              What Changes
+            </span>
+            <h2
+              className="text-[36px] md:text-[44px] font-normal mb-4"
+              style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
+            >
+              Real visibility, not vanity metrics
+            </h2>
+          </div>
+
+          {/* Results comparison */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 scroll-animate">
+            {/* Before */}
+            <div className="rounded-2xl p-8" style={{ backgroundColor: 'white', border: '1px solid #e5e5e5' }}>
+              <div className="flex items-center gap-3 mb-6">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: `${dustyRose}20` }}
+                >
+                  <svg className="w-5 h-5" style={{ color: dustyRose }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+                <span className="text-[18px]" style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}>
+                  Before GEO
+                </span>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  "0 mentions in AI recommendations",
+                  "Incomplete or outdated profiles",
+                  "No schema markup",
+                  "Scattered reviews",
+                  "Website AI can't parse",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[15px]" style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}>
+                    <span style={{ color: dustyRose }}>×</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* After */}
+            <div className="rounded-2xl p-8 border-2" style={{ backgroundColor: `${sage}05`, borderColor: sage }}>
+              <div className="flex items-center gap-3 mb-6">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: `${sage}20` }}
+                >
+                  <svg className="w-5 h-5" style={{ color: sage }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-[18px]" style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}>
+                  After GEO
+                </span>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  "7+ mentions in AI recommendations",
+                  "Fully optimized GBP & directories",
+                  "Schema markup installed",
+                  "Review system generating consistently",
+                  "AI-citable content throughout",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[15px]" style={{ fontFamily: "'Figtree', sans-serif", color: charcoal }}>
+                    <span style={{ color: sage }}>✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* What's included */}
+          <div className="rounded-2xl p-8 md:p-10 scroll-animate" style={{ backgroundColor: 'white', border: '1px solid #e5e5e5' }}>
+            <h3
+              className="text-[22px] mb-6 text-center"
+              style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
+            >
+              What's included in every engagement
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                "AI visibility audit (20+ queries)",
+                "Google Business Profile optimization",
+                "Directory audit & cleanup",
+                "Schema markup implementation",
+                "FAQ page creation",
+                "Review request templates",
+                "Monthly tracking reports",
+                "Strategy calls",
+                "Priority support",
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: `${sage}08` }}>
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ color: sage }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[14px]" style={{ fontFamily: "'Figtree', sans-serif", color: charcoal }}>
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -749,6 +1141,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 scroll-animate">
+            {/* Foundation Tier */}
             <div className="rounded-2xl p-8 md:p-10" style={{ backgroundColor: cream, border: '1px solid #e5e5e5' }}>
               <div className="flex items-start justify-between mb-6">
                 <div>
@@ -805,6 +1198,7 @@ export default function Home() {
               </button>
             </div>
 
+            {/* Growth Tier - Featured */}
             <div
               className="rounded-2xl p-8 md:p-10 relative border-2"
               style={{ backgroundColor: `${sage}05`, borderColor: sage }}
@@ -849,7 +1243,7 @@ export default function Home() {
                   "1 blog post/guide per month",
                   "2 GBP posts per month",
                   "Review strategy support",
-                  "Directory outreach",
+                  "Listicle outreach templates",
                   "Monthly strategy call",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
@@ -873,13 +1267,40 @@ export default function Home() {
             </div>
           </div>
 
+          {/* ROI Note */}
           <div className="mt-12 text-center scroll-animate">
             <p
               className="text-[15px] max-w-[600px] mx-auto"
               style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
             >
-              One AI-referred customer that converts pays for months of this work.
+              One AI-referred inquiry that converts pays for months of this work.
               Unlike ads, the visibility you build <span style={{ color: charcoal, fontWeight: 500 }}>compounds over time</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TESTIMONIAL / TRUST SECTION ============ */}
+      <section className="py-20 md:py-24" style={{ backgroundColor: charcoal }}>
+        <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center scroll-animate">
+          <div className="mb-8">
+            <svg className="w-10 h-10 mx-auto opacity-30" style={{ color: cream }} fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+          </div>
+          <blockquote
+            className="text-[24px] md:text-[32px] font-normal leading-[1.4] mb-8"
+            style={{ fontFamily: "'EB Garamond', serif", color: cream }}
+          >
+            "We went from zero AI mentions to being recommended in 8 out of 20 prompts.
+            Couples are now finding us through ChatGPT before they even check The Knot."
+          </blockquote>
+          <div>
+            <p className="text-[15px] font-medium" style={{ fontFamily: "'Figtree', sans-serif", color: cream }}>
+              — Wedding Photographer
+            </p>
+            <p className="text-[13px]" style={{ fontFamily: "'Figtree', sans-serif", color: `${cream}60` }}>
+              Vancouver, BC
             </p>
           </div>
         </div>
@@ -912,8 +1333,8 @@ export default function Home() {
                 a: "Some signals move fast — profile fixes and website changes can impact within weeks. Authority building takes longer. You'll see progress reports every month showing exactly where you stand."
               },
               {
-                q: "What industries do you work with?",
-                a: "We work with local service businesses: real estate, legal, healthcare, restaurants, home services, and wedding vendors. If customers search for your service + location, GEO can help."
+                q: "I'm already on The Knot. Is that enough?",
+                a: "Those reviews help, but AI doesn't read ads or featured listings. It reads reviews, consistency, and authority signals across the web. We make sure AI can find and trust what's already there."
               },
             ].map((item, i) => (
               <div
@@ -942,6 +1363,7 @@ export default function Home() {
       <section id="contact" className="py-24 md:py-32" style={{ backgroundColor: 'white' }}>
         <div className="max-w-[1000px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+            {/* Left - CTA Content */}
             <div className="lg:col-span-2 scroll-animate">
               <h2
                 className="text-[32px] md:text-[40px] font-normal leading-[1.2] mb-6"
@@ -995,6 +1417,7 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Right - Form */}
             <div className="lg:col-span-3 scroll-animate">
               <form onSubmit={handleSubmit} className="rounded-2xl p-8 md:p-10" style={{ backgroundColor: cream }}>
                 <h3
@@ -1104,18 +1527,11 @@ export default function Home() {
                 CloverSpace
               </span>
               <span className="text-[14px]" style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}>
-                Generative Engine Optimization
+                GEO for wedding professionals
               </span>
             </div>
 
             <div className="flex items-center gap-6">
-              <Link
-                href="/wedding"
-                className="text-[14px] hover:opacity-70 transition-opacity"
-                style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
-              >
-                Wedding GEO
-              </Link>
               <a
                 href="mailto:cloverspaceinfo@gmail.com"
                 className="text-[14px] hover:opacity-70 transition-opacity"

@@ -2,30 +2,29 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cloverspace.co"),
+  metadataBase: new URL("https://cloverspace.studio"),
   title: {
-    default: "Web Design Surrey BC | CloverSpace - Websites That Bring You Business",
-    template: "%s | CloverSpace Web Design Surrey"
+    default: "CloverSpace | Generative Engine Optimization (GEO) Agency",
+    template: "%s | CloverSpace GEO"
   },
-  description: "Surrey's trusted web design agency for local businesses. We build fast, modern websites in 5-7 days that actually bring you customers. Serving Surrey, Vancouver & the Lower Mainland. Free consultation.",
+  description: "Get recommended by AI. We help local businesses get discovered by ChatGPT, Perplexity, Claude, and Google AI. Generative Engine Optimization for real estate, legal, healthcare, restaurants, and more. Free visibility audit.",
   keywords: [
-    "web design Surrey",
-    "web design Surrey BC",
-    "website design Vancouver",
-    "web developer Surrey",
-    "small business website design",
-    "affordable web design Surrey",
-    "local business website Vancouver",
-    "restaurant website design Surrey",
-    "professional web design BC",
-    "fast website design",
-    "website designer near me",
-    "Lower Mainland web design",
-    "custom website Surrey",
-    "business website that converts",
-    "SEO website design Vancouver"
+    "GEO agency",
+    "generative engine optimization",
+    "AI recommendations",
+    "ChatGPT optimization",
+    "Perplexity optimization",
+    "AI search optimization",
+    "local business marketing",
+    "AI visibility",
+    "get recommended by AI",
+    "ChatGPT for business",
+    "AI SEO",
+    "generative AI marketing",
+    "local SEO",
+    "GEO for business"
   ],
-  authors: [{ name: "CloverSpace", url: "https://cloverspace.co" }],
+  authors: [{ name: "CloverSpace", url: "https://cloverspace.studio" }],
   creator: "CloverSpace",
   publisher: "CloverSpace",
   formatDetection: {
@@ -38,9 +37,9 @@ export const metadata: Metadata = {
     apple: "/images/favicon.ico",
   },
   openGraph: {
-    title: "Web Design Surrey BC | Websites That Bring You Business",
-    description: "Surrey's trusted web design agency. We build fast, modern websites in 5-7 days that actually bring you customers. Free consultation available.",
-    url: "https://cloverspace.co",
+    title: "CloverSpace | Get Recommended by AI",
+    description: "When customers ask AI for recommendations, does it say your name? We help local businesses get discovered by ChatGPT, Perplexity, and Google AI. Free visibility audit.",
+    url: "https://cloverspace.studio",
     siteName: "CloverSpace",
     locale: "en_CA",
     type: "website",
@@ -49,14 +48,14 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "CloverSpace - Web Design Surrey BC",
+        alt: "CloverSpace - Generative Engine Optimization Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design Surrey BC | Websites That Bring You Business",
-    description: "Surrey's trusted web design agency. Fast, modern websites in 5-7 days that bring you customers.",
+    title: "CloverSpace | Get Recommended by AI",
+    description: "When customers ask AI for recommendations, does it say your name? Free visibility audit.",
     images: ["/images/og-image.jpg"],
   },
   robots: {
@@ -71,50 +70,51 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://cloverspace.co",
+    canonical: "https://cloverspace.studio",
   },
   verification: {
     google: "your-google-verification-code",
   },
-  category: "Web Design",
+  category: "Marketing",
 };
 
-// JSON-LD Schema for Local Business
+// JSON-LD Schema for Professional Service
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "CloverSpace",
-  "description": "Professional web design and development agency serving local businesses in Surrey, Vancouver, and the Lower Mainland, BC.",
-  "url": "https://cloverspace.co",
-  "logo": "https://cloverspace.co/images/cloverspace-logo-white.svg",
-  "image": "https://cloverspace.co/images/og-image.jpg",
+  "description": "Generative Engine Optimization (GEO) agency helping local businesses get recommended by AI assistants like ChatGPT, Perplexity, Claude, and Google AI.",
+  "url": "https://cloverspace.studio",
+  "logo": "https://cloverspace.studio/images/cloverspace-logo-white.svg",
+  "image": "https://cloverspace.studio/images/og-image.jpg",
   "email": "cloverspaceinfo@gmail.com",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Surrey",
+    "addressLocality": "Vancouver",
     "addressRegion": "BC",
     "addressCountry": "CA"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "49.1913",
-    "longitude": "-122.8490"
+    "latitude": "49.2827",
+    "longitude": "-123.1207"
   },
   "areaServed": [
     {
-      "@type": "City",
-      "name": "Surrey"
+      "@type": "Country",
+      "name": "United States"
     },
     {
-      "@type": "City",
-      "name": "Vancouver"
-    },
-    {
-      "@type": "AdministrativeArea",
-      "name": "Lower Mainland"
+      "@type": "Country",
+      "name": "Canada"
     }
   ],
-  "serviceType": ["Web Design", "Web Development", "SEO", "Local Business Websites"],
+  "serviceType": [
+    "Generative Engine Optimization",
+    "GEO Audit",
+    "AI Search Optimization",
+    "Local Business Marketing"
+  ],
   "priceRange": "$$",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
@@ -122,22 +122,59 @@ const jsonLd = {
     "opens": "09:00",
     "closes": "18:00"
   },
-  "sameAs": [
-    "https://twitter.com/cloverspace",
-    "https://linkedin.com/company/cloverspace",
-    "https://instagram.com/cloverspace"
+  "knowsAbout": [
+    "Generative Engine Optimization",
+    "ChatGPT Optimization",
+    "AI Search",
+    "Local Business Marketing",
+    "Real Estate Marketing",
+    "Legal Marketing",
+    "Healthcare Marketing",
+    "Restaurant Marketing",
+    "Home Services Marketing"
   ]
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "CloverSpace",
-  "url": "https://cloverspace.co",
+  "name": "CloverSpace - Generative Engine Optimization Agency",
+  "url": "https://cloverspace.studio",
+  "description": "Get your business recommended by AI",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://cloverspace.co/?s={search_term_string}",
+    "target": "https://cloverspace.studio/?s={search_term_string}",
     "query-input": "required name=search_term_string"
+  }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Generative Engine Optimization for Local Businesses",
+  "provider": {
+    "@type": "Organization",
+    "name": "CloverSpace"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "United States"
+    },
+    {
+      "@type": "Country",
+      "name": "Canada"
+    }
+  ],
+  "description": "We optimize local businesses to get recommended by AI assistants including ChatGPT, Perplexity, Claude, and Google AI. Helping real estate agents, lawyers, doctors, restaurants, and service providers get discovered by customers.",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Local Service Businesses"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "Free GEO Audit",
+    "description": "Free AI visibility audit to see how AI currently recommends your business"
   }
 };
 
@@ -156,6 +193,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
