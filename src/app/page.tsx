@@ -12,6 +12,7 @@ export default function Home() {
   const [demoPhase, setDemoPhase] = useState<"typing" | "thinking" | "response">("typing");
   const [displayedQuery, setDisplayedQuery] = useState("");
   const [showResponse, setShowResponse] = useState(false);
+  const [servicesDemoIndex, setServicesDemoIndex] = useState(0);
 
   // Professional color palette
   const sage = "#9CAF88";
@@ -19,6 +20,43 @@ export default function Home() {
   const dustyRose = "#D4A5A5";
   const charcoal = "#3D3D3D";
   const warmGray = "#6B6B6B";
+
+  const demoQueries = [
+    { query: "Best real estate agent in Vancouver", answer: "West Coast Realty Group", type: "ChatGPT" },
+    { query: "Top personal injury lawyer in BC", answer: "Harrison & Associates Law", type: "Perplexity" },
+    { query: "Recommended Italian restaurant Yaletown", answer: "Trattoria di Milano", type: "Claude" },
+    { query: "Best family dentist in Burnaby", answer: "Metrotown Dental Care", type: "Google AI" },
+  ];
+
+  const servicesDemoData = [
+    {
+      business: "Pacific Dental Studio",
+      tagline: "Top-rated with 200+ five-star reviews",
+      platforms: [
+        { platform: "ChatGPT", color: "#10a37f", query: "Best dentist in Vancouver" },
+        { platform: "Perplexity", color: "#20B2AA", query: "Top-rated family dentist near me" },
+        { platform: "Google AI", color: "#4285F4", query: "Recommended dentist downtown Vancouver" },
+      ]
+    },
+    {
+      business: "West Coast Realty Group",
+      tagline: "Vancouver's most recommended agents",
+      platforms: [
+        { platform: "ChatGPT", color: "#10a37f", query: "Best realtor in Vancouver" },
+        { platform: "Perplexity", color: "#20B2AA", query: "Top real estate agent Kitsilano" },
+        { platform: "Google AI", color: "#4285F4", query: "Recommended home buying agent BC" },
+      ]
+    },
+    {
+      business: "Harrison & Associates Law",
+      tagline: "BC's trusted personal injury firm",
+      platforms: [
+        { platform: "ChatGPT", color: "#10a37f", query: "Best injury lawyer Vancouver" },
+        { platform: "Perplexity", color: "#20B2AA", query: "Top personal injury attorney BC" },
+        { platform: "Google AI", color: "#4285F4", query: "Recommended accident lawyer near me" },
+      ]
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -55,6 +93,14 @@ export default function Home() {
 
     return () => clearInterval(typeInterval);
   }, [activeDemo]);
+
+  // Cycle through services demo
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setServicesDemoIndex((prev) => (prev + 1) % servicesDemoData.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [servicesDemoData.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -96,20 +142,13 @@ export default function Home() {
     setMobileMenuOpen(false);
   };
 
-  const demoQueries = [
-    { query: "Best real estate agent in Miami", answer: "Prestige Realty Group", type: "ChatGPT" },
-    { query: "Top personal injury lawyer Los Angeles", answer: "Carter & Associates Law", type: "Perplexity" },
-    { query: "Recommended Italian restaurant Seattle", answer: "Bella Vita Trattoria", type: "Claude" },
-    { query: "Best dentist near me Chicago", answer: "Lakeside Dental Care", type: "Google AI" },
-  ];
-
   const industries = [
-    { name: "Real Estate", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" },
-    { name: "Legal Services", icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" },
-    { name: "Healthcare", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" },
-    { name: "Restaurants", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
-    { name: "Home Services", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" },
-    { name: "Wedding Vendors", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", link: "/wedding" },
+    { name: "Real Estate", desc: "Agents, brokers & property managers", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", color: "#4A7C59" },
+    { name: "Legal Services", desc: "Law firms & attorneys", icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3", color: "#5B7B9A" },
+    { name: "Healthcare", desc: "Dentists, clinics & specialists", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", color: "#C17B7B" },
+    { name: "Restaurants", desc: "Cafes, bars & eateries", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", color: "#D4915D" },
+    { name: "Home Services", desc: "Contractors, cleaners & trades", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z", color: "#7A8B69" },
+    { name: "Wedding Vendors", desc: "Photographers, venues & planners", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z", color: "#B8A5C7", link: "/wedding" },
   ];
 
   return (
@@ -498,57 +537,80 @@ export default function Home() {
             </div>
 
             <div className="scroll-animate">
-              <div className="rounded-2xl overflow-hidden shadow-xl" style={{ backgroundColor: '#212121' }}>
-                <div className="px-5 py-3 flex items-center gap-2" style={{ backgroundColor: '#2a2a2a' }}>
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#10a37f' }} />
-                  <span className="text-[13px] text-gray-400" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                    AI Response
-                  </span>
+              {/* Multi-platform visibility demo */}
+              <div className="space-y-4">
+                <div className="text-center mb-4">
+                  <p className="text-[13px] mb-1" style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}>
+                    Your business, recommended everywhere
+                  </p>
+                  <div className="h-8 overflow-hidden">
+                    <p
+                      className="text-[18px] font-medium transition-all duration-500"
+                      style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
+                      key={servicesDemoIndex}
+                    >
+                      {servicesDemoData[servicesDemoIndex].business}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="p-6">
-                  <p className="text-gray-400 text-[14px] mb-4" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                    "Best [your service] in [your city]?"
-                  </p>
-
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#2a2a2a' }}>
-                      <span className="text-[14px]" style={{ color: sage }}>1.</span>
-                      <span className="text-white text-[14px]" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                        Your Competitor
+                {servicesDemoData[servicesDemoIndex].platforms.map((item, i) => (
+                  <div
+                    key={`${servicesDemoIndex}-${i}`}
+                    className="rounded-xl overflow-hidden shadow-lg transition-all duration-500"
+                    style={{
+                      backgroundColor: '#1a1a1a',
+                      animation: 'fadeSlideIn 0.4s ease-out forwards',
+                      animationDelay: `${i * 100}ms`,
+                      opacity: 0,
+                    }}
+                  >
+                    <div className="px-4 py-2.5 flex items-center gap-2" style={{ backgroundColor: '#252525', borderBottom: '1px solid #333' }}>
+                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
+                      <span className="text-[12px] font-medium" style={{ fontFamily: "'Figtree', sans-serif", color: item.color }}>
+                        {item.platform}
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#2a2a2a' }}>
-                      <span className="text-[14px]" style={{ color: sage }}>2.</span>
-                      <span className="text-white text-[14px]" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                        Another Competitor
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: '#2a2a2a' }}>
-                      <span className="text-[14px]" style={{ color: sage }}>3.</span>
-                      <span className="text-white text-[14px]" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                        Yet Another Competitor
-                      </span>
-                    </div>
-
-                    <div className="py-4">
-                      <div className="h-px" style={{ backgroundColor: '#3a3a3a' }} />
-                      <p className="text-center text-[12px] py-3" style={{ color: dustyRose, fontFamily: "'Figtree', sans-serif" }}>
-                        Where's your business?
+                    <div className="px-4 py-4">
+                      <p className="text-[12px] text-gray-500 mb-2" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                        "{item.query}"
                       </p>
-                      <div className="h-px" style={{ backgroundColor: '#3a3a3a' }} />
-                    </div>
-
-                    <div
-                      className="flex items-center gap-3 p-3 rounded-lg border-2"
-                      style={{ backgroundColor: `${sage}15`, borderColor: sage }}
-                    >
-                      <span className="text-[14px]" style={{ color: sage }}>1.</span>
-                      <span className="text-white text-[14px] font-medium" style={{ fontFamily: "'Figtree', sans-serif" }}>
-                        Your Business (after GEO)
-                      </span>
+                      <div className="flex items-start gap-2">
+                        <span className="text-[11px] px-1.5 py-0.5 rounded font-medium" style={{ backgroundColor: `${item.color}20`, color: item.color }}>
+                          #1
+                        </span>
+                        <div>
+                          <p className="text-white text-[14px] font-medium" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                            {servicesDemoData[servicesDemoIndex].business}
+                          </p>
+                          <p className="text-[11px] text-gray-500 mt-0.5" style={{ fontFamily: "'Figtree', sans-serif" }}>
+                            {servicesDemoData[servicesDemoIndex].tagline}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                ))}
+
+                {/* Progress dots */}
+                <div className="flex justify-center gap-2 pt-3">
+                  {servicesDemoData.map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-2 h-2 rounded-full transition-all duration-300"
+                      style={{
+                        backgroundColor: i === servicesDemoIndex ? sage : `${charcoal}30`,
+                        transform: i === servicesDemoIndex ? 'scale(1.2)' : 'scale(1)',
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <div className="text-center pt-1">
+                  <p className="text-[12px]" style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}>
+                    Same business. Every AI platform.{" "}
+                    <span style={{ color: sage }}>That's GEO.</span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -557,73 +619,143 @@ export default function Home() {
       </section>
 
       {/* ============ INDUSTRIES SECTION ============ */}
-      <section id="industries" className="py-24 md:py-32" style={{ backgroundColor: 'white' }}>
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+      <section id="industries" className="py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: charcoal }}>
+        {/* Background decoration */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-20"
+            style={{ backgroundColor: sage }}
+          />
+          <div
+            className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full blur-[100px] opacity-15"
+            style={{ backgroundColor: dustyRose }}
+          />
+        </div>
+
+        <div className="relative max-w-[1200px] mx-auto px-6 md:px-12">
           <div className="text-center mb-16 scroll-animate">
             <span
-              className="text-[12px] tracking-[0.2em] uppercase mb-4 block"
-              style={{ fontFamily: "'Figtree', sans-serif", color: sage }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-[12px] tracking-[0.15em] uppercase"
+              style={{ fontFamily: "'Figtree', sans-serif", color: sage, backgroundColor: `${sage}15`, border: `1px solid ${sage}30` }}
             >
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: sage }} />
               Industries We Serve
             </span>
             <h2
-              className="text-[36px] md:text-[44px] font-normal mb-4"
-              style={{ fontFamily: "'EB Garamond', serif", color: charcoal }}
+              className="text-[36px] md:text-[48px] font-normal mb-5"
+              style={{ fontFamily: "'EB Garamond', serif", color: cream }}
             >
               GEO for every local business
             </h2>
             <p
-              className="text-[17px] max-w-[550px] mx-auto"
-              style={{ fontFamily: "'Figtree', sans-serif", color: warmGray }}
+              className="text-[17px] max-w-[500px] mx-auto leading-relaxed"
+              style={{ fontFamily: "'Figtree', sans-serif", color: `${cream}70` }}
             >
               We specialize in helping service-based businesses get discovered by AI.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 scroll-animate">
-            {industries.map((industry, i) => (
-              industry.link ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 scroll-animate">
+            {industries.map((industry, i) => {
+              const CardContent = (
+                <>
+                  <div className="flex items-start justify-between mb-8">
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+                      style={{ backgroundColor: `${industry.color}20` }}
+                    >
+                      <svg className="w-6 h-6 transition-colors" style={{ color: industry.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={industry.icon} />
+                      </svg>
+                    </div>
+                    {industry.link && (
+                      <span
+                        className="px-3 py-1 rounded-full text-[11px] uppercase tracking-wider"
+                        style={{ backgroundColor: `${industry.color}20`, color: industry.color, fontFamily: "'Figtree', sans-serif" }}
+                      >
+                        Featured
+                      </span>
+                    )}
+                  </div>
+                  <h3
+                    className="text-[20px] mb-2 transition-colors"
+                    style={{ fontFamily: "'EB Garamond', serif", color: cream }}
+                  >
+                    {industry.name}
+                  </h3>
+                  <p
+                    className="text-[14px] mb-6 leading-relaxed"
+                    style={{ fontFamily: "'Figtree', sans-serif", color: `${cream}60` }}
+                  >
+                    {industry.desc}
+                  </p>
+                  <div
+                    className="flex items-center gap-2 text-[13px] transition-all duration-300 group-hover:gap-3"
+                    style={{ fontFamily: "'Figtree', sans-serif", color: industry.color }}
+                  >
+                    <span>{industry.link ? 'View dedicated page' : 'Learn more'}</span>
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                  {/* Bottom accent line */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"
+                    style={{ backgroundColor: industry.color }}
+                  />
+                </>
+              );
+
+              return industry.link ? (
                 <Link
                   key={i}
                   href={industry.link}
-                  className="group p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:shadow-lg border-2"
-                  style={{ backgroundColor: `${sage}05`, borderColor: sage }}
+                  className="group relative p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    backgroundColor: `${cream}08`,
+                    border: `1px solid ${cream}15`,
+                  }}
                 >
-                  <div
-                    className="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform group-hover:scale-110"
-                    style={{ backgroundColor: `${sage}15` }}
-                  >
-                    <svg className="w-6 h-6" style={{ color: sage }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={industry.icon} />
-                    </svg>
-                  </div>
-                  <p className="text-[15px] font-medium" style={{ fontFamily: "'Figtree', sans-serif", color: charcoal }}>
-                    {industry.name}
-                  </p>
-                  <p className="text-[12px] mt-1" style={{ fontFamily: "'Figtree', sans-serif", color: sage }}>
-                    View dedicated page
-                  </p>
+                  {CardContent}
                 </Link>
               ) : (
                 <div
                   key={i}
-                  className="group p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:shadow-md"
-                  style={{ backgroundColor: cream }}
+                  className="group relative p-6 rounded-2xl cursor-pointer transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    backgroundColor: `${cream}08`,
+                    border: `1px solid ${cream}15`,
+                  }}
+                  onClick={() => scrollToSection("contact")}
                 >
-                  <div
-                    className="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform group-hover:scale-110"
-                    style={{ backgroundColor: `${sage}15` }}
-                  >
-                    <svg className="w-6 h-6" style={{ color: sage }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={industry.icon} />
-                    </svg>
-                  </div>
-                  <p className="text-[15px] font-medium" style={{ fontFamily: "'Figtree', sans-serif", color: charcoal }}>
-                    {industry.name}
-                  </p>
+                  {CardContent}
                 </div>
-              )
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-14 scroll-animate">
+            <p
+              className="text-[15px] mb-6"
+              style={{ fontFamily: "'Figtree', sans-serif", color: `${cream}60` }}
+            >
+              Don't see your industry? We work with all local service businesses.
+            </p>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[14px] transition-all duration-300 hover:gap-3 cursor-pointer"
+              style={{
+                fontFamily: "'Figtree', sans-serif",
+                color: charcoal,
+                backgroundColor: cream,
+              }}
+            >
+              <span>Get your free audit</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
