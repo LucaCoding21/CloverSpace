@@ -40,8 +40,8 @@ export default function Hero() {
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/90 to-gray-950/40 md:from-gray-950 md:via-gray-950/80 md:to-transparent" />
+        {/* Gradient overlay - covers left half for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/70 via-50% to-transparent" />
       </div>
 
       {/* Content */}
