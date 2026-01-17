@@ -108,7 +108,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <span className="font-display text-3xl text-primary">
+              <span className="font-logo text-3xl text-primary">
                 CloverSpace
               </span>
             </Link>
