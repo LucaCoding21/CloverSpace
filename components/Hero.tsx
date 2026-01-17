@@ -52,7 +52,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4 mt-16 md:mt-0"
+            className="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4 mt-24 md:mt-12"
           >
             For Pest Control Companies
           </motion.p>
