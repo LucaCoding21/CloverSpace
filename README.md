@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PestRevenue.com Landing Page
+
+A high-converting, production-ready landing page for a pest control marketing agency. Built with Next.js 15, TypeScript, Tailwind CSS, Framer Motion, and shadcn/ui.
+
+## Features
+
+- **Next.js 15** with App Router
+- **TypeScript** for type safety
+- **Tailwind CSS v3.4+** for styling
+- **Framer Motion** for buttery smooth animations
+- **shadcn/ui** components
+- **React Hook Form + Zod** for form validation
+- **Interactive Before/After Slider** - drag to reveal transformation
+- **Animated Counters** - smooth number animations
+- **Exit-Intent Popup** - captures leaving visitors
+- **Schema.org JSON-LD** for SEO
+- **Open Graph + Twitter Cards** for social sharing
+- **Mobile-first responsive design**
+- **Accessibility-focused** (keyboard navigation, screen readers)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18.17 or later
+- npm, yarn, or pnpm
+
+### Installation
+
+1. Clone the repository:
+```bash
+cd pestcontrol1
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Add your images:
+   - Place `Before.png` in `/public/images/`
+   - Place `After.png` in `/public/images/`
+   - Recommended size: 1920x1080 or similar 16:9 ratio
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+pestcontrol1/
+├── app/
+│   ├── globals.css      # Global styles + Tailwind
+│   ├── layout.tsx       # Root layout with SEO/Schema
+│   └── page.tsx         # Main landing page
+├── components/
+│   ├── ui/              # shadcn/ui components
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── dialog.tsx
+│   │   ├── input.tsx
+│   │   ├── label.tsx
+│   │   └── select.tsx
+│   ├── Header.tsx       # Sticky navigation
+│   ├── Hero.tsx         # Hero with animated counters
+│   ├── BeforeAfterSlider.tsx  # Interactive slider
+│   ├── ProblemSolution.tsx    # Problem/solution section
+│   ├── Services.tsx     # Services grid
+│   ├── Process.tsx      # 4-step timeline
+│   ├── Pricing.tsx      # Pricing tiers
+│   ├── SocialProof.tsx  # Testimonials
+│   ├── CTAForm.tsx      # Lead capture form
+│   ├── Footer.tsx       # Footer with links
+│   └── ExitIntentPopup.tsx    # Exit intent modal
+├── lib/
+│   └── utils.ts         # Utility functions
+├── public/
+│   └── images/          # Static images
+│       ├── Before.png   # (Add your image)
+│       └── After.png    # (Add your image)
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+└── next.config.js
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Colors
 
-## Deploy on Vercel
+Edit `tailwind.config.ts` to change the color scheme:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```typescript
+colors: {
+  primary: {
+    DEFAULT: '#16a34a',  // Green
+    // ... shades
+  },
+  accent: {
+    DEFAULT: '#f97316',  // Orange (CTA buttons)
+  },
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Content
+
+- Edit component files directly to change text content
+- Update `app/layout.tsx` for SEO metadata
+- Modify pricing in `components/Pricing.tsx`
+- Update testimonials in `components/SocialProof.tsx`
+
+### Form Integration
+
+The CTA form (`components/CTAForm.tsx`) currently logs submissions to console. To integrate with your backend:
+
+1. Replace the `onSubmit` function with your API call
+2. Add Calendly embed in the modal (replace placeholder)
+
+```typescript
+const onSubmit = async (data: FormData) => {
+  const response = await fetch('/api/leads', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  })
+  // Handle response
+}
+```
+
+### Calendly Integration
+
+Replace the placeholder in `CTAForm.tsx` with your Calendly embed:
+
+```tsx
+<InlineWidget url="https://calendly.com/your-link" />
+```
+
+## Performance Optimizations
+
+- Images use Next.js Image component with lazy loading
+- Fonts are preloaded with font-display: swap
+- CSS is optimized with PostCSS/Autoprefixer
+- Animations use GPU-accelerated transforms
+- Components use React.memo where appropriate
+
+## SEO Features
+
+- Complete Open Graph meta tags
+- Twitter Card meta tags
+- Schema.org JSON-LD structured data
+- Semantic HTML5 structure
+- Proper heading hierarchy
+- Alt text for all images
+- Canonical URL
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Android Chrome)
+
+## License
+
+Private - All rights reserved.
+
+## Support
+
+For questions or support, contact hello@pestrevenue.com

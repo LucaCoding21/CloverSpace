@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
+
+    /* Electric blue accent - trust, clean, professional */
+    --cyan: 187 94% 43%;
+    --cyan-foreground: 0 0% 100%;
+
+    /* Primary - keeping green but making it pop more */
+    --primary: 142 76% 36%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 5%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 187 94% 43%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 187 94% 43%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Display font for headlines */
+  .font-display {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Cyan accent color utilities */
+  .bg-lime {
+    background-color: #06B6D4;
+  }
+
+  .text-lime {
+    color: #06B6D4;
+  }
+
+  .border-lime {
+    border-color: #06B6D4;
+  }
+
+  /* Dark section styling */
+  .dark-section {
+    @apply bg-gray-950 text-white;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #06B6D4 0%, #0284C7 100%);
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-500 hover:shadow-2xl hover:-translate-y-2;
+  }
+
+  /* Scribble underline animation */
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .scribble-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-950;
+  }
+
+  /* Button glow effect */
+  .btn-glow {
+    position: relative;
+    overflow: visible;
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #06B6D4, #0284C7);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(12px);
+  }
+
+  .btn-glow:hover::before {
+    opacity: 0.6;
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  /* Float animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Pulse glow */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(187 94% 43% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(187 94% 43% / 0.6);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
+
+/* Custom selection color */
+::selection {
+  background-color: hsl(187 94% 43% / 0.3);
+  color: inherit;
+}

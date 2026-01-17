@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bgAfter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f7fafc"/>
+      <stop offset="100%" style="stop-color:#edf2f7"/>
+    </linearGradient>
+    <linearGradient id="greenAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#48bb78"/>
+      <stop offset="100%" style="stop-color:#38a169"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#bgAfter)" width="1920" height="1080"/>
+  <text x="960" y="480" text-anchor="middle" font-family="system-ui, sans-serif" font-size="72" font-weight="bold" fill="#38a169">AFTER</text>
+  <text x="960" y="560" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36" fill="#2d3748">Modern, High-Converting Website</text>
+  <text x="960" y="620" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#718096">Replace with your After.png screenshot</text>
+  <rect x="300" y="200" width="1320" height="60" rx="8" fill="url(#greenAccent)"/>
+  <rect x="300" y="280" width="600" height="400" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="940" y="280" width="680" height="180" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="940" y="480" width="680" height="200" rx="12" fill="url(#greenAccent)" opacity="0.1"/>
+  <circle cx="420" cy="360" r="40" fill="url(#greenAccent)" opacity="0.3"/>
+  <rect x="340" y="420" width="200" height="16" rx="4" fill="#e2e8f0"/>
+  <rect x="340" y="450" width="150" height="12" rx="4" fill="#e2e8f0"/>
+</svg>
