@@ -62,7 +62,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] mb-8"
+            className="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] mb-8"
           >
             Turn One Time Jobs Into{' '}
             <span className="text-cyan-400">Recurring Revenue</span>
