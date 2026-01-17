@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 5%;
 
-    /* Electric blue accent - trust, clean, professional */
-    --cyan: 187 94% 43%;
+    /* Gold accent - warm, premium, trustworthy */
+    --cyan: 36 74% 59%;
     --cyan-foreground: 0 0% 100%;
 
     /* Primary - keeping green but making it pop more */
@@ -25,13 +25,13 @@
     --secondary-foreground: 0 0% 5%;
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
-    --accent: 187 94% 43%;
+    --accent: 36 74% 59%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 187 94% 43%;
+    --ring: 36 74% 59%;
     --radius: 0.75rem;
   }
 }
@@ -64,17 +64,17 @@
     text-wrap: balance;
   }
 
-  /* Cyan accent color utilities */
+  /* Gold accent color utilities */
   .bg-lime {
-    background-color: #06B6D4;
+    background-color: #e2a04b;
   }
 
   .text-lime {
-    color: #06B6D4;
+    color: #e2a04b;
   }
 
   .border-lime {
-    border-color: #06B6D4;
+    border-color: #e2a04b;
   }
 
   /* Dark section styling */
@@ -84,12 +84,12 @@
 
   /* Gradient text */
   .gradient-text {
-    @apply bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent;
   }
 
   .gradient-text-cyan {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #06B6D4 0%, #0284C7 100%);
+    background-image: linear-gradient(135deg, #e2a04b 0%, #c9863a 100%);
   }
 
   /* Section spacing */
@@ -165,7 +165,7 @@
     content: '';
     position: absolute;
     inset: -2px;
-    background: linear-gradient(135deg, #06B6D4, #0284C7);
+    background: linear-gradient(135deg, #e2a04b, #c9863a);
     border-radius: inherit;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -208,10 +208,10 @@
   /* Pulse glow */
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 20px hsl(187 94% 43% / 0.3);
+      box-shadow: 0 0 20px hsl(36 74% 59% / 0.3);
     }
     50% {
-      box-shadow: 0 0 40px hsl(187 94% 43% / 0.6);
+      box-shadow: 0 0 40px hsl(36 74% 59% / 0.6);
     }
   }
 
@@ -222,6 +222,6 @@
 
 /* Custom selection color */
 ::selection {
-  background-color: hsl(187 94% 43% / 0.3);
+  background-color: hsl(36 74% 59% / 0.3);
   color: inherit;
 }

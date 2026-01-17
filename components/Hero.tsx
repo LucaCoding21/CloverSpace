@@ -5,19 +5,19 @@ import { ArrowRight, RefreshCw, Clock, Star } from 'lucide-react'
 
 const valueBullets = [
   {
+    icon: Star,
+    title: 'Credibility',
+    description: "An online presence that matches the business you've built.",
+  },
+  {
     icon: RefreshCw,
-    title: 'Recurring',
-    description: 'Pages built to push quarterly sign ups, not one time jobs.',
+    title: 'Ownership',
+    description: 'Your site, your domain, your files. Take it anywhere.',
   },
   {
     icon: Clock,
-    title: 'Responsive',
-    description: 'After hours lead capture and fast follow up.',
-  },
-  {
-    icon: Star,
-    title: 'Trust',
-    description: 'Review system that helps you close more calls.',
+    title: 'Simplicity',
+    description: 'One price, no contracts, no monthly hostage fees.',
   },
 ]
 
@@ -28,7 +28,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative overflow-hidden min-h-[100svh] md:min-h-[90vh] bg-gray-950">
+    <section className="relative overflow-hidden h-[100svh] bg-gray-950">
       {/* Background Video - Right side on desktop */}
       <div className="absolute inset-0 md:left-[15%]">
         <video
@@ -45,7 +45,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[100svh] md:min-h-[90vh] flex items-center py-20 md:py-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
         <div className="w-full md:max-w-xl lg:max-w-2xl">
           {/* Label */}
           <motion.p
@@ -54,7 +54,7 @@ export default function Hero() {
             transition={{ duration: 0.4 }}
             className="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4 mt-24 md:mt-12"
           >
-            For Pest Control Companies
+            For Real Estate Professionals
           </motion.p>
 
           {/* Headline */}
@@ -64,8 +64,8 @@ export default function Hero() {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] mb-8"
           >
-            Turn One Time Jobs Into{' '}
-            <span className="text-cyan-400">Recurring Revenue</span>
+            Your Reputation Deserves a{' '}
+            <span className="text-cyan-400">Website That Matches</span>
           </motion.h1>
 
           {/* Value Bullets */}
@@ -97,7 +97,7 @@ export default function Hero() {
               onClick={scrollToForm}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-cyan-500 text-gray-900 font-bold rounded-full hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
             >
-              Get Free Video Audit
+              Get Your Free Site Review
               <ArrowRight className="w-5 h-5" strokeWidth={2} />
             </button>
             <a
