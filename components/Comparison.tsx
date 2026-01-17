@@ -8,43 +8,43 @@ const comparisonData = [
   {
     icon: User,
     feature: 'Recurring Revenue',
-    pestRevenue: 'Dedicated pricing page that sells quarterly plans on autopilot',
+    cloverSpace: 'Dedicated pricing page that sells quarterly plans on autopilot',
     without: 'One-time jobs with no predictable income',
   },
   {
     icon: ClipboardList,
     feature: 'Lead Capture',
-    pestRevenue: '24/7 AI chat + SMS that books jobs while you sleep',
+    cloverSpace: '24/7 AI chat + SMS that books jobs while you sleep',
     without: 'Missed calls and lost leads after hours',
   },
   {
     icon: Palette,
     feature: 'Online Reputation',
-    pestRevenue: 'Automated review requests that generate 10-30 Google reviews/month',
+    cloverSpace: 'Automated review requests that generate 10-30 Google reviews/month',
     without: 'Manually asking for reviews (or forgetting entirely)',
   },
   {
     icon: Wrench,
     feature: 'Website Speed',
-    pestRevenue: 'Mobile optimized site that loads in under 2 seconds',
+    cloverSpace: 'Mobile optimized site that loads in under 2 seconds',
     without: 'Slow, outdated site that loses impatient visitors',
   },
   {
     icon: TrendingUp,
     feature: 'Integrations',
-    pestRevenue: 'Built in CRM, scheduling, payments & review tools',
+    cloverSpace: 'Built in CRM, scheduling, payments & review tools',
     without: 'Juggling multiple disconnected platforms',
   },
   {
     icon: Lightbulb,
     feature: 'Industry Focus',
-    pestRevenue: 'Built specifically for pest control. We know what converts',
+    cloverSpace: 'Built specifically for pest control. We know what converts',
     without: "Generic templates that don't speak to your customers",
   },
   {
     icon: Search,
     feature: 'Free Website Audit',
-    pestRevenue: 'Get a free video review of your current site with growth opportunities',
+    cloverSpace: 'Get a free video review of your current site with growth opportunities',
     without: 'No idea where your website is losing leads',
   },
 ]
@@ -73,7 +73,7 @@ export default function Comparison() {
             The Difference
           </h2>
           <p className="text-gray-500 text-lg">
-            See how PestRevenue stacks up against going it alone.
+            See how CloverSpace stacks up against going it alone.
           </p>
         </motion.div>
 
@@ -88,7 +88,7 @@ export default function Comparison() {
           <div className="grid grid-cols-[1fr_1.5fr_1.5fr]">
             <div className="bg-white p-4 md:p-6" />
             <div className="bg-cyan-500 p-4 md:p-6 text-center">
-              <span className="font-display text-lg md:text-xl text-gray-900">PestRevenue</span>
+              <span className="font-display text-lg md:text-xl text-gray-900">CloverSpace</span>
             </div>
             <div className="bg-red-50 p-4 md:p-6 text-center border-l border-red-100">
               <span className="font-medium text-red-700 text-lg md:text-xl">Without</span>
@@ -107,9 +107,9 @@ export default function Comparison() {
                 <span className="font-medium text-gray-900 text-sm md:text-base">{row.feature}</span>
               </div>
 
-              {/* PestRevenue Column */}
+              {/* CloverSpace Column */}
               <div className="bg-cyan-50 p-4 md:p-6 flex items-center justify-center text-center">
-                <span className="text-sm md:text-base text-cyan-900">{row.pestRevenue}</span>
+                <span className="text-sm md:text-base text-cyan-900">{row.cloverSpace}</span>
               </div>
 
               {/* Without Column */}

@@ -31,7 +31,7 @@ export default function Home() {
         {/* 5. WHAT: Specific services - they're interested, show depth */}
         <Services />
 
-        {/* 5b. COMPARISON: Show the difference PestRevenue makes */}
+        {/* 5b. COMPARISON: Show the difference CloverSpace makes */}
         <Comparison />
 
         {/* 6. WHO: Now they trust the method, introduce the people */}

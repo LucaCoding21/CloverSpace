@@ -1,4 +1,4 @@
-# PestRevenue.com Landing Page
+# CloverSpace Landing Page
 
 A high-converting, production-ready landing page for a pest control marketing agency. Built with Next.js 15, TypeScript, Tailwind CSS, Framer Motion, and shadcn/ui.
 
@@ -185,4 +185,4 @@ Private - All rights reserved.
 
 ## Support
 
-For questions or support, contact hello@pestrevenue.com
+For questions or support, contact hello@cloverspace.org

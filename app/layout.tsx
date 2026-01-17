@@ -9,11 +9,11 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pestrevenue.com'),
+  metadataBase: new URL('https://cloverspace.org'),
   title: {
     default:
-      'PestRevenue | Turn Emergency Pest Calls Into $5K-$15K/Year Recurring Customers',
-    template: '%s | PestRevenue',
+      'CloverSpace | Turn Emergency Pest Calls Into $5K-$15K/Year Recurring Customers',
+    template: '%s | CloverSpace',
   },
   description:
     'The #1 marketing agency for pest control companies. We build systems that transform one-time emergency calls into predictable recurring revenue. Get your free audit today.',
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     'pest control digital marketing',
     'pest control business growth',
   ],
-  authors: [{ name: 'PestRevenue', url: 'https://pestrevenue.com' }],
-  creator: 'PestRevenue',
-  publisher: 'PestRevenue',
+  authors: [{ name: 'CloverSpace', url: 'https://cloverspace.org' }],
+  creator: 'CloverSpace',
+  publisher: 'CloverSpace',
   formatDetection: {
     email: false,
     address: false,
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://pestrevenue.com',
-    siteName: 'PestRevenue',
+    url: 'https://cloverspace.org',
+    siteName: 'CloverSpace',
     title:
-      'PestRevenue | Turn Emergency Pest Calls Into $5K-$15K/Year Recurring Customers',
+      'CloverSpace | Turn Emergency Pest Calls Into $5K-$15K/Year Recurring Customers',
     description:
       'The #1 marketing agency for pest control companies. We build systems that transform one-time emergency calls into predictable recurring revenue.',
     images: [
@@ -49,17 +49,17 @@ export const metadata: Metadata = {
         url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'PestRevenue - Pest Control Marketing Agency',
+        alt: 'CloverSpace - Pest Control Marketing Agency',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PestRevenue | Pest Control Marketing That Drives Recurring Revenue',
+    title: 'CloverSpace | Pest Control Marketing That Drives Recurring Revenue',
     description:
       'Turn emergency pest calls into $5K-$15K/year recurring customers with our proven marketing systems.',
     images: ['/images/og-image.png'],
-    creator: '@pestrevenue',
+    creator: '@cloverspace',
   },
   robots: {
     index: true,
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   alternates: {
-    canonical: 'https://pestrevenue.com',
+    canonical: 'https://cloverspace.org',
   },
 }
 
@@ -91,19 +91,19 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://pestrevenue.com/#organization',
-      name: 'PestRevenue',
-      url: 'https://pestrevenue.com',
+      '@id': 'https://cloverspace.org/#organization',
+      name: 'CloverSpace',
+      url: 'https://cloverspace.org',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://pestrevenue.com/images/logo.png',
+        url: 'https://cloverspace.org/images/logo.png',
         width: 200,
         height: 60,
       },
       sameAs: [
-        'https://twitter.com/pestrevenue',
-        'https://linkedin.com/company/pestrevenue',
-        'https://facebook.com/pestrevenue',
+        'https://twitter.com/cloverspace',
+        'https://linkedin.com/company/cloverspace',
+        'https://facebook.com/cloverspace',
       ],
       contactPoint: {
         '@type': 'ContactPoint',
@@ -115,24 +115,24 @@ const jsonLd = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://pestrevenue.com/#website',
-      url: 'https://pestrevenue.com',
-      name: 'PestRevenue',
+      '@id': 'https://cloverspace.org/#website',
+      url: 'https://cloverspace.org',
+      name: 'CloverSpace',
       description:
         'The #1 marketing agency for pest control companies',
       publisher: {
-        '@id': 'https://pestrevenue.com/#organization',
+        '@id': 'https://cloverspace.org/#organization',
       },
     },
     {
       '@type': 'LocalBusiness',
-      '@id': 'https://pestrevenue.com/#localbusiness',
-      name: 'PestRevenue',
+      '@id': 'https://cloverspace.org/#localbusiness',
+      name: 'CloverSpace',
       description:
         'Marketing agency specializing in recurring revenue growth for pest control companies',
-      url: 'https://pestrevenue.com',
+      url: 'https://cloverspace.org',
       telephone: '+1-800-555-1234',
-      email: 'hello@pestrevenue.com',
+      email: 'hello@cloverspace.org',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Austin',
@@ -159,10 +159,10 @@ const jsonLd = {
     },
     {
       '@type': 'Service',
-      '@id': 'https://pestrevenue.com/#service',
+      '@id': 'https://cloverspace.org/#service',
       name: 'Pest Control Marketing Services',
       provider: {
-        '@id': 'https://pestrevenue.com/#organization',
+        '@id': 'https://cloverspace.org/#organization',
       },
       description:
         'Full-stack marketing services for pest control companies including websites, SEO, paid advertising, and revenue analytics.',

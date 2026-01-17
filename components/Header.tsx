@@ -42,7 +42,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="font-display text-2xl text-cyan-400">
-              PestRevenue
+              CloverSpace
             </Link>
 
             {/* Desktop Navigation */}

@@ -109,7 +109,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="inline-block mb-6">
               <span className="font-display text-3xl text-primary">
-                PestRevenue
+                CloverSpace
               </span>
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed max-w-md">
@@ -119,13 +119,13 @@ export default function Footer() {
 
             {/* Contact */}
             <a
-              href="mailto:hello@pestrevenue.com"
+              href="mailto:hello@cloverspace.org"
               className="flex items-center space-x-3 text-gray-400 hover:text-cyan-400 transition-colors"
             >
               <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center">
                 <Mail className="w-4 h-4" />
               </div>
-              <span>hello@pestrevenue.com</span>
+              <span>hello@cloverspace.org</span>
             </a>
           </div>
 
@@ -169,7 +169,7 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <p className="text-gray-500 text-sm text-center">
-            &copy; {new Date().getFullYear()} PestRevenue. All rights reserved.
+            &copy; {new Date().getFullYear()} CloverSpace. All rights reserved.
           </p>
         </div>
       </div>
