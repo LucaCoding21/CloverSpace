@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, RefreshCw, Clock, Star } from 'lucide-react'
-import Image from 'next/image'
 
 const valueBullets = [
   {
@@ -30,15 +29,17 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden min-h-[100svh] md:min-h-[90vh] bg-gray-950">
-      {/* Background Image - Right side on desktop */}
+      {/* Background Video - Right side on desktop */}
       <div className="absolute inset-0 md:left-[15%]">
-        <Image
-          src="/images/pestrev-hero.jpg"
-          alt="Pest control professional at work"
-          fill
-          className="object-cover"
-          priority
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/90 to-gray-950/40 md:from-gray-950 md:via-gray-950/80 md:to-transparent" />
       </div>
