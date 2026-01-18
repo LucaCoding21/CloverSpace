@@ -27,7 +27,7 @@ export default function TeamIntro() {
               <div className="h-80 md:h-full md:absolute md:inset-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/duoteam.jpeg"
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
                   alt="Our team"
                   className="w-full h-full object-cover object-top"
                 />

@@ -71,7 +71,7 @@ const config: Config = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Outfit', 'system-ui', 'sans-serif'],
-        logo: ['Poppins', 'system-ui', 'sans-serif'],
+        logo: ['"Merriweather Sans"', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',

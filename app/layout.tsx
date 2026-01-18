@@ -12,20 +12,20 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cloverspace.org'),
   title: {
     default:
-      'CloverSpace | Turn Emergency Pest Calls Into $5K-$15K/Year Recurring Customers',
+      'CloverSpace | Professional Websites for Real Estate Agents',
     template: '%s | CloverSpace',
   },
   description:
-    'The #1 marketing agency for pest control companies. We build systems that transform one-time emergency calls into predictable recurring revenue. Get your free audit today.',
+    'Custom websites built for real estate professionals. Generate more leads, build instant trust, and close deals faster with a site that makes your brand feel established.',
   keywords: [
-    'pest control marketing',
-    'pest control SEO',
-    'recurring revenue pest control',
-    'pest control website design',
-    'pest control lead generation',
-    'pest control advertising',
-    'pest control digital marketing',
-    'pest control business growth',
+    'real estate website',
+    'real estate agent website',
+    'realtor website design',
+    'real estate lead generation',
+    'real estate marketing',
+    'real estate web design',
+    'real estate digital marketing',
+    'real estate business growth',
   ],
   authors: [{ name: 'CloverSpace', url: 'https://cloverspace.org' }],
   creator: 'CloverSpace',
@@ -219,7 +219,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <script

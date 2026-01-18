@@ -6,18 +6,18 @@ import { ArrowRight, RefreshCw, Clock, Star } from 'lucide-react'
 const valueBullets = [
   {
     icon: Star,
-    title: 'Credibility',
-    description: "An online presence that matches the business you've built.",
+    title: 'Generate More Leads',
+    description: "Capture inquiries 24/7 with a site built to convert visitors into clients.",
   },
   {
     icon: RefreshCw,
-    title: 'Ownership',
-    description: 'Your site, your domain, your files. Take it anywhere.',
+    title: 'Build Instant Trust',
+    description: "Show buyers and sellers you're the established professional they want to work with.",
   },
   {
     icon: Clock,
-    title: 'Simplicity',
-    description: 'One price, no contracts, no monthly hostage fees.',
+    title: 'Close Deals Faster',
+    description: 'Showcase listings, testimonials, and credentials all in one place.',
   },
 ]
 
@@ -45,7 +45,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+      <div className="relative z-10 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
         <div className="w-full md:max-w-xl lg:max-w-2xl">
           {/* Label */}
           <motion.p
@@ -64,8 +64,8 @@ export default function Hero() {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="font-display font-medium text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] mb-8"
           >
-            Your Reputation Deserves a{' '}
-            <span className="text-cyan-400">Website That Matches</span>
+            Make Your Brand Feel{' '}
+            <span className="text-cyan-400">Established</span>
           </motion.h1>
 
           {/* Value Bullets */}
@@ -95,14 +95,14 @@ export default function Hero() {
           >
             <button
               onClick={scrollToForm}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-cyan-500 text-gray-900 font-bold rounded-full hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-cyan-500 text-gray-900 font-bold rounded-lg hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
             >
-              Get Your Free Site Review
+              Start Growing Today
               <ArrowRight className="w-5 h-5" strokeWidth={2} />
             </button>
             <a
               href="#process"
-              className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-all"
             >
               How It Works
             </a>

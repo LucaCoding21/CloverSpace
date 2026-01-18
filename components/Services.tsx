@@ -72,7 +72,7 @@ export default function Services() {
             className="group relative block w-full aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200"
           >
             <Image
-              src="/images/launch.jpeg"
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
               alt="Landing page preview"
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"

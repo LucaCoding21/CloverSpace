@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 
+
 const navLinks = [
   { href: '#services', label: 'Services' },
   { href: '#process', label: 'How It Works' },
@@ -38,11 +39,11 @@ export default function Header() {
             : 'bg-transparent'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link href="/" className="font-logo text-lg font-semibold text-cyan-400 uppercase tracking-wider">
-              CloverSpace
+            <Link href="/" className="font-logo text-lg font-semibold text-cyan-400 uppercase tracking-wider flex items-center gap-1">
+              Clover<span className="text-3xl -mt-1">☘︎</span>Space
             </Link>
 
             {/* Desktop Navigation */}
@@ -58,7 +59,7 @@ export default function Header() {
               ))}
               <button
                 onClick={scrollToForm}
-                className="px-5 py-2.5 bg-cyan-500 text-gray-900 font-semibold text-sm rounded-full hover:bg-cyan-400 transition-colors"
+                className="px-5 py-2.5 bg-cyan-500 text-gray-900 font-semibold text-sm rounded-lg hover:bg-cyan-400 transition-colors"
               >
                 Get Free Audit
               </button>
@@ -120,7 +121,7 @@ export default function Header() {
                 ))}
                 <button
                   onClick={scrollToForm}
-                  className="mt-4 w-full py-3 bg-cyan-500 text-gray-900 font-bold rounded-xl"
+                  className="mt-4 w-full py-3 bg-cyan-500 text-gray-900 font-bold rounded-lg"
                 >
                   Get Free Audit
                 </button>
