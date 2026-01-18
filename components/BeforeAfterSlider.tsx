@@ -86,7 +86,7 @@ export default function BeforeAfterSlider() {
             See the Transformation
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Drag the slider to see how we transform pest control websites into
+            Drag the slider to see how we transform real estate websites into
             high-converting lead generation machines.
           </p>
         </motion.div>
@@ -108,7 +108,7 @@ export default function BeforeAfterSlider() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={beforeSrc}
-              alt="Before: Original pest control website"
+              alt="Before: Original real estate website"
               className="absolute inset-0 w-full h-full object-cover object-center"
               onError={() => setBeforeSrc(BEFORE_PLACEHOLDER)}
             />
@@ -128,7 +128,7 @@ export default function BeforeAfterSlider() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={afterSrc}
-              alt="After: Transformed pest control website"
+              alt="After: Transformed real estate website"
               className="absolute inset-0 w-full h-full object-cover object-center"
               onError={() => setAfterSrc(AFTER_PLACEHOLDER)}
             />

@@ -38,7 +38,7 @@ const comparisonData = [
   {
     icon: Lightbulb,
     feature: 'Industry Focus',
-    cloverSpace: 'Built specifically for pest control. We know what converts',
+    cloverSpace: 'Built specifically for real estate. We know what converts',
     without: "Generic templates that don't speak to your customers",
   },
   {

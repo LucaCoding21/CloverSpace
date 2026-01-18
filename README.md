@@ -1,6 +1,6 @@
 # CloverSpace Landing Page
 
-A high-converting, production-ready landing page for a pest control marketing agency. Built with Next.js 15, TypeScript, Tailwind CSS, Framer Motion, and shadcn/ui.
+A high-converting, production-ready landing page for a real estate website agency. Built with Next.js 15, TypeScript, Tailwind CSS, Framer Motion, and shadcn/ui.
 
 ## Features
 

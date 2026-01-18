@@ -147,7 +147,7 @@ export default function CTAForm() {
                       </Label>
                       <Input
                         id="companyName"
-                        placeholder="Acme Pest Control"
+                        placeholder="Acme Realty"
                         {...register('companyName')}
                         className="mt-1.5 h-12 rounded-xl border-gray-200 focus:border-cyan-500 focus:ring-cyan-500"
                       />
@@ -165,7 +165,7 @@ export default function CTAForm() {
                       </Label>
                       <Input
                         id="websiteUrl"
-                        placeholder="https://yourpestsite.com"
+                        placeholder="https://yourrealtysite.com"
                         {...register('websiteUrl')}
                         className="mt-1.5 h-12 rounded-xl border-gray-200 focus:border-cyan-500 focus:ring-cyan-500"
                       />

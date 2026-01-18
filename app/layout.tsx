@@ -41,23 +41,23 @@ export const metadata: Metadata = {
     url: 'https://cloverspace.org',
     siteName: 'CloverSpace',
     title:
-      'CloverSpace | Turn Emergency Pest Calls Into $5K-$15K/Year Recurring Customers',
+      'CloverSpace | Professional Websites for Real Estate Agents',
     description:
-      'The #1 marketing agency for pest control companies. We build systems that transform one-time emergency calls into predictable recurring revenue.',
+      'Custom websites built for real estate professionals. Generate more leads, build instant trust, and close deals faster.',
     images: [
       {
         url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'CloverSpace - Pest Control Marketing Agency',
+        alt: 'CloverSpace - Real Estate Website Agency',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CloverSpace | Pest Control Marketing That Drives Recurring Revenue',
+    title: 'CloverSpace | Professional Websites for Real Estate Agents',
     description:
-      'Turn emergency pest calls into $5K-$15K/year recurring customers with our proven marketing systems.',
+      'Custom websites that help real estate agents generate more leads and close deals faster.',
     images: ['/images/og-image.png'],
     creator: '@cloverspace',
   },
@@ -119,7 +119,7 @@ const jsonLd = {
       url: 'https://cloverspace.org',
       name: 'CloverSpace',
       description:
-        'The #1 marketing agency for pest control companies',
+        'Custom websites built for real estate professionals',
       publisher: {
         '@id': 'https://cloverspace.org/#organization',
       },
@@ -129,7 +129,7 @@ const jsonLd = {
       '@id': 'https://cloverspace.org/#localbusiness',
       name: 'CloverSpace',
       description:
-        'Marketing agency specializing in recurring revenue growth for pest control companies',
+        'Website agency specializing in lead generation for real estate agents',
       url: 'https://cloverspace.org',
       telephone: '+1-800-555-1234',
       email: 'hello@cloverspace.org',
@@ -160,12 +160,12 @@ const jsonLd = {
     {
       '@type': 'Service',
       '@id': 'https://cloverspace.org/#service',
-      name: 'Pest Control Marketing Services',
+      name: 'Real Estate Website Services',
       provider: {
         '@id': 'https://cloverspace.org/#organization',
       },
       description:
-        'Full-stack marketing services for pest control companies including websites, SEO, paid advertising, and revenue analytics.',
+        'Custom website services for real estate agents including design, development, SEO, and lead generation.',
       areaServed: {
         '@type': 'Country',
         name: 'United States',

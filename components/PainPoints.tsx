@@ -41,7 +41,7 @@ export default function PainPoints() {
               <span className="block text-gray-500">one-time jobs.</span>
             </h2>
             <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
-              Most pest control websites bury their plans on a pricing page. Yours should lead with them.
+              Most real estate websites bury their value proposition. Yours should lead with it.
             </p>
           </motion.div>
 
@@ -67,7 +67,7 @@ export default function PainPoints() {
               {/* Slider */}
               <div className="mb-6">
                 <div className="text-center mb-4">
-                  <span className="text-[#eaeaea] text-sm font-medium block mb-1">Monthly Emergency Calls</span>
+                  <span className="text-[#eaeaea] text-sm font-medium block mb-1">Monthly Website Visitors</span>
                   <span className="text-cyan-400 font-display text-4xl">{monthlyCalls}</span>
                 </div>
                 <input

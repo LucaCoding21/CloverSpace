@@ -77,14 +77,13 @@ export default function ProblemSolution() {
           className="text-center max-w-4xl mx-auto mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-6 leading-tight">
-            Most Pest Sites Accidentally{' '}
-            <span className="text-cyan-500">Kill Recurring Revenue</span>{' '}
+            Most Agent Sites Accidentally{' '}
+            <span className="text-cyan-500">Lose Leads</span>{' '}
             – We Fix It Fast
           </h2>
           <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto">
-            70% of pest owners lose quarterly sign-ups because sites push &ldquo;$79 one-time fixes&rdquo;
-            instead of $97/mo plans. We flip that with custom funnels that convert emergencies
-            into autopilot subscribers.
+            70% of real estate agents lose potential clients because their sites lack trust signals
+            and clear calls to action. We build sites that convert visitors into qualified leads.
           </p>
         </motion.div>
 
@@ -106,7 +105,7 @@ export default function ProblemSolution() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/Before.png"
-                alt="Before: Original pest control website"
+                alt="Before: Original real estate website"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
               {/* Before Label */}
@@ -124,7 +123,7 @@ export default function ProblemSolution() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/After.png"
-                  alt="After: Transformed pest control website"
+                  alt="After: Transformed real estate website"
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
                 {/* After Label */}
