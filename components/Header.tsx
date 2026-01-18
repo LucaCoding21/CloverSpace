@@ -8,9 +8,32 @@ import Link from 'next/link'
 
 const navLinks = [
   { href: '#services', label: 'Services' },
-  { href: '#process', label: 'How It Works' },
-  { href: '#pricing', label: 'Pricing' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' },
 ]
+
+const navContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+}
+
+const navItemVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.4, 0.25, 1],
+    },
+  },
+}
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -30,9 +53,9 @@ export default function Header() {
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-gray-950/95 backdrop-blur-xl'
@@ -42,41 +65,62 @@ export default function Header() {
         <nav className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link href="/" className="font-logo text-lg font-semibold text-cyan-400 uppercase tracking-wider flex items-center gap-1">
-              Clover<span className="text-3xl -mt-1">☘︎</span>Space
-            </Link>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Link href="/" className="font-logo text-lg font-semibold text-cyan-400 uppercase tracking-wider flex items-center gap-1">
+                Clover<span className="text-3xl -mt-1">☘︎</span>Space
+              </Link>
+            </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
-                >
-                  {link.label}
-                </Link>
+            <motion.div
+              className="hidden md:flex items-center gap-8"
+              variants={navContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {navLinks.map((link, index) => (
+                <motion.div key={link.href} variants={navItemVariants}>
+                  <Link
+                    href={link.href}
+                    className="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm relative group"
+                  >
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                </motion.div>
               ))}
-              <button
-                onClick={scrollToForm}
-                className="px-5 py-2.5 bg-cyan-500 text-gray-900 font-semibold text-sm rounded-lg hover:bg-cyan-400 transition-colors"
-              >
-                Get Free Audit
-              </button>
-            </div>
+              <motion.div variants={navItemVariants}>
+                <motion.button
+                  onClick={scrollToForm}
+                  className="px-5 py-2.5 bg-cyan-500 text-gray-900 font-semibold text-sm rounded-lg hover:bg-cyan-400 transition-colors"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Book a Call
+                </motion.button>
+              </motion.div>
+            </motion.div>
 
             {/* Mobile Menu Button */}
-            <button
+            <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2"
               aria-label="Toggle menu"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              whileTap={{ scale: 0.9 }}
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6 text-white" />
               ) : (
                 <Menu className="w-6 h-6 text-white" />
               )}
-            </button>
+            </motion.button>
           </div>
         </nav>
       </motion.header>
@@ -90,9 +134,12 @@ export default function Header() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 md:hidden"
           >
-            <div
+            <motion.div
               className="absolute inset-0 bg-black/80"
               onClick={() => setIsMobileMenuOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             />
             <motion.nav
               initial={{ x: '100%' }}
@@ -101,31 +148,57 @@ export default function Header() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="absolute top-0 right-0 bottom-0 w-72 bg-gray-950 p-6 pt-20"
             >
-              <button
+              <motion.button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="absolute top-6 right-6"
+                whileHover={{ rotate: 90 }}
+                transition={{ duration: 0.2 }}
               >
                 <X className="w-6 h-6 text-white" />
-              </button>
+              </motion.button>
 
-              <div className="flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <Link
+              <motion.div
+                className="flex flex-col gap-4"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+                  }
+                }}
+              >
+                {navLinks.map((link, index) => (
+                  <motion.div
                     key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-white text-lg py-2 border-b border-gray-800"
+                    variants={{
+                      hidden: { opacity: 0, x: 20 },
+                      visible: { opacity: 1, x: 0 }
+                    }}
                   >
-                    {link.label}
-                  </Link>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-white text-lg py-2 border-b border-gray-800 block"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 ))}
-                <button
+                <motion.button
                   onClick={scrollToForm}
                   className="mt-4 w-full py-3 bg-cyan-500 text-gray-900 font-bold rounded-lg"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Get Free Audit
-                </button>
-              </div>
+                  Book a Call
+                </motion.button>
+              </motion.div>
             </motion.nav>
           </motion.div>
         )}

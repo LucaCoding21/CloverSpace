@@ -13,28 +13,66 @@ const brokerages = [
   { name: 'Sutton', logo: '/images/logos/sutton.png', height: 'h-14 sm:h-20' },
 ]
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.4, 0.25, 1],
+    },
+  },
+}
+
 export default function IntegrationsBar() {
   // Duplicate the array for seamless looping
   const duplicatedBrokerages = [...brokerages, ...brokerages]
 
   return (
-    <section className="bg-[#0a0a0a] border-b border-white/5">
+    <motion.section
+      className="bg-[#0a0a0a] border-b border-white/5"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8"
         >
-          <span className="text-gray-600 text-[10px] font-medium uppercase tracking-[0.15em] whitespace-nowrap flex-shrink-0">
+          <motion.span
+            variants={itemVariants}
+            className="text-gray-600 text-[10px] font-medium uppercase tracking-[0.15em] whitespace-nowrap flex-shrink-0"
+          >
             Built for agents at
-          </span>
+          </motion.span>
 
-          <div className="hidden sm:block w-px h-6 bg-gray-800 flex-shrink-0" />
+          <motion.div
+            variants={itemVariants}
+            className="hidden sm:block w-px h-6 bg-gray-800 flex-shrink-0"
+          />
 
           {/* Carousel container */}
-          <div className="flex-1 overflow-hidden relative">
+          <motion.div
+            variants={itemVariants}
+            className="flex-1 overflow-hidden relative"
+          >
             {/* Fade edges */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
@@ -66,9 +104,9 @@ export default function IntegrationsBar() {
                 </div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

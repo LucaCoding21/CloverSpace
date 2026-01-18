@@ -3,6 +3,7 @@ import Hero from '@/components/Hero'
 import GrowthEngine from '@/components/GrowthEngine'
 import ServicesGrid from '@/components/ServicesGrid'
 import About from '@/components/About'
+import Contact from '@/components/Contact'
 import IntegrationsBar from '@/components/IntegrationsBar'
 import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
@@ -24,10 +25,13 @@ export default function Home() {
         {/* 4. SERVICES: Bento grid of services */}
         <ServicesGrid />
 
-        {/* 5. ABOUT: About us with mission, vision, belief */}
+        {/* 5. ABOUT: About us with mission, vision, belief + stats */}
         <About />
 
-        {/* 6. FINAL CTA: Call to action */}
+        {/* 6. CONTACT: Contact form section */}
+        <Contact />
+
+        {/* 7. FINAL CTA: Call to action */}
         <FinalCTA />
       </main>
       <Footer />
