@@ -173,7 +173,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
 
 export default function GrowthEngine() {
   return (
-    <section className="bg-white py-20 md:py-28 pb-28 md:pb-40 overflow-hidden">
+    <section id="how-it-works" className="bg-white py-20 md:py-28 pb-28 md:pb-40 overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

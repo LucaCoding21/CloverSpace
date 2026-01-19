@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
+import ContactFormPopup from '@/components/ContactFormPopup'
 
 
 const navLinks = [
@@ -38,6 +39,7 @@ const navItemVariants = {
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -45,8 +47,8 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToForm = () => {
-    document.getElementById('cta-form')?.scrollIntoView({ behavior: 'smooth' })
+  const openContactForm = () => {
+    setIsContactFormOpen(true)
     setIsMobileMenuOpen(false)
   }
 
@@ -95,7 +97,7 @@ export default function Header() {
               ))}
               <motion.div variants={navItemVariants}>
                 <motion.button
-                  onClick={scrollToForm}
+                  onClick={openContactForm}
                   className="px-5 py-2.5 bg-cyan-500 text-gray-900 font-semibold text-sm rounded-lg hover:bg-cyan-400 transition-colors"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -187,7 +189,7 @@ export default function Header() {
                   </motion.div>
                 ))}
                 <motion.button
-                  onClick={scrollToForm}
+                  onClick={openContactForm}
                   className="mt-4 w-full py-3 bg-cyan-500 text-gray-900 font-bold rounded-lg"
                   variants={{
                     hidden: { opacity: 0, y: 20 },
@@ -203,6 +205,12 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Contact Form Popup */}
+      <ContactFormPopup
+        open={isContactFormOpen}
+        onOpenChange={setIsContactFormOpen}
+      />
     </>
   )
 }
