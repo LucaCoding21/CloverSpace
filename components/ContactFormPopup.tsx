@@ -232,7 +232,7 @@ export default function ContactFormPopup({ open, onOpenChange }: ContactFormPopu
                           ) : (
                             <>
                               Book My Free Call
-                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                              <ArrowRight className="hidden sm:block w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </>
                           )}
                         </motion.button>

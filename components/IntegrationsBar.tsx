@@ -71,7 +71,7 @@ export default function IntegrationsBar() {
           {/* Carousel container */}
           <motion.div
             variants={itemVariants}
-            className="flex-1 overflow-hidden relative"
+            className="flex-1 w-full max-w-full overflow-hidden relative"
           >
             {/* Fade edges */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />

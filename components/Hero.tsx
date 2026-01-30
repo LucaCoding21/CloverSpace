@@ -120,9 +120,9 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-6 lg:px-8 min-h-[100svh] flex items-end sm:items-center">
+      <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-6 lg:px-8 min-h-[100svh] flex items-center">
         <motion.div
-          className="w-full md:max-w-xl lg:max-w-2xl pb-10 pt-24 sm:py-0"
+          className="w-full md:max-w-xl lg:max-w-2xl pt-24 pb-12 md:py-0"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -207,6 +207,7 @@ export default function Hero() {
             >
               Start Growing Today
               <motion.span
+                className="hidden sm:inline-flex"
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
               >

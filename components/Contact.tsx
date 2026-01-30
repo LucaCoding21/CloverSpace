@@ -398,6 +398,7 @@ export default function Contact() {
                       <>
                         Send Message
                         <motion.span
+                          className="hidden sm:inline-flex"
                           animate={{ x: [0, 5, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
                         >

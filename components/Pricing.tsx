@@ -160,7 +160,7 @@ export default function Pricing() {
                   }`}
                 >
                   Pick Your Plan & Audit
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="hidden sm:block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </motion.div>
