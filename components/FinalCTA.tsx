@@ -47,7 +47,7 @@ export default function FinalCTA() {
   }
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-36 overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 md:py-36 overflow-hidden">
       {/* Background Image with Parallax */}
       <motion.div
         className="absolute inset-0"
@@ -82,7 +82,7 @@ export default function FinalCTA() {
         >
           <motion.button
             onClick={scrollToForm}
-            className="px-10 py-4 border-2 border-white text-white font-semibold text-sm tracking-wide uppercase rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+            className="w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-semibold text-sm tracking-wide uppercase rounded-xl sm:rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             whileHover={{
               scale: 1.05,
               boxShadow: '0 0 30px rgba(255,255,255,0.3)',

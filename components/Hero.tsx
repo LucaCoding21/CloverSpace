@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, RefreshCw, Clock, Star, Check } from 'lucide-react'
+import { ArrowRight, RefreshCw, Clock, Star } from 'lucide-react'
 import ContactFormPopup from '@/components/ContactFormPopup'
 
 const valueBullets = [
@@ -120,9 +120,9 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-6 lg:px-8 min-h-[100svh] flex items-center">
+      <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-6 lg:px-8 min-h-[100svh] flex items-end sm:items-center">
         <motion.div
-          className="w-full md:max-w-xl lg:max-w-2xl pt-24 pb-12 md:py-0"
+          className="w-full md:max-w-xl lg:max-w-2xl pb-10 pt-24 sm:py-0"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -151,21 +151,27 @@ export default function Hero() {
             </motion.span>
           </motion.h1>
 
-          {/* Value Bullets - Compact on mobile, expanded on desktop */}
+          {/* Mobile: single sentence, Desktop: expanded bullets */}
+          <motion.p
+            variants={itemVariants}
+            className="md:hidden text-gray-300 text-base leading-relaxed mb-8"
+          >
+            Generate more leads, build instant trust, and close deals faster with a website built to convert.
+          </motion.p>
+
           <motion.div
             variants={bulletContainerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-3 md:space-y-5 mb-8"
+            className="hidden md:block space-y-5 mb-8"
           >
             {valueBullets.map((bullet, index) => (
               <motion.div
                 key={index}
-                className="flex items-start md:items-center gap-3 md:gap-4"
+                className="flex items-center gap-4"
                 variants={bulletVariants}
               >
                 <motion.div
-                  className="mt-0.5 md:mt-0"
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{
@@ -176,16 +182,11 @@ export default function Hero() {
                     damping: 15
                   }}
                 >
-                  <Check className="w-5 h-5 md:hidden text-cyan-400 flex-shrink-0" strokeWidth={2.5} />
-                  <bullet.icon className="hidden md:block w-6 h-6 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
+                  <bullet.icon className="w-6 h-6 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
                 </motion.div>
-                {/* Mobile: shorter text, Desktop: full text */}
-                <p className="text-gray-200 text-base md:text-lg md:text-gray-300">
-                  <span className="md:hidden font-medium">{bullet.shortTitle}</span>
-                  <span className="hidden md:inline">
-                    <span className="text-white font-semibold">{bullet.title}:</span>{' '}
-                    {bullet.description}
-                  </span>
+                <p className="text-lg text-gray-300">
+                  <span className="text-white font-semibold">{bullet.title}:</span>{' '}
+                  {bullet.description}
                 </p>
               </motion.div>
             ))}
@@ -200,7 +201,7 @@ export default function Hero() {
           >
             <motion.button
               onClick={() => setIsContactFormOpen(true)}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 md:px-8 md:py-4 bg-cyan-500 text-gray-900 font-bold rounded-xl md:rounded-lg hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-base md:text-base"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 md:px-8 md:py-4 bg-cyan-500 text-gray-900 font-bold rounded-xl md:rounded-lg hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-base"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -214,7 +215,7 @@ export default function Hero() {
             </motion.button>
             <motion.button
               onClick={scrollToHowItWorks}
-              className="inline-flex items-center justify-center px-6 py-3.5 md:px-8 md:py-4 border border-white/30 text-white font-semibold rounded-xl md:rounded-lg hover:bg-white/5 transition-all text-base md:text-base"
+              className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-4 md:px-8 md:py-4 border border-white/30 text-white font-semibold rounded-xl md:rounded-lg hover:bg-white/5 transition-all text-base"
               whileHover={{ scale: 1.03, borderColor: 'rgba(255,255,255,0.4)' }}
               whileTap={{ scale: 0.98 }}
             >

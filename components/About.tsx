@@ -146,11 +146,11 @@ export default function About() {
   }
 
   return (
-    <section id="about" ref={sectionRef} className="bg-white py-28 md:py-36 overflow-hidden">
+    <section id="about" ref={sectionRef} className="bg-white py-16 md:py-36 overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section */}
         <motion.div
-          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16"
+          className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center mb-12 md:mb-16"
           variants={headerContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -203,7 +203,7 @@ export default function About() {
           {/* Left - Mission Card (Full Height) */}
           <motion.div
             variants={cardVariants}
-            className="relative rounded-3xl overflow-hidden min-h-[500px]"
+            className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[350px] md:min-h-[500px]"
             whileHover={{ scale: 1.02, transition: { duration: 0.4 } }}
           >
             {/* Background Image with parallax */}
@@ -220,7 +220,7 @@ export default function About() {
             </motion.div>
 
             {/* Content */}
-            <div className="relative z-10 p-8 lg:p-10 h-full flex flex-col justify-end">
+            <div className="relative z-10 p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-end">
               <motion.p
                 className="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4"
                 initial={{ opacity: 0, x: -20 }}
@@ -253,7 +253,7 @@ export default function About() {
             {/* Vision Card */}
             <motion.div
               variants={cardVariants}
-              className="relative rounded-3xl overflow-hidden min-h-[240px] flex flex-col justify-end"
+              className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[200px] md:min-h-[240px] flex flex-col justify-end"
               whileHover={{ scale: 1.03, y: -5, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0">
@@ -264,7 +264,7 @@ export default function About() {
                 />
                 <div className="absolute inset-0 bg-gray-100/90" />
               </div>
-              <div className="relative z-10 p-8 lg:p-10">
+              <div className="relative z-10 p-6 sm:p-8 lg:p-10">
                 <motion.p
                   className="text-cyan-600 font-semibold text-sm tracking-widest uppercase mb-4"
                   initial={{ opacity: 0, x: -20 }}
@@ -289,7 +289,7 @@ export default function About() {
             {/* Belief Card */}
             <motion.div
               variants={cardVariants}
-              className="relative rounded-3xl overflow-hidden min-h-[240px] flex flex-col justify-end"
+              className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[200px] md:min-h-[240px] flex flex-col justify-end"
               whileHover={{ scale: 1.03, y: -5, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0">
@@ -300,7 +300,7 @@ export default function About() {
                 />
                 <div className="absolute inset-0 bg-gray-900/85" />
               </div>
-              <div className="relative z-10 p-8 lg:p-10">
+              <div className="relative z-10 p-6 sm:p-8 lg:p-10">
                 <motion.p
                   className="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4"
                   initial={{ opacity: 0, x: -20 }}
@@ -326,13 +326,13 @@ export default function About() {
 
         {/* Stats Section */}
         <motion.div
-          className="mt-16"
+          className="mt-12 md:mt-16"
           variants={statContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}

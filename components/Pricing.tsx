@@ -59,7 +59,7 @@ export default function Pricing() {
     <section
       id="pricing"
       ref={ref}
-      className="pt-20 md:pt-32 pb-12 md:pb-20 bg-gray-950 relative overflow-hidden"
+      className="pt-16 md:pt-32 pb-12 md:pb-20 bg-gray-950 relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0">
@@ -75,7 +75,7 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 sm:mb-6 leading-tight">
             Straight-Up Pricing –{' '}
             <span className="text-cyan-400">No Hidden Fees</span>
           </h2>
@@ -103,7 +103,7 @@ export default function Pricing() {
                 </div>
               )}
               <div
-                className={`rounded-3xl p-8 h-full ${
+                className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full ${
                   tier.popular
                     ? 'bg-cyan-500 text-gray-900'
                     : 'bg-white/5 border border-white/10 text-white'
@@ -117,7 +117,7 @@ export default function Pricing() {
 
                 {/* Price */}
                 <div className="mb-6">
-                  <span className="font-display text-5xl md:text-6xl">{tier.price}</span>
+                  <span className="font-display text-4xl sm:text-5xl md:text-6xl">{tier.price}</span>
                   <span className={`text-sm ml-2 ${tier.popular ? 'text-gray-700' : 'text-gray-400'}`}>
                     USD one-time
                   </span>
@@ -172,7 +172,7 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 mb-12"
+          className="bg-white/5 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 mb-12"
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
@@ -190,7 +190,7 @@ export default function Pricing() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-6 pt-6 border-t border-white/10">
             {retainerFeatures.map((item, index) => (
               <div key={index} className="flex items-center gap-2 text-gray-400 text-sm">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />

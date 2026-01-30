@@ -120,7 +120,7 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="bg-gray-950 py-28 md:py-36 overflow-hidden">
+    <section id="contact" className="bg-gray-950 py-16 md:py-36 overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -128,7 +128,7 @@ export default function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <motion.p
             variants={headerItemVariants}
@@ -151,7 +151,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
           {/* Left Column - Contact Info */}
           <motion.div
             variants={leftColumnVariants}
@@ -291,7 +291,7 @@ export default function Contact() {
             ) : (
               <motion.form
                 onSubmit={handleSubmit}
-                className="space-y-10"
+                className="space-y-8 md:space-y-10"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
@@ -383,7 +383,7 @@ export default function Contact() {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.03, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-cyan-500 text-gray-900 font-semibold rounded-lg hover:bg-cyan-400 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 w-full sm:w-auto px-8 py-4 bg-cyan-500 text-gray-900 font-semibold rounded-xl sm:rounded-lg hover:bg-cyan-400 transition-colors disabled:opacity-70 disabled:cursor-not-allowed justify-center"
                   >
                     {isSubmitting ? (
                       <>

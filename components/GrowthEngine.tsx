@@ -100,7 +100,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
   return (
     <motion.div
       ref={ref}
-      className={`flex flex-col gap-10 lg:gap-16 items-center ${
+      className={`flex flex-col gap-8 lg:gap-16 items-center ${
         feature.imagePosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'
       }`}
       style={{ opacity }}
@@ -173,7 +173,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
 
 export default function GrowthEngine() {
   return (
-    <section id="how-it-works" className="bg-white py-20 md:py-28 pb-28 md:pb-40 overflow-hidden">
+    <section id="how-it-works" className="bg-white py-16 md:py-28 pb-20 md:pb-40 overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -181,7 +181,7 @@ export default function GrowthEngine() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -204,7 +204,7 @@ export default function GrowthEngine() {
         </motion.div>
 
         {/* Features */}
-        <div className="space-y-20 md:space-y-32">
+        <div className="space-y-16 md:space-y-32">
           {features.map((feature, index) => (
             <FeatureRow key={feature.title} feature={feature} index={index} />
           ))}

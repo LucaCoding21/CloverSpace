@@ -96,7 +96,7 @@ const cardItemVariants = {
 
 export default function ServicesGrid() {
   return (
-    <section id="services" className="bg-gray-950 py-20 md:py-28 overflow-hidden">
+    <section id="services" className="bg-gray-950 py-16 md:py-28 overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -104,7 +104,7 @@ export default function ServicesGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <h2 className="font-display text-2xl sm:text-3xl font-semibold text-white">
             Designed to Rank and Convert
@@ -122,7 +122,7 @@ export default function ServicesGrid() {
           {/* Large Card */}
           <motion.div
             variants={largeCardVariants}
-            className="md:row-span-2 bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 lg:p-10 flex flex-col justify-between min-h-[400px] border border-white/5"
+            className="md:row-span-2 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between min-h-[320px] md:min-h-[400px] border border-white/5"
             whileHover={{
               scale: 1.02,
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
@@ -165,7 +165,7 @@ export default function ServicesGrid() {
           {/* Small Card 1 */}
           <motion.div
             variants={smallCardVariants}
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 border border-white/5"
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/5"
             whileHover={{
               scale: 1.03,
               y: -5,
@@ -182,13 +182,13 @@ export default function ServicesGrid() {
               </motion.h3>
               <motion.p
                 variants={cardItemVariants}
-                className="text-gray-400"
+                className="text-gray-400 text-sm sm:text-base"
               >
                 {services[1].description}
               </motion.p>
             </motion.div>
             <motion.div
-              className="mt-6 aspect-[16/8] rounded-xl overflow-hidden"
+              className="mt-5 sm:mt-6 aspect-[16/8] rounded-xl overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -201,7 +201,7 @@ export default function ServicesGrid() {
           {/* Small Card 2 */}
           <motion.div
             variants={smallCardVariants}
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 border border-white/5"
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/5"
             whileHover={{
               scale: 1.03,
               y: -5,
@@ -218,13 +218,13 @@ export default function ServicesGrid() {
               </motion.h3>
               <motion.p
                 variants={cardItemVariants}
-                className="text-gray-400"
+                className="text-gray-400 text-sm sm:text-base"
               >
                 {services[2].description}
               </motion.p>
             </motion.div>
             <motion.div
-              className="mt-6 aspect-[16/8] bg-gray-800/50 rounded-xl overflow-hidden"
+              className="mt-5 sm:mt-6 aspect-[16/8] bg-gray-800/50 rounded-xl overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
