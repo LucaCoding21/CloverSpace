@@ -96,7 +96,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
   })
 
   const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [60, -60])
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], isMobile ? [1, 1, 1, 1] : [0.4, 1, 1, 0.4])
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], isMobile ? [1, 1, 1, 1] : [1, 1, 1, 0.6])
 
   return (
     <motion.div
