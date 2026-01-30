@@ -140,7 +140,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
         style={isMobile ? undefined : { y }}
       >
         <motion.div
-          className="aspect-[16/11] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center"
+          className={`${feature.component === 'stats' ? 'aspect-[3/4]' : 'aspect-[16/11]'} sm:aspect-[16/11] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center`}
           variants={mediaVariants}
           initial="hidden"
           whileInView="visible"

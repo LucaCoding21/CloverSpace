@@ -63,7 +63,7 @@ function AnimatedNumber({ value, isVisible }: { value: number; isVisible: boolea
       initial={{ scale: 0.5, opacity: 0 }}
       animate={isVisible ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="text-5xl sm:text-6xl font-bold text-gray-900 tabular-nums"
+      className="text-4xl sm:text-6xl font-bold text-gray-900 tabular-nums"
     >
       {displayValue.toLocaleString()}
     </motion.span>
@@ -175,7 +175,7 @@ export default function StatsAnimation() {
   }
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 rounded-xl flex flex-col items-center justify-center p-4 sm:p-8 overflow-hidden">
+    <div className="w-full h-full bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 rounded-xl flex flex-col items-center justify-center p-3 sm:p-8 overflow-hidden">
       <div className="flex-1 flex items-center justify-center w-full">
         <AnimatePresence mode="wait">
           <motion.div
@@ -191,9 +191,9 @@ export default function StatsAnimation() {
           >
             {slide.type === 'testimonial' ? (
               // Testimonial Card
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden p-6 sm:p-8">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden p-4 sm:p-8">
                 {/* Animated Stars */}
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-1 mb-3 sm:mb-4">
                   {[...Array(5)].map((_, i) => (
                     <AnimatedStar key={i} index={i} isVisible={true} />
                   ))}
@@ -204,7 +204,7 @@ export default function StatsAnimation() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.4 }}
-                  className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6"
+                  className="text-gray-700 text-sm sm:text-lg leading-relaxed mb-4 sm:mb-6"
                 >
                   {slide.text}
                 </motion.p>
@@ -233,7 +233,7 @@ export default function StatsAnimation() {
               </div>
             ) : (
               // Stats Card
-              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 text-center">
+              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-8 text-center">
                 {/* Icon */}
                 <motion.div
                   initial={{ scale: 0, rotate: -45 }}
@@ -242,9 +242,9 @@ export default function StatsAnimation() {
                     duration: 0.5,
                     ease: [0.34, 1.56, 0.64, 1],
                   }}
-                  className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${iconColors[slide.color || 'cyan']}`}
+                  className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 ${iconColors[slide.color || 'cyan']}`}
                 >
-                  {slide.icon && <slide.icon className="w-7 h-7 sm:w-8 sm:h-8" />}
+                  {slide.icon && <slide.icon className="w-6 h-6 sm:w-8 sm:h-8" />}
                 </motion.div>
 
                 {/* Animated Number */}
@@ -255,7 +255,7 @@ export default function StatsAnimation() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 1.2, duration: 0.3 }}
-                      className="text-4xl sm:text-5xl font-bold text-gray-900"
+                      className="text-3xl sm:text-5xl font-bold text-gray-900"
                     >
                       {slide.suffix}
                     </motion.span>
@@ -287,7 +287,7 @@ export default function StatsAnimation() {
       </div>
 
       {/* Page Indicators */}
-      <div className="flex items-center gap-2 mt-6">
+      <div className="flex items-center gap-2 mt-4 sm:mt-6">
         {slides.map((_, index) => (
           <button
             key={index}
