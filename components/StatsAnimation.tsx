@@ -20,19 +20,9 @@ function AnimatedStar({ index, isVisible }: { index: number; isVisible: boolean 
         ease: [0.34, 1.56, 0.64, 1], // Custom spring-like easing
       }}
     >
-      <motion.div
-        animate={{
-          filter: ['brightness(1)', 'brightness(1.3)', 'brightness(1)'],
-        }}
-        transition={{
-          duration: 2,
-          delay: index * 0.15,
-          repeat: Infinity,
-          repeatDelay: 3,
-        }}
-      >
-        <Star className="w-5 h-5 fill-yellow-400 text-yellow-400 drop-shadow-sm" />
-      </motion.div>
+      <div>
+        <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+      </div>
     </motion.div>
   )
 }

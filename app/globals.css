@@ -51,6 +51,45 @@
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Force GPU compositing for smoother mobile scrolling */
+  @media (max-width: 767px) {
+    * {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    /* Reduce backdrop-blur cost on mobile */
+    .backdrop-blur-xl {
+      -webkit-backdrop-filter: blur(12px) !important;
+      backdrop-filter: blur(12px) !important;
+    }
+
+    /* Promote fixed elements to their own layer */
+    .fixed {
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    /* Disable expensive hover effects on touch */
+    .card-hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   /* Display font for headlines */
@@ -190,6 +229,7 @@
 
   .animate-marquee {
     animation: marquee 30s linear infinite;
+    will-change: transform;
   }
 
   /* Float animation */

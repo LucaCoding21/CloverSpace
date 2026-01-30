@@ -2,14 +2,14 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const headlineVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(10px)' },
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: 'blur(0px)',
     transition: {
       duration: 1,
       ease: [0.25, 0.4, 0.25, 1],
@@ -32,15 +32,16 @@ const buttonVariants = {
 }
 
 export default function FinalCTA() {
+  const isMobile = useIsMobile()
   const sectionRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
   })
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
-  const backgroundScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1, 1.1])
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], isMobile ? ['0%', '0%'] : ['-10%', '10%'])
+  const backgroundScale = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [1, 1, 1] : [1.1, 1, 1.1])
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], isMobile ? [0.7, 0.7, 0.7, 0.7] : [0.5, 1, 1, 0.5])
 
   const scrollToForm = () => {
     document.getElementById('cta-form')?.scrollIntoView({ behavior: 'smooth' })
@@ -51,7 +52,7 @@ export default function FinalCTA() {
       {/* Background Image with Parallax */}
       <motion.div
         className="absolute inset-0"
-        style={{ y: backgroundY, scale: backgroundScale }}
+        style={isMobile ? undefined : { y: backgroundY, scale: backgroundScale }}
       >
         <img
           src="/images/cta.jpg"
@@ -93,31 +94,35 @@ export default function FinalCTA() {
           </motion.button>
         </motion.div>
 
-        {/* Decorative floating elements */}
-        <motion.div
-          className="absolute left-10 top-1/4 w-2 h-2 bg-cyan-400/50 rounded-full"
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.7, 0.3],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute right-20 top-1/3 w-3 h-3 bg-cyan-400/30 rounded-full"
-          animate={{
-            y: [0, 15, 0],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        />
-        <motion.div
-          className="absolute right-1/4 bottom-1/4 w-1.5 h-1.5 bg-white/40 rounded-full"
-          animate={{
-            y: [0, -25, 0],
-            opacity: [0.4, 0.8, 0.4],
-          }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-        />
+        {/* Decorative floating elements - hidden on mobile for performance */}
+        {!isMobile && (
+          <>
+            <motion.div
+              className="absolute left-10 top-1/4 w-2 h-2 bg-cyan-400/50 rounded-full"
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.3, 0.7, 0.3],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="absolute right-20 top-1/3 w-3 h-3 bg-cyan-400/30 rounded-full"
+              animate={{
+                y: [0, 15, 0],
+                opacity: [0.2, 0.5, 0.2],
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            />
+            <motion.div
+              className="absolute right-1/4 bottom-1/4 w-1.5 h-1.5 bg-white/40 rounded-full"
+              animate={{
+                y: [0, -25, 0],
+                opacity: [0.4, 0.8, 0.4],
+              }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+            />
+          </>
+        )}
       </div>
     </section>
   )

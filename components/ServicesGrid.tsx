@@ -22,11 +22,10 @@ const services = [
 ]
 
 const headerVariants = {
-  hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
       duration: 0.8,
       ease: [0.25, 0.4, 0.25, 1],
@@ -46,11 +45,10 @@ const gridContainerVariants = {
 }
 
 const largeCardVariants = {
-  hidden: { opacity: 0, x: -60, rotateY: 10 },
+  hidden: { opacity: 0, x: -60 },
   visible: {
     opacity: 1,
     x: 0,
-    rotateY: 0,
     transition: {
       duration: 0.9,
       ease: [0.25, 0.4, 0.25, 1],
@@ -128,7 +126,6 @@ export default function ServicesGrid() {
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
               transition: { duration: 0.4 }
             }}
-            style={{ perspective: 1000 }}
           >
             <motion.div variants={cardContentVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <motion.h3

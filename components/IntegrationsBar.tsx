@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 const brokerages = [
   { name: 'RE/MAX', logo: '/images/logos/remax.png', height: 'h-8 sm:h-10' },
@@ -37,6 +38,7 @@ const itemVariants = {
 }
 
 export default function IntegrationsBar() {
+  const isMobile = useIsMobile()
   // Duplicate the array for seamless looping
   const duplicatedBrokerages = [...brokerages, ...brokerages]
 
@@ -77,18 +79,20 @@ export default function IntegrationsBar() {
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
 
-            {/* Sliding track */}
+            {/* Sliding track - use CSS animation on mobile for better perf */}
             <motion.div
-              className="flex items-center gap-12 sm:gap-16"
-              animate={{ x: ['0%', '-50%'] }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                  duration: 30,
-                  ease: 'linear',
+              className={`flex items-center gap-12 sm:gap-16 ${isMobile ? 'animate-marquee' : ''}`}
+              {...(!isMobile && {
+                animate: { x: ['0%', '-50%'] },
+                transition: {
+                  x: {
+                    repeat: Infinity,
+                    repeatType: 'loop' as const,
+                    duration: 30,
+                    ease: 'linear',
+                  },
                 },
-              }}
+              })}
             >
               {duplicatedBrokerages.map((brokerage, index) => (
                 <div

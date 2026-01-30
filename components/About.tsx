@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { useIsMobile } from '@/lib/useIsMobile'
 
 function AnimatedNumber({ value, suffix = '' }: { value: number; suffix?: string }) {
   const [displayValue, setDisplayValue] = useState(0)
@@ -73,11 +74,10 @@ const headerContainerVariants = {
 }
 
 const headerItemVariants = {
-  hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
       duration: 0.8,
       ease: [0.25, 0.4, 0.25, 1],
@@ -133,13 +133,14 @@ const statItemVariants = {
 }
 
 export default function About() {
+  const isMobile = useIsMobile()
   const sectionRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
   })
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, -100])
 
   const scrollToForm = () => {
     document.getElementById('cta-form')?.scrollIntoView({ behavior: 'smooth' })
@@ -169,8 +170,8 @@ export default function About() {
             </motion.p>
             <motion.h2
               className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight"
-              initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
@@ -209,12 +210,12 @@ export default function About() {
             {/* Background Image with parallax */}
             <motion.div
               className="absolute inset-0"
-              style={{ y: backgroundY }}
+              style={isMobile ? undefined : { y: backgroundY }}
             >
               <img
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
                 alt="Mission background"
-                className="w-full h-[120%] object-cover"
+                className={`w-full object-cover ${isMobile ? 'h-full' : 'h-[120%]'}`}
               />
               <div className="absolute inset-0 bg-gray-900/80" />
             </motion.div>

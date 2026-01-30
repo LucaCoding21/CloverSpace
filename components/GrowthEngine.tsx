@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useIsMobile } from '@/lib/useIsMobile'
 import StatsAnimation from './StatsAnimation'
 
 type Feature = {
@@ -62,11 +63,10 @@ const textContainerVariants = {
 }
 
 const textItemVariants = {
-  hidden: { opacity: 0, y: 30, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
       duration: 0.7,
       ease: [0.25, 0.4, 0.25, 1],
@@ -88,14 +88,15 @@ const mediaVariants = {
 }
 
 function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
+  const isMobile = useIsMobile()
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], [60, -60])
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.4, 1, 1, 0.4])
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [60, -60])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], isMobile ? [1, 1, 1, 1] : [0.4, 1, 1, 0.4])
 
   return (
     <motion.div
@@ -103,7 +104,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
       className={`flex flex-col gap-8 lg:gap-16 items-center ${
         feature.imagePosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'
       }`}
-      style={{ opacity }}
+      style={isMobile ? undefined : { opacity }}
     >
       {/* Content */}
       <motion.div
@@ -136,7 +137,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
       {/* Image/Video */}
       <motion.div
         className="flex-1 w-full lg:min-w-[55%]"
-        style={{ y }}
+        style={isMobile ? undefined : { y }}
       >
         <motion.div
           className="aspect-[16/11] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center"
@@ -144,7 +145,6 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          whileHover={{ scale: 1.02, transition: { duration: 0.4 } }}
         >
           {feature.component === 'stats' ? (
             <StatsAnimation />
@@ -193,8 +193,8 @@ export default function GrowthEngine() {
             Everything You Need
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display text-2xl sm:text-3xl font-semibold text-gray-900"
