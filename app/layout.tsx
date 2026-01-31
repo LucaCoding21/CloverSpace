@@ -293,7 +293,7 @@ export default function RootLayout({
     <html lang="en" className={`scroll-smooth ${inter.variable} ${outfit.variable} ${merriweatherSans.variable}`}>
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-8VQPYVVZDX"
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q1DSHSPD08"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -301,7 +301,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-8VQPYVVZDX');
+            gtag('config', 'G-Q1DSHSPD08');
           `}
         </Script>
         <script
