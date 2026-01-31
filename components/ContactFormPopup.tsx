@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { CheckCircle2, ArrowRight, X } from 'lucide-react'
+import { CheckCircle2, X } from 'lucide-react'
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -232,7 +232,6 @@ export default function ContactFormPopup({ open, onOpenChange }: ContactFormPopu
                           ) : (
                             <>
                               Book My Free Call
-                              <ArrowRight className="hidden sm:block w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </>
                           )}
                         </motion.button>

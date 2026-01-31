@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { TrendingUp, Shield, Award, ArrowRight, Pen } from 'lucide-react'
+import { TrendingUp, Shield, Award, Pen } from 'lucide-react'
 
 const industryStats = [
   {
@@ -167,7 +167,6 @@ export default function SocialProof() {
             className="inline-flex items-center px-8 py-4 bg-cyan-500 text-gray-900 font-bold rounded-full hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 group"
           >
             Book Your Free Audit Now
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
       </div>

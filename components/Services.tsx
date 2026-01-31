@@ -75,6 +75,7 @@ export default function Services() {
               src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
               alt="Landing page preview"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
             {/* Hover overlay */}

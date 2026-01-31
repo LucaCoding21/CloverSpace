@@ -3,6 +3,8 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useIsMobile } from '@/lib/useIsMobile'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const headlineVariants = {
   hidden: { opacity: 0, y: 60, scale: 0.95 },
@@ -43,10 +45,6 @@ export default function FinalCTA() {
   const backgroundScale = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [1, 1, 1] : [1.1, 1, 1.1])
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], isMobile ? [0.7, 0.7, 0.7, 0.7] : [0.5, 1, 1, 0.5])
 
-  const scrollToForm = () => {
-    document.getElementById('cta-form')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <section ref={sectionRef} className="relative py-20 md:py-36 overflow-hidden">
       {/* Background Image with Parallax */}
@@ -54,10 +52,13 @@ export default function FinalCTA() {
         className="absolute inset-0"
         style={isMobile ? undefined : { y: backgroundY, scale: backgroundScale }}
       >
-        <img
-          src="/images/cta.jpg"
-          alt="Background"
-          className="w-full h-full object-cover"
+        <Image
+          src="/images/cta.webp"
+          alt="Vancouver real estate professional ready to grow their online presence"
+          fill
+          sizes="100vw"
+          loading="lazy"
+          className="object-cover"
         />
         <motion.div
           className="absolute inset-0 bg-gray-950/70"
@@ -73,7 +74,7 @@ export default function FinalCTA() {
           viewport={{ once: true, margin: '-100px' }}
           className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight max-w-3xl mx-auto mb-8"
         >
-          Ready to turn your online presence into your strongest asset?
+          What would it mean for your business if the right clients found you first?
         </motion.h2>
         <motion.div
           variants={buttonVariants}
@@ -81,17 +82,12 @@ export default function FinalCTA() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.button
-            onClick={scrollToForm}
-            className="w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-semibold text-sm tracking-wide uppercase rounded-xl sm:rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: '0 0 30px rgba(255,255,255,0.3)',
-            }}
-            whileTap={{ scale: 0.98 }}
+          <Link
+            href="/contact"
+            className="inline-block w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-semibold text-sm tracking-wide uppercase rounded-xl sm:rounded-lg hover:bg-white hover:text-gray-900 transition-colors text-center"
           >
             Book My Free Strategy Call
-          </motion.button>
+          </Link>
         </motion.div>
 
         {/* Decorative floating elements - hidden on mobile for performance */}

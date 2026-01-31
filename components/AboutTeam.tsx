@@ -64,6 +64,7 @@ export default function AboutTeam() {
               <img
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
                 alt="Our team"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>

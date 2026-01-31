@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, CheckCircle, ArrowRight } from 'lucide-react'
+import { Mail, MapPin, CheckCircle } from 'lucide-react'
 
 const headerVariants = {
   hidden: { opacity: 0 },
@@ -108,8 +108,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@cloverspace.com',
-      href: 'mailto:hello@cloverspace.com',
+      value: 'cloverspaceinfo@gmail.com',
+      href: 'mailto:cloverspaceinfo@gmail.com',
     },
     {
       icon: MapPin,
@@ -146,7 +146,7 @@ export default function Contact() {
             variants={headerItemVariants}
             className="text-gray-400 text-lg max-w-2xl mx-auto"
           >
-            Ready to elevate your online presence? Get in touch and we'll help you stand out in the real estate market.
+            Curious what we could do for you? Drop us a line. No pressure, just an honest conversation about your online presence.
           </motion.p>
         </motion.div>
 
@@ -170,7 +170,7 @@ export default function Contact() {
                 Ready to stand out?
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Join hundreds of real estate professionals who've transformed their online presence. Fill out the form and we'll get back to you within 24 hours.
+                We've helped realtors across Vancouver and the Lower Mainland rethink their online presence. Fill out the form and we'll get back to you within 24 hours.
               </p>
             </motion.div>
 
@@ -397,13 +397,6 @@ export default function Contact() {
                     ) : (
                       <>
                         Send Message
-                        <motion.span
-                          className="hidden sm:inline-flex"
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                        >
-                          <ArrowRight className="w-5 h-5" />
-                        </motion.span>
                       </>
                     )}
                   </motion.button>

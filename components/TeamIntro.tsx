@@ -2,7 +2,6 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight } from 'lucide-react'
 
 export default function TeamIntro() {
   const ref = useRef<HTMLDivElement>(null)
@@ -29,6 +28,7 @@ export default function TeamIntro() {
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
                   alt="Our team"
+                  loading="lazy"
                   className="w-full h-full object-cover object-top"
                 />
               </div>
@@ -55,7 +55,7 @@ export default function TeamIntro() {
 
               {/* Attribution */}
               <p className="text-gray-900 font-semibold text-lg mb-6">
-                — Claire & Luca
+                Claire & Luca
               </p>
 
               {/* CTA */}
@@ -65,7 +65,6 @@ export default function TeamIntro() {
                   className="inline-flex items-center gap-2 px-6 py-3 border-2 border-cyan-500 text-cyan-600 font-bold rounded-lg hover:bg-cyan-500 hover:text-gray-900 transition-all duration-300 group"
                 >
                   Work With Us
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>

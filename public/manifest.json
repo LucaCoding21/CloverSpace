@@ -1,21 +1,21 @@
 {
-  "name": "CloverSpace - Real Estate Website Agency",
+  "name": "CloverSpace - Vancouver Realtor Website Agency",
   "short_name": "CloverSpace",
-  "description": "Custom websites that help real estate agents generate more leads and close deals faster",
+  "description": "Custom websites built for Vancouver realtors. Generate more leads, rank higher on Google, and close deals faster across Greater Vancouver.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#16a34a",
+  "background_color": "#0a0a0a",
+  "theme_color": "#22d3ee",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
     },
     {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ]
 }

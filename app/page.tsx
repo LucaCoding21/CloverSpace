@@ -1,12 +1,14 @@
+import dynamic from 'next/dynamic'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import GrowthEngine from '@/components/GrowthEngine'
-import ServicesGrid from '@/components/ServicesGrid'
-import About from '@/components/About'
-import Contact from '@/components/Contact'
 import IntegrationsBar from '@/components/IntegrationsBar'
-import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
+
+const GrowthEngine = dynamic(() => import('@/components/GrowthEngine'))
+const ServicesGrid = dynamic(() => import('@/components/ServicesGrid'))
+const About = dynamic(() => import('@/components/About'))
+const Contact = dynamic(() => import('@/components/Contact'))
+const FinalCTA = dynamic(() => import('@/components/FinalCTA'))
 
 export default function Home() {
   return (

@@ -1,28 +1,27 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, RefreshCw, Clock, Star } from 'lucide-react'
-import ContactFormPopup from '@/components/ContactFormPopup'
+import { RefreshCw, Clock, Star } from 'lucide-react'
+import Link from 'next/link'
 
 const valueBullets = [
   {
     icon: Star,
     title: 'Generate More Leads',
     shortTitle: 'More Leads',
-    description: "Capture inquiries 24/7 with a site built to convert visitors into clients.",
+    description: "Your site works around the clock, turning visitors into inquiries while you sleep.",
   },
   {
     icon: RefreshCw,
     title: 'Build Instant Trust',
     shortTitle: 'Instant Trust',
-    description: "Show buyers and sellers you're the established professional they want to work with.",
+    description: "First impressions happen online. Look like the established pro you already are.",
   },
   {
     icon: Clock,
     title: 'Close Deals Faster',
     shortTitle: 'Close Faster',
-    description: 'Showcase listings, testimonials, and credentials all in one place.',
+    description: 'Listings, testimonials, and credentials all in one place that does the talking for you.',
   },
 ]
 
@@ -87,18 +86,12 @@ const ctaVariants = {
 }
 
 export default function Hero() {
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false)
-
   const scrollToHowItWorks = () => {
     document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <>
-      <ContactFormPopup
-        open={isContactFormOpen}
-        onOpenChange={setIsContactFormOpen}
-      />
     <section className="relative overflow-hidden min-h-[100svh] bg-gray-950">
       {/* Background Video */}
       <div className="absolute inset-0 md:left-[15%]">
@@ -107,6 +100,7 @@ export default function Hero() {
           muted
           loop
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -131,13 +125,13 @@ export default function Hero() {
             variants={itemVariants}
             className="text-cyan-400 font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 md:mb-4"
           >
-            For Real Estate Professionals
+            Vancouver&rsquo;s Realtor Website Agency
           </motion.p>
 
           {/* Headline */}
           <motion.h1
             variants={itemVariants}
-            className="font-display font-medium text-[2rem] leading-[1.15] sm:text-5xl lg:text-6xl text-white sm:leading-[1.1] mb-6 md:mb-8"
+            className="font-display font-medium text-[2.75rem] leading-[1.1] sm:text-5xl lg:text-6xl text-white sm:leading-[1.1] mb-6 md:mb-8"
           >
             Make Your Brand Feel{' '}
             <motion.span
@@ -155,7 +149,7 @@ export default function Hero() {
             variants={itemVariants}
             className="md:hidden text-gray-300 text-base leading-relaxed mb-8"
           >
-            Generate more leads, build instant trust, and close deals faster with a website built to convert.
+            We build websites that help Vancouver realtors generate leads, earn trust, and close more deals without lifting a finger.
           </motion.p>
 
           <motion.div
@@ -198,21 +192,12 @@ export default function Hero() {
             animate="visible"
             className="flex flex-col gap-3 sm:flex-row sm:gap-3"
           >
-            <motion.button
-              onClick={() => setIsContactFormOpen(true)}
+            <Link
+              href="/contact"
               className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 md:px-8 md:py-4 bg-cyan-500 text-gray-900 font-bold rounded-xl md:rounded-lg hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-base"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.98 }}
             >
               Start Growing Today
-              <motion.span
-                className="hidden sm:inline-flex"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
-              </motion.span>
-            </motion.button>
+            </Link>
             <motion.button
               onClick={scrollToHowItWorks}
               className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-4 md:px-8 md:py-4 border border-white/30 text-white font-semibold rounded-xl md:rounded-lg hover:bg-white/5 transition-all text-base"

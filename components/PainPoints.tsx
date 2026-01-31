@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
 
 export default function PainPoints() {
   const ref = useRef<HTMLDivElement>(null)
@@ -107,7 +106,6 @@ export default function PainPoints() {
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-cyan-500 text-gray-900 font-bold rounded-xl hover:bg-cyan-400 transition-colors"
               >
                 Estimate My Plan Revenue
-                <ArrowRight className="w-5 h-5" strokeWidth={1.6} />
               </button>
 
               <p className="text-gray-600 text-xs text-center mt-3">

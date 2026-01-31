@@ -219,6 +219,7 @@ export default function StatsAnimation() {
                   <img
                     src={slide.avatar}
                     alt={slide.name}
+                    loading="lazy"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover ring-2 ring-gray-100"
                   />
                   <div>

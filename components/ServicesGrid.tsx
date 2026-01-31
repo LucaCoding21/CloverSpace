@@ -1,22 +1,23 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import SearchAnimation from './SearchAnimation'
 
 const services = [
   {
     title: 'Custom Website Design',
-    description: 'A stunning, mobile first website that reflects your brand and captures leads 24/7.',
+    description: 'A stunning, mobile-first website that looks like you and works while you sleep, capturing leads around the clock.',
     size: 'large',
   },
   {
     title: 'SEO Optimization',
-    description: 'Rank higher on Google and get found by buyers and sellers in your area.',
+    description: 'Show up when people in your area search for an agent. We make sure Google knows who you are and what neighbourhoods you serve.',
     size: 'small',
   },
   {
     title: 'Lead Generation',
-    description: 'Convert visitors into qualified leads with strategic calls-to-action.',
+    description: 'Smart forms, clear calls-to-action, and follow-up systems that turn curious visitors into actual conversations.',
     size: 'small',
   },
 ]
@@ -111,7 +112,7 @@ export default function ServicesGrid() {
 
         {/* Bento Grid */}
         <motion.div
-          className="grid md:grid-cols-2 gap-4 lg:gap-6"
+          className="grid md:grid-cols-2 gap-6 lg:gap-8"
           variants={gridContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -221,18 +222,19 @@ export default function ServicesGrid() {
               </motion.p>
             </motion.div>
             <motion.div
-              className="mt-5 sm:mt-6 aspect-[16/8] bg-gray-800/50 rounded-xl overflow-hidden"
+              className="mt-5 sm:mt-6 aspect-[16/8] bg-gray-800/50 rounded-xl overflow-hidden relative"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
               whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80"
-                alt="Lead generation"
-                className="w-full h-full object-cover"
+                alt="Real estate lead generation dashboard for Vancouver realtors"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
               />
             </motion.div>
           </motion.div>

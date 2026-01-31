@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { MoveHorizontal, ArrowRight } from 'lucide-react'
+import { MoveHorizontal } from 'lucide-react'
 
 export default function ProblemSolution() {
   const [sliderPosition, setSliderPosition] = useState(50)
@@ -104,8 +104,9 @@ export default function ProblemSolution() {
             <div className="absolute inset-0 bg-gray-100">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/Before.png"
+                src="/images/Before.webp"
                 alt="Before: Original real estate website"
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
               {/* Before Label */}
@@ -122,8 +123,9 @@ export default function ProblemSolution() {
               <div className="absolute inset-0 bg-gray-900">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/After.png"
+                  src="/images/After.webp"
                   alt="After: Transformed real estate website"
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
                 {/* After Label */}
@@ -176,7 +178,6 @@ export default function ProblemSolution() {
             className="inline-flex items-center px-8 py-4 bg-cyan-500 text-gray-900 font-bold rounded-full hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 group"
           >
             See How We&apos;d Transform Yours
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </motion.div>
       </div>

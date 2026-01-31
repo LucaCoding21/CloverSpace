@@ -5,8 +5,8 @@ import { motion, useInView } from 'framer-motion'
 import { MoveHorizontal } from 'lucide-react'
 
 // Use regular img tags for flexibility with different image formats
-const BEFORE_IMAGE = '/images/Before.png?v=2'
-const AFTER_IMAGE = '/images/After.png?v=2'
+const BEFORE_IMAGE = '/images/Before.webp'
+const AFTER_IMAGE = '/images/After.webp'
 const BEFORE_PLACEHOLDER = '/images/placeholder-before.svg'
 const AFTER_PLACEHOLDER = '/images/placeholder-after.svg'
 
@@ -109,6 +109,7 @@ export default function BeforeAfterSlider() {
             <img
               src={beforeSrc}
               alt="Before: Original real estate website"
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover object-center"
               onError={() => setBeforeSrc(BEFORE_PLACEHOLDER)}
             />
@@ -129,6 +130,7 @@ export default function BeforeAfterSlider() {
             <img
               src={afterSrc}
               alt="After: Transformed real estate website"
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover object-center"
               onError={() => setAfterSrc(AFTER_PLACEHOLDER)}
             />

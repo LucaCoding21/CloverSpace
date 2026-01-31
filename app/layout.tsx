@@ -1,5 +1,24 @@
 import type { Metadata, Viewport } from 'next'
+import { Inter, Outfit, Merriweather_Sans } from 'next/font/google'
 import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-outfit',
+})
+
+const merriweatherSans = Merriweather_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-merriweather-sans',
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -12,20 +31,32 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cloverspace.org'),
   title: {
     default:
-      'CloverSpace | Professional Websites for Real Estate Agents',
+      'CloverSpace | Vancouver Realtor Websites & Real Estate Web Design',
     template: '%s | CloverSpace',
   },
   description:
-    'Custom websites built for real estate professionals. Generate more leads, build instant trust, and close deals faster with a site that makes your brand feel established.',
+    'Custom websites built for Vancouver realtors and real estate agents. Generate more leads, rank higher on Google, build instant trust, and close deals faster across Greater Vancouver, Burnaby, Richmond, and the Lower Mainland.',
   keywords: [
-    'real estate website',
-    'real estate agent website',
-    'realtor website design',
-    'real estate lead generation',
-    'real estate marketing',
-    'real estate web design',
-    'real estate digital marketing',
-    'real estate business growth',
+    'Vancouver realtor website',
+    'Vancouver real estate agent website',
+    'realtor website design Vancouver',
+    'real estate web design Vancouver BC',
+    'Vancouver realtor SEO',
+    'real estate lead generation Vancouver',
+    'realtor marketing Vancouver',
+    'Vancouver real estate website design',
+    'custom realtor website BC',
+    'real estate digital marketing Vancouver',
+    'Vancouver realtor branding',
+    'Greater Vancouver real estate website',
+    'Burnaby realtor website',
+    'Richmond real estate agent website',
+    'North Vancouver realtor web design',
+    'Surrey realtor website',
+    'real estate IDX website Vancouver',
+    'MLS website design Vancouver',
+    'Vancouver luxury real estate website',
+    'first time homebuyer Vancouver realtor',
   ],
   authors: [{ name: 'CloverSpace', url: 'https://cloverspace.org' }],
   creator: 'CloverSpace',
@@ -37,27 +68,27 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_CA',
     url: 'https://cloverspace.org',
     siteName: 'CloverSpace',
     title:
-      'CloverSpace | Professional Websites for Real Estate Agents',
+      'CloverSpace | Vancouver Realtor Websites & Real Estate Web Design',
     description:
-      'Custom websites built for real estate professionals. Generate more leads, build instant trust, and close deals faster.',
+      'Custom websites built for Vancouver realtors. Generate more leads, rank higher on Google, and close deals faster across Greater Vancouver and the Lower Mainland.',
     images: [
       {
         url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'CloverSpace - Real Estate Website Agency',
+        alt: 'CloverSpace - Vancouver Real Estate Website Agency',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CloverSpace | Professional Websites for Real Estate Agents',
+    title: 'CloverSpace | Vancouver Realtor Websites & Real Estate Web Design',
     description:
-      'Custom websites that help real estate agents generate more leads and close deals faster.',
+      'Custom websites that help Vancouver realtors generate more leads and close deals faster.',
     images: ['/images/og-image.png'],
     creator: '@cloverspace',
   },
@@ -101,15 +132,16 @@ const jsonLd = {
         height: 60,
       },
       sameAs: [
+        'https://www.instagram.com/cloverspace.studio/',
         'https://twitter.com/cloverspace',
         'https://linkedin.com/company/cloverspace',
         'https://facebook.com/cloverspace',
       ],
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+1-800-555-1234',
+        email: 'cloverspaceinfo@gmail.com',
         contactType: 'sales',
-        areaServed: 'US',
+        areaServed: ['CA', 'US'],
         availableLanguage: 'English',
       },
     },
@@ -119,7 +151,7 @@ const jsonLd = {
       url: 'https://cloverspace.org',
       name: 'CloverSpace',
       description:
-        'Custom websites built for real estate professionals',
+        'Custom realtor websites built for Vancouver real estate agents. SEO, lead generation, and web design for Greater Vancouver and the Lower Mainland.',
       publisher: {
         '@id': 'https://cloverspace.org/#organization',
       },
@@ -129,26 +161,25 @@ const jsonLd = {
       '@id': 'https://cloverspace.org/#localbusiness',
       name: 'CloverSpace',
       description:
-        'Website agency specializing in lead generation for real estate agents',
+        'Vancouver website agency specializing in custom websites, SEO, and lead generation for realtors and real estate agents in Greater Vancouver and the Lower Mainland.',
       url: 'https://cloverspace.org',
-      telephone: '+1-800-555-1234',
-      email: 'hello@cloverspace.org',
+      email: 'cloverspaceinfo@gmail.com',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Austin',
-        addressRegion: 'TX',
-        addressCountry: 'US',
+        addressLocality: 'Vancouver',
+        addressRegion: 'BC',
+        addressCountry: 'CA',
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 30.2672,
-        longitude: -97.7431,
+        latitude: 49.2827,
+        longitude: -123.1207,
       },
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         opens: '09:00',
-        closes: '18:00',
+        closes: '17:00',
       },
       priceRange: '$$',
       aggregateRating: {
@@ -160,46 +191,56 @@ const jsonLd = {
     {
       '@type': 'Service',
       '@id': 'https://cloverspace.org/#service',
-      name: 'Real Estate Website Services',
+      name: 'Vancouver Realtor Website Services',
       provider: {
         '@id': 'https://cloverspace.org/#organization',
       },
       description:
-        'Custom website services for real estate agents including design, development, SEO, and lead generation.',
-      areaServed: {
-        '@type': 'Country',
-        name: 'United States',
-      },
+        'Custom website design, local SEO, and lead generation services for Vancouver realtors and real estate professionals across Greater Vancouver, Burnaby, Richmond, North Vancouver, and Surrey.',
+      areaServed: [
+        {
+          '@type': 'City',
+          name: 'Vancouver',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Greater Vancouver',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Lower Mainland',
+        },
+      ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Marketing Services',
+        name: 'Realtor Marketing Services',
         itemListElement: [
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Conversion Websites',
+              name: 'Custom Realtor Website Design',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Local SEO Domination',
+              name: 'Local SEO for Vancouver Realtors',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Paid Advertising',
+              name: 'Real Estate Lead Generation',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Revenue Analytics',
+              name: 'Realtor Branding & Digital Marketing',
             },
           },
         ],
@@ -214,14 +255,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${outfit.variable} ${merriweatherSans.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

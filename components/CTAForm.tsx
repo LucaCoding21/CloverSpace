@@ -14,7 +14,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog'
-import { CheckCircle2, ArrowRight, Clock, Eye, DollarSign, Users } from 'lucide-react'
+import { CheckCircle2, Clock, Eye, DollarSign, Users } from 'lucide-react'
 
 const formSchema = z.object({
   companyName: z.string().min(2, 'Company name is required'),
@@ -268,7 +268,6 @@ export default function CTAForm() {
                       ) : (
                         <>
                           Get My Free Video Audit
-                          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
                     </button>
@@ -295,7 +294,6 @@ export default function CTAForm() {
                     className="inline-flex items-center px-8 py-4 bg-cyan-500 text-gray-900 font-bold rounded-full hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 group"
                   >
                     Pick Your Time
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               )}

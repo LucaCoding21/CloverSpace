@@ -19,21 +19,21 @@ const features: Feature[] = [
   {
     title: 'Stand Out in a Crowded Market',
     subtitle: 'Be the obvious choice',
-    description: "Thousands of agents are fighting for the same clients. A premium website instantly separates you from the competition and makes prospects remember your name.",
+    description: "There are over 12,000 licensed agents in this city. A premium website is the fastest way to look different, feel different, and actually be the one people remember after a long day of browsing.",
     video: '/videos/1.mp4',
     imagePosition: 'right',
   },
   {
     title: 'Turn Your Name Into a Brand',
     subtitle: 'Beyond just another agent',
-    description: "Top producers build personal brands that attract referrals on autopilot. We create the online foundation that makes clients proud to recommend you.",
+    description: "The best agents in this market don't chase referrals. They attract them. We build the kind of online presence that makes past clients proud to send people your way.",
     video: '/videos/2.mp4',
     imagePosition: 'left',
   },
   {
     title: 'Work Smarter, Close More',
     subtitle: 'Let your website do the heavy lifting',
-    description: "Every visitor sees your best listings, reads your testimonials, and can book a call instantly. You wake up to warm leads instead of cold calls.",
+    description: "Your best listings, your strongest testimonials, and a way to book a call, all right there when someone lands on your site. You wake up to warm leads instead of cold calls.",
     component: 'stats',
     imagePosition: 'right',
   },
@@ -88,27 +88,27 @@ const mediaVariants = {
 }
 
 function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile(1024)
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [60, -60])
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [30, -30])
   const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], isMobile ? [1, 1, 1, 1] : [1, 1, 1, 0.6])
 
   return (
     <motion.div
       ref={ref}
-      className={`flex flex-col gap-8 lg:gap-16 items-center ${
+      className={`relative flex flex-col-reverse gap-10 lg:gap-20 items-center ${
         feature.imagePosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'
       }`}
       style={isMobile ? undefined : { opacity }}
     >
       {/* Content */}
       <motion.div
-        className="flex-1 space-y-2"
+        className="lg:flex-1 space-y-2 pt-2 lg:pt-0"
         variants={textContainerVariants}
         initial="hidden"
         whileInView="visible"
@@ -136,11 +136,11 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
 
       {/* Image/Video */}
       <motion.div
-        className="flex-1 w-full lg:min-w-[55%]"
+        className="w-full lg:flex-1 lg:max-w-[55%]"
         style={isMobile ? undefined : { y }}
       >
         <motion.div
-          className={`${feature.component === 'stats' ? 'aspect-[3/4]' : 'aspect-[16/11]'} sm:aspect-[16/11] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center`}
+          className={`${feature.component === 'stats' ? 'aspect-[4/3]' : 'aspect-[16/11]'} sm:aspect-[16/11] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center`}
           variants={mediaVariants}
           initial="hidden"
           whileInView="visible"
@@ -162,6 +162,7 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
             <img
               src={feature.image}
               alt={feature.title}
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           )}
@@ -181,7 +182,7 @@ export default function GrowthEngine() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-12 md:mb-20"
+          className="text-center mb-12 md:mb-20 py-8 md:py-12"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -197,14 +198,14 @@ export default function GrowthEngine() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-2xl sm:text-3xl font-semibold text-gray-900"
+            className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight"
           >
-            The growth engine for modern real estate agents
+            How we help Vancouver realtors grow
           </motion.h2>
         </motion.div>
 
         {/* Features */}
-        <div className="space-y-16 md:space-y-32">
+        <div className="space-y-20 md:space-y-40">
           {features.map((feature, index) => (
             <FeatureRow key={feature.title} feature={feature} index={index} />
           ))}

@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { X, FileText, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { X, FileText, CheckCircle2 } from 'lucide-react'
 
 const formSchema = z.object({
   email: z.string().email('Please enter a valid email'),
@@ -135,17 +135,17 @@ export default function ExitIntentPopup() {
                   <p className="text-gray-600 mb-6">
                     Get our free PDF:{' '}
                     <span className="font-semibold text-gray-900">
-                      &ldquo;3 Recurring Revenue Killers&rdquo;
+                      &ldquo;3 Website Mistakes Costing Realtors Leads&rdquo;
                     </span>{' '}
-                    — and how to fix them today.
+                    and how to fix them today.
                   </p>
 
                   {/* Benefits */}
                   <ul className="space-y-2 mb-6">
                     {[
-                      'Why 83% of pest calls never convert to recurring',
-                      'The #1 website mistake killing your LTV',
-                      'How to 3x your customer lifetime value',
+                      'Why 78% of homebuyers leave realtor sites without inquiring',
+                      'The #1 website mistake killing your lead conversion',
+                      'How to 3x your inbound leads with one simple change',
                     ].map((benefit, index) => (
                       <li
                         key={index}
@@ -184,7 +184,6 @@ export default function ExitIntentPopup() {
                       ) : (
                         <>
                           Get Free PDF
-                          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
                     </Button>

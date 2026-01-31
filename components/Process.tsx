@@ -16,19 +16,19 @@ const steps = [
     number: '02',
     title: 'Strategy + Custom Mockup',
     description: 'We design a custom mockup of your new high-converting site. No commitment required to see your design.',
-    image: '/images/custom-mockup.png',
+    image: '/images/custom-mockup.webp',
   },
   {
     number: '03',
     title: 'Build + Launch',
     description: 'Your complete site built and live in 5-7 days. Chat, SMS, and booking fully integrated.',
-    image: '/images/launch-mockup.png',
+    image: '/images/launch-mockup.webp',
   },
   {
     number: '04',
     title: 'Optimize + Grow',
     description: 'Ongoing improvements backed by data. Includes 90 days of optimization iterations (no extra cost).',
-    image: '/images/pest-control.jpg',
+    image: '/images/pest-control.webp',
   },
 ]
 
@@ -127,6 +127,7 @@ export default function Process() {
                         src={steps[activeStep].image!}
                         alt={steps[activeStep].title}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover object-center"
                       />
                     )}
@@ -193,6 +194,7 @@ export default function Process() {
                               src={step.image!}
                               alt={step.title}
                               fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
                               className="object-cover object-center"
                             />
                           )}

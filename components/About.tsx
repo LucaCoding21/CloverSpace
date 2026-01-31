@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
 import { useIsMobile } from '@/lib/useIsMobile'
+import Image from 'next/image'
 
 function AnimatedNumber({ value, suffix = '' }: { value: number; suffix?: string }) {
   const [displayValue, setDisplayValue] = useState(0)
@@ -143,7 +143,7 @@ export default function About() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, -100])
 
   const scrollToForm = () => {
-    document.getElementById('cta-form')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -188,7 +188,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              We're a small team of designers, developers, and marketers who specialize in one thing: helping real estate professionals stand out online. We understand the unique challenges agents face and build solutions that actually work.
+              We're a small Vancouver team of designers, developers, and marketers who only do one thing: build websites for realtors. We know the market here, we know what buyers expect, and we know what actually moves the needle for agents.
             </motion.p>
           </motion.div>
         </motion.div>
@@ -212,10 +212,12 @@ export default function About() {
               className="absolute inset-0"
               style={isMobile ? undefined : { y: backgroundY }}
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-                alt="Mission background"
-                className={`w-full object-cover ${isMobile ? 'h-full' : 'h-[120%]'}`}
+                alt="Modern Vancouver luxury home showcasing premium real estate web design"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className={`object-cover ${isMobile ? '' : 'scale-[1.2]'}`}
               />
               <div className="absolute inset-0 bg-gray-900/80" />
             </motion.div>
@@ -238,7 +240,7 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                Combine modern design with local visibility so your site earns inquiries.
+                Pair great design with real visibility so your site actually earns you inquiries, not just compliments.
               </motion.h3>
             </div>
           </motion.div>
@@ -258,10 +260,12 @@ export default function About() {
               whileHover={{ scale: 1.03, y: -5, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
-                  alt="Vision background"
-                  className="w-full h-full object-cover"
+                  alt="Downtown Vancouver skyline representing modern real estate market growth"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gray-100/90" />
               </div>
@@ -294,10 +298,12 @@ export default function About() {
               whileHover={{ scale: 1.03, y: -5, transition: { duration: 0.3 } }}
             >
               <div className="absolute inset-0">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
-                  alt="Belief background"
-                  className="w-full h-full object-cover"
+                  alt="Elegant home interior reflecting trust and quality in Vancouver real estate"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gray-900/85" />
               </div>
@@ -375,13 +381,6 @@ export default function About() {
             whileTap={{ scale: 0.98 }}
           >
             Get Started
-            <motion.span
-              className="hidden sm:inline-flex"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <ArrowRight className="w-5 h-5" />
-            </motion.span>
           </motion.button>
         </motion.div>
       </div>

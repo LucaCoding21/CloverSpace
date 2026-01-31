@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Check, ArrowRight, Sparkles } from 'lucide-react'
+import { Check, Sparkles } from 'lucide-react'
 
 const tiers = [
   {
@@ -160,7 +160,6 @@ export default function Pricing() {
                   }`}
                 >
                   Pick Your Plan & Audit
-                  <ArrowRight className="hidden sm:block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </motion.div>

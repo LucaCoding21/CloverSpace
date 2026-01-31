@@ -103,6 +103,7 @@ export default function IntegrationsBar() {
                   <img
                     src={brokerage.logo}
                     alt={brokerage.name}
+                    loading="lazy"
                     className={`${brokerage.height} w-auto object-contain opacity-60 hover:opacity-90 transition-opacity brightness-0 invert`}
                   />
                 </div>
