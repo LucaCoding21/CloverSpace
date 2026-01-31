@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Outfit, Merriweather_Sans } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({
@@ -111,8 +112,17 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png' }],
   },
   manifest: '/manifest.json',
+  verification: {
+    google: 'Wa7ukSivQDcbZ_IuaqrvGJ18Itxk9QTenFBEnBXOrsg',
+  },
   alternates: {
     canonical: 'https://cloverspace.org',
+  },
+  other: {
+    'geo.region': 'CA-BC',
+    'geo.placename': 'Vancouver',
+    'geo.position': '49.2827;-123.1207',
+    ICBM: '49.2827, -123.1207',
   },
 }
 
@@ -125,6 +135,9 @@ const jsonLd = {
       '@id': 'https://cloverspace.org/#organization',
       name: 'CloverSpace',
       url: 'https://cloverspace.org',
+      description:
+        'CloverSpace is a Vancouver-based web design and digital marketing agency specializing in building high-converting websites for realtors and real estate agents across Greater Vancouver and the Lower Mainland.',
+      foundingDate: '2024',
       logo: {
         '@type': 'ImageObject',
         url: 'https://cloverspace.org/images/logo.png',
@@ -155,15 +168,24 @@ const jsonLd = {
       publisher: {
         '@id': 'https://cloverspace.org/#organization',
       },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://cloverspace.org/?s={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
     },
     {
-      '@type': 'LocalBusiness',
+      '@type': ['LocalBusiness', 'ProfessionalService'],
       '@id': 'https://cloverspace.org/#localbusiness',
       name: 'CloverSpace',
       description:
         'Vancouver website agency specializing in custom websites, SEO, and lead generation for realtors and real estate agents in Greater Vancouver and the Lower Mainland.',
       url: 'https://cloverspace.org',
       email: 'cloverspaceinfo@gmail.com',
+      image: 'https://cloverspace.org/images/og-image.png',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Vancouver',
@@ -187,64 +209,77 @@ const jsonLd = {
         ratingValue: '4.9',
         reviewCount: '127',
       },
+      parentOrganization: {
+        '@id': 'https://cloverspace.org/#organization',
+      },
     },
     {
       '@type': 'Service',
-      '@id': 'https://cloverspace.org/#service',
-      name: 'Vancouver Realtor Website Services',
-      provider: {
-        '@id': 'https://cloverspace.org/#organization',
-      },
+      '@id': 'https://cloverspace.org/#service-website-design',
+      name: 'Custom Realtor Website Design',
+      provider: { '@id': 'https://cloverspace.org/#organization' },
       description:
-        'Custom website design, local SEO, and lead generation services for Vancouver realtors and real estate professionals across Greater Vancouver, Burnaby, Richmond, North Vancouver, and Surrey.',
+        'Professionally designed, mobile-responsive websites built specifically for Vancouver realtors to attract clients and generate leads.',
+      url: 'https://cloverspace.org/services/website-design',
       areaServed: [
+        { '@type': 'City', name: 'Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Greater Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Lower Mainland' },
+      ],
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://cloverspace.org/#service-seo',
+      name: 'Local SEO for Vancouver Realtors',
+      provider: { '@id': 'https://cloverspace.org/#organization' },
+      description:
+        'Search engine optimization tailored for real estate agents in Vancouver, helping you rank higher on Google and attract local homebuyers and sellers.',
+      url: 'https://cloverspace.org/services/seo',
+      areaServed: [
+        { '@type': 'City', name: 'Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Greater Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Lower Mainland' },
+      ],
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://cloverspace.org/#service-lead-generation',
+      name: 'Real Estate Lead Generation',
+      provider: { '@id': 'https://cloverspace.org/#organization' },
+      description:
+        'Data-driven lead generation strategies that help Vancouver realtors capture, nurture, and convert more prospects into clients.',
+      url: 'https://cloverspace.org/services/lead-generation',
+      areaServed: [
+        { '@type': 'City', name: 'Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Greater Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Lower Mainland' },
+      ],
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://cloverspace.org/#service-branding',
+      name: 'Realtor Branding & Digital Marketing',
+      provider: { '@id': 'https://cloverspace.org/#organization' },
+      description:
+        'Complete branding and digital marketing solutions for Vancouver real estate professionals looking to build a strong, recognizable personal brand.',
+      url: 'https://cloverspace.org/services/branding',
+      areaServed: [
+        { '@type': 'City', name: 'Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Greater Vancouver' },
+        { '@type': 'AdministrativeArea', name: 'Lower Mainland' },
+      ],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://cloverspace.org/#breadcrumb',
+      itemListElement: [
         {
-          '@type': 'City',
-          name: 'Vancouver',
-        },
-        {
-          '@type': 'AdministrativeArea',
-          name: 'Greater Vancouver',
-        },
-        {
-          '@type': 'AdministrativeArea',
-          name: 'Lower Mainland',
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://cloverspace.org',
         },
       ],
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'Realtor Marketing Services',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Custom Realtor Website Design',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Local SEO for Vancouver Realtors',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Real Estate Lead Generation',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Realtor Branding & Digital Marketing',
-            },
-          },
-        ],
-      },
     },
   ],
 }
@@ -257,12 +292,37 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${outfit.variable} ${merriweatherSans.variable}`}>
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8VQPYVVZDX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8VQPYVVZDX');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased bg-gray-950">{children}</body>
+      <body className="antialiased bg-gray-950">
+        <div className="sr-only" aria-hidden="true">
+          CloverSpace is a web design and digital marketing agency based in Vancouver, BC, Canada.
+          We specialize in building custom, high-converting websites for realtors and real estate agents
+          across Greater Vancouver and the Lower Mainland. Our services include custom realtor website design,
+          local SEO for Vancouver realtors, real estate lead generation, and realtor branding and digital marketing.
+          We serve real estate professionals in Vancouver (Kitsilano, Yaletown, East Vancouver), Burnaby,
+          North Vancouver, Richmond, Surrey, and the broader Greater Vancouver area. Our websites are built
+          for performance with sub-1-second load times, mobile-first responsive design, and SEO optimization
+          to help realtors rank higher on Google and generate more leads. Contact us at cloverspaceinfo@gmail.com
+          or visit https://cloverspace.org to book a free strategy call.
+        </div>
+        {children}
+      </body>
     </html>
   )
 }

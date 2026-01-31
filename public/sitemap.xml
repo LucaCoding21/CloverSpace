@@ -7,6 +7,13 @@
     <priority>1.0</priority>
   </url>
 
+  <url>
+    <loc>https://cloverspace.org/contact</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Service Pages -->
   <url>
     <loc>https://cloverspace.org/services/website-design</loc>

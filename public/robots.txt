@@ -1,7 +1,36 @@
+# Default rules for all crawlers
 User-agent: *
 Allow: /
-
 Disallow: /api/
 Disallow: /_next/
+
+# Search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# AI assistant bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
 
 Sitemap: https://cloverspace.org/sitemap.xml
