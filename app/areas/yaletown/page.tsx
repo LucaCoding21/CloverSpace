@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'luxury condo website Vancouver',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/areas/yaletown',
+    canonical: 'https://cloverspace.studio/areas/yaletown',
   },
 }
 

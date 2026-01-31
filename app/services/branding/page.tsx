@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'real estate social media marketing Vancouver',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/services/branding',
+    canonical: 'https://cloverspace.studio/services/branding',
   },
 }
 

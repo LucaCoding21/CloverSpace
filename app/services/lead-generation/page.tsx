@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'realtor lead capture Vancouver',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/services/lead-generation',
+    canonical: 'https://cloverspace.studio/services/lead-generation',
   },
 }
 

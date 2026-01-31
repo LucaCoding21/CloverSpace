@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'Deep Cove real estate agent',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/areas/north-vancouver',
+    canonical: 'https://cloverspace.studio/areas/north-vancouver',
   },
 }
 

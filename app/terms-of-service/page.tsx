@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'CloverSpace Terms of Service. Read our terms and conditions for using our Vancouver realtor website design and digital marketing services.',
   alternates: {
-    canonical: 'https://cloverspace.org/terms-of-service',
+    canonical: 'https://cloverspace.studio/terms-of-service',
   },
 }
 
@@ -32,8 +32,8 @@ export default function TermsOfService() {
             </h2>
             <p>
               By accessing or using the CloverSpace website at{' '}
-              <Link href="https://cloverspace.org" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-                cloverspace.org
+              <Link href="https://cloverspace.studio" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                cloverspace.studio
               </Link>{' '}
               (&ldquo;the Site&rdquo;) and any services provided by CloverSpace (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our Site or services.
             </p>

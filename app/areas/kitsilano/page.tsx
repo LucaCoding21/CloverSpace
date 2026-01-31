@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'web design Kitsilano realtor',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/areas/kitsilano',
+    canonical: 'https://cloverspace.studio/areas/kitsilano',
   },
 }
 

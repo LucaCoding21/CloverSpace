@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'CloverSpace Privacy Policy. Learn how we collect, use, and protect your personal information when you use our Vancouver realtor website services.',
   alternates: {
-    canonical: 'https://cloverspace.org/privacy-policy',
+    canonical: 'https://cloverspace.studio/privacy-policy',
   },
 }
 
@@ -32,8 +32,8 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               CloverSpace (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) operates the website{' '}
-              <Link href="https://cloverspace.org" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-                cloverspace.org
+              <Link href="https://cloverspace.studio" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                cloverspace.studio
               </Link>
               . This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services. We are based in Vancouver, British Columbia, Canada, and comply with the Personal Information Protection and Electronic Documents Act (PIPEDA) and British Columbia&rsquo;s Personal Information Protection Act (PIPA).
             </p>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'Kensington Cedar Cottage realtor',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/areas/east-vancouver',
+    canonical: 'https://cloverspace.studio/areas/east-vancouver',
   },
 }
 

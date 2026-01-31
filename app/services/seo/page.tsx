@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'real estate search engine optimization Vancouver',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/services/seo',
+    canonical: 'https://cloverspace.studio/services/seo',
   },
 }
 

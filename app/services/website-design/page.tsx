@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'real estate website developer Vancouver',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/services/website-design',
+    canonical: 'https://cloverspace.studio/services/website-design',
   },
 }
 

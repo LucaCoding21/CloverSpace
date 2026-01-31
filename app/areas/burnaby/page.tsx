@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'web design Burnaby realtor',
   ],
   alternates: {
-    canonical: 'https://cloverspace.org/areas/burnaby',
+    canonical: 'https://cloverspace.studio/areas/burnaby',
   },
 }
 

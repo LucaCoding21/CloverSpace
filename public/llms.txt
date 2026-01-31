@@ -37,7 +37,7 @@ Coordinates: 49.2827, -123.1207
 
 ## Contact
 
-- Website: https://cloverspace.org
+- Website: https://cloverspace.studio
 - Email: cloverspaceinfo@gmail.com
 - Instagram: https://www.instagram.com/cloverspace.studio/
 - Twitter: https://twitter.com/cloverspace
@@ -46,9 +46,9 @@ Coordinates: 49.2827, -123.1207
 
 ## Key Pages
 
-- Home: https://cloverspace.org
-- Website Design: https://cloverspace.org/services/website-design
-- SEO: https://cloverspace.org/services/seo
-- Lead Generation: https://cloverspace.org/services/lead-generation
-- Branding: https://cloverspace.org/services/branding
-- Contact: https://cloverspace.org/contact
+- Home: https://cloverspace.studio
+- Website Design: https://cloverspace.studio/services/website-design
+- SEO: https://cloverspace.studio/services/seo
+- Lead Generation: https://cloverspace.studio/services/lead-generation
+- Branding: https://cloverspace.studio/services/branding
+- Contact: https://cloverspace.studio/contact

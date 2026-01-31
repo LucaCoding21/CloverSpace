@@ -129,7 +129,7 @@ export default async function Image() {
               display: 'flex',
             }}
           >
-            cloverspace.org
+            cloverspace.studio
           </div>
           <div
             style={{

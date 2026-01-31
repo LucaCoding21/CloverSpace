@@ -33,4 +33,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://cloverspace.org/sitemap.xml
+Sitemap: https://cloverspace.studio/sitemap.xml
