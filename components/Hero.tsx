@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { RefreshCw, Clock, Star } from 'lucide-react'
 import Link from 'next/link'
@@ -86,6 +87,9 @@ const ctaVariants = {
 }
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
   const scrollToHowItWorks = () => {
     document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -103,7 +107,7 @@ export default function Hero() {
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={mounted ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1.2, ease: [0.25, 0.4, 0.25, 1] }}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
@@ -118,7 +122,7 @@ export default function Hero() {
           className="w-full md:max-w-xl lg:max-w-2xl pt-24 pb-12 md:py-0"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={mounted ? "visible" : "hidden"}
         >
           {/* Label */}
           <motion.p
@@ -137,7 +141,7 @@ export default function Hero() {
             <motion.span
               className="text-cyan-400 inline-block"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={mounted ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
             >
               Established
@@ -155,7 +159,7 @@ export default function Hero() {
           <motion.div
             variants={bulletContainerVariants}
             initial="hidden"
-            animate="visible"
+            animate={mounted ? "visible" : "hidden"}
             className="hidden md:block space-y-5 mb-8"
           >
             {valueBullets.map((bullet, index) => (
@@ -166,7 +170,7 @@ export default function Hero() {
               >
                 <motion.div
                   initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
+                  animate={mounted ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
                   transition={{
                     duration: 0.5,
                     delay: 0.7 + index * 0.12,
@@ -189,7 +193,7 @@ export default function Hero() {
           <motion.div
             variants={ctaVariants}
             initial="hidden"
-            animate="visible"
+            animate={mounted ? "visible" : "hidden"}
             className="flex flex-col gap-3 sm:flex-row sm:gap-3"
           >
             <Link

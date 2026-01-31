@@ -65,6 +65,14 @@ export default function Header() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
+              <Link
+                href="/"
+                className="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm relative group"
+              >
+                Home
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+              </Link>
+
               {/* Services Dropdown */}
               <div className="relative group">
                 <button className="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm flex items-center gap-1 relative">
@@ -197,6 +205,19 @@ export default function Header() {
                   },
                 }}
               >
+                {/* Home */}
+                <motion.div
+                  variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }}
+                >
+                  <Link
+                    href="/"
+                    onClick={closeMobile}
+                    className="text-white text-lg py-3 border-b border-gray-800 block"
+                  >
+                    Home
+                  </Link>
+                </motion.div>
+
                 {/* Services Accordion */}
                 <motion.div
                   variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 } }}

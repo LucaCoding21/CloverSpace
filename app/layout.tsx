@@ -76,6 +76,14 @@ export const metadata: Metadata = {
       'CloverSpace | Vancouver Realtor Websites & Real Estate Web Design',
     description:
       'Custom websites built for Vancouver realtors. Generate more leads, rank higher on Google, and close deals faster across Greater Vancouver and the Lower Mainland.',
+    images: [
+      {
+        url: 'https://cloverspace.studio/images/cta.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'CloverSpace - Vancouver Realtor Website Agency',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -83,6 +91,7 @@ export const metadata: Metadata = {
     description:
       'Custom websites that help Vancouver realtors generate more leads and close deals faster.',
     creator: '@cloverspace',
+    images: ['https://cloverspace.studio/images/cta.jpg'],
   },
   robots: {
     index: true,
